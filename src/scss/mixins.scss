@@ -1,0 +1,59 @@
+@mixin flexible() {
+  display: flex;
+  align-items: center;
+}
+
+@mixin main_aссent_color {
+  color: #0ec261;
+}
+
+@mixin grey_color {
+  color: #999999;
+}
+
+@mixin grey_light_color {
+  color: #eeeeee;
+}
+
+@mixin btn {
+  width: 250px;
+  height: 48px;
+  border-radius: 8px;
+  border: none;
+  outline: none;
+  background: linear-gradient(90deg, #0ec261 2.61%, #039f67 112.6%);
+  background-blend-mode: darken;
+  font-family: "Roboto";
+  font-weight: 500;
+  font-size: 18px;
+  @include grey_light_color();
+
+}
+
+@mixin logo {
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: bold;
+  font-size: 30px;
+  line-height: 35px;
+  @include main_aссent_color();
+}
+
+@mixin copyright {
+  font-family: "Roboto-Light";
+  font-size: 13px;
+  @include grey_color();
+}
+
+@mixin phone {
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: normal;
+  font-size: 13px;
+  line-height: 15px;
+  /* identical to box height */
+
+  /* Black */
+
+  color: #121212;
+}

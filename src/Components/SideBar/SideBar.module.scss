@@ -50,5 +50,8 @@
     z-index: 100;
     display: block;
   }
+  .menuBtn, .openMenuBtn svg path {
+    stroke: #000;
+  }
 
 }

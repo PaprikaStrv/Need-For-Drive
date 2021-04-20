@@ -13,9 +13,9 @@ const SideBar = (props) => {
         className={s.menuBtn}
       >
         {props.isActive ? (
-          <ReactSVG src={close_menu_btn} />
+          <ReactSVG src={close_menu_btn}/>
         ) : (
-          <ReactSVG src={menu_btn} />
+          <ReactSVG src={menu_btn} className={s.openMenuBtn}/>
         )}
       </button>
       <button className={[props.isActive ? s.langBtn + " " + s.langBtnMobile : s.langBtn]}>

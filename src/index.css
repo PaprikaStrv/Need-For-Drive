@@ -14,13 +14,37 @@ body {
   /* min-height: 320px; */
 }
 
-
 @font-face {
   font-family: "Roboto";
-  src: url(./Fonts/Roboto/Roboto-Medium.ttf)
+  src: url(./Fonts/Roboto/Roboto-Medium.ttf);
 }
 
 @font-face {
   font-family: "Roboto-Light";
-  src: url(./Fonts/Roboto/Roboto-Light.ttf)
+  src: url(./Fonts/Roboto/Roboto-Light.ttf);
 }
+
+.slider-list,
+.slider-slide {
+  height: 100% !important;
+}
+.slider-control-bottomcenter .active button {
+  fill: #0ec261 !important;
+}
+
+
+
+
+@media (max-width: 1024px) {
+  .slider {
+    width: 40% !important;
+  }
+}
+
+
+@media (max-width: 900px) {
+  .slider {
+    display: none !important;
+  }
+}
+

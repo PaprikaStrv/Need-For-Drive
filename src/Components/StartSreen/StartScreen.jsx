@@ -14,7 +14,7 @@ const StartScreen = (props) => {
       {menuIsActive && <BurgerMenu/>}
       <SideBar isActive={menuIsActive} setActive={setMenuActive} />
       <Main />
-      <SimpleSlider />
+      <Slider />
     </div>
   );
 };

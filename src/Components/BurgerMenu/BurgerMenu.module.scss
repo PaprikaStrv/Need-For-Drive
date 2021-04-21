@@ -44,6 +44,10 @@ a:hover {
   }
 }
 
+.socialLinks a svg path:nth-child(1):hover {
+  fill: #0ec261;
+}
+
 @media screen and (max-width: 1024px) {
   .burgerMenuContainer {
     width: calc(60% + 35px);

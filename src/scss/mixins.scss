@@ -30,6 +30,16 @@
 
 }
 
+@mixin btnHover {
+  filter: brightness(90%);
+}
+
+@mixin  btnActive {
+  filter: brightness(80%);
+}
+
+
+
 @mixin logo {
   font-family: "Roboto";
   font-style: normal;

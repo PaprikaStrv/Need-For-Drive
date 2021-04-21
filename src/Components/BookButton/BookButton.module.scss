@@ -5,11 +5,11 @@
 }
 
 .btn:hover {
-  filter: brightness(90%);
+  @include btnHover();
 }
 
 .btn:active {
-  filter: brightness(80%);
+  @include btnActive();
 }
 
 @media screen and (max-width: 540px) {

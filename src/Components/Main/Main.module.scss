@@ -163,4 +163,10 @@
     color: #0ec261;
     margin-bottom: 8px;
   }
+  .phone:hover {
+    @include grey_light_color();
+  }
+  .phone:active {
+    @include grey_light_color();
+  }
 }

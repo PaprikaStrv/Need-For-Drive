@@ -1,3 +1,5 @@
+@import "../../scss/mixins.scss";
+
 .burgerMenuWrapper {
   position: absolute;
   background: rgba(21, 27, 31, 0.81);
@@ -9,22 +11,23 @@
 }
 
 .burgerMenuContainer {
-  display: flex;
-  flex-direction: column;
+  @include flexColumn();
   justify-content: center;
-  width: calc(50% + 35px);
   padding-left: 128px;
+  width: calc(50% + 66px);
   height: 100%;
   background: #111518;
 }
 
+.burgerMenuLinksWrapper {
+  max-width: 560px;
+}
+
 .burgerMenuLinks {
-  display: flex;
-  flex-direction: column;
+  @include flexColumn();
   margin-bottom: 23px;
   a {
-    font-family: "Roboto";
-    font-style: normal;
+    @include RobotoText();
     font-weight: 500;
     font-size: 32px;
     line-height: 37px;
@@ -50,7 +53,11 @@ a:hover {
 
 @media screen and (max-width: 1024px) {
   .burgerMenuContainer {
-    width: calc(60% + 35px);
+    padding-left: 97px;
+    width: calc(60% + 55px);
+  }
+  .burgerMenuLinksWrapper {
+    max-width: 485px;
   }
 }
 
@@ -58,14 +65,23 @@ a:hover {
   .burgerMenuContainer {
     width: 100%;
   }
+  .burgerMenuLinksWrapper {
+    max-width: 579px;
+  }
+  .burgerMenuLinks a {
+    font-size: 28px;
+    line-height: 32px;
+  }
 }
 
 @media screen and (max-width: 540px) {
   .burgerMenuContainer {
-    width: 100%;
     padding-left: 28px;
   }
-  .burgerMenuLinks {
+  .burgerMenuLinksWrapper {
+    max-width: 182px;
+  }
+  .burgerMenuLinks a {
     font-size: 22px;
     line-height: 26px;
   }

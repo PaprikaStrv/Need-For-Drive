@@ -37,12 +37,12 @@ const slides = [
     text: "Автомобиль проходит еженедельное ТО",
     buttonColor: "purple",
   },
-]
-
+];
 
 const Slider = (props) => {
   return (
     <Carousel
+      speed={150}
       renderBottomCenterControls={({ slideCount, currentSlide, goToSlide }) => (
         <div className={"slider-control-bottomcenter" + " " + s.slider_bottom}>
           <ul>
@@ -98,7 +98,7 @@ const Slider = (props) => {
               <h3>{slider.article}</h3>
               <p>{slider.text}</p>
               <button
-                className={s.[slider.buttonColor]}
+                className={s[slider.buttonColor]}
                 onClick={() => {
                   console.log("click");
                 }}

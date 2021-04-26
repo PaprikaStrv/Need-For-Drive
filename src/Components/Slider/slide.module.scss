@@ -1,4 +1,4 @@
-@import '../../scss/mixins.scss';
+@import "../../scss/mixins.scss";
 
 .slider-list,
 .slider-slide {
@@ -36,13 +36,13 @@
 .sliderContent {
   position: relative;
   h3 {
-    font-family: "Roboto";
+    @include RobotoText();
     color: #fff;
     font-size: 40px;
     margin: 0 0 8px;
   }
   P {
-    font-family: "Roboto-Light";
+    @include RobotoLightText();
     color: #eee;
     font-size: 24px;
     margin: 0 0 25px;
@@ -51,7 +51,7 @@
     line-height: 24px;
   }
   button {
-    font-style: normal;
+    @include RobotoText();
     font-weight: 500;
     font-size: 18px;
     line-height: 21px;
@@ -60,13 +60,13 @@
     align-items: center;
     justify-content: center;
     text-align: center;
-    color: #eee;
+    cursor: pointer;
+    color: #FFFFFF;
     border-radius: 4px;
     width: 164px;
     height: 48px;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     border-radius: 4px;
-    
   }
 }
 

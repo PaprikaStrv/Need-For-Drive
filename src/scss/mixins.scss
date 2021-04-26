@@ -3,6 +3,11 @@
   align-items: center;
 }
 
+@mixin flexColumn {
+  display: flex;
+  flex-direction: column;
+}
+
 @mixin main_aссent_color {
   color: #0ec261;
 }
@@ -23,22 +28,20 @@
   outline: none;
   background: linear-gradient(90deg, #0ec261 2.61%, #039f67 112.6%);
   background-blend-mode: darken;
-  font-family: "Roboto";
+  @include RobotoText();
   font-weight: 500;
   font-size: 18px;
-  @include grey_light_color();
-
+  cursor: pointer;
+  color: #FFFFFF;
 }
 
 @mixin btnHover {
   filter: brightness(90%);
 }
 
-@mixin  btnActive {
+@mixin btnActive {
   filter: brightness(80%);
 }
-
-
 
 @mixin logo {
   font-family: "Roboto";
@@ -61,9 +64,19 @@
   font-weight: normal;
   font-size: 13px;
   line-height: 15px;
-  /* identical to box height */
-
-  /* Black */
-
   color: #121212;
+  &:hover,
+  &:active {
+    @include main_aссent_color();
+  }
+}
+
+@mixin RobotoLightText {
+  font-family: "Roboto-Light";
+  font-style: normal;
+}
+
+@mixin RobotoText {
+  font-family: "Roboto";
+  font-style: normal;
 }

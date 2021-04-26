@@ -1,0 +1,47 @@
+.headerWrapper a{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.headerLogo {
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: bold;
+  font-size: 30px;
+  line-height: 35px;
+
+  /* Main accent */
+
+  color: #0ec261;
+}
+
+.currentCity {
+  display: flex;
+  align-items: center;
+}
+
+.city {
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 16px;
+  /* identical to box height */
+
+  /* Gray */
+
+  color: #999999;
+
+  margin-left: 7px;
+}
+@media screen and (max-width: 540px) {
+  .headerWrapper a{
+    flex-direction: column;
+    align-items: flex-end;
+    padding: 16px;
+  }
+  .headerLogo {
+    margin-bottom: 9px;
+  }
+}

@@ -1,67 +1,22 @@
 @import "../../scss/mixins.scss";
 
 .mainWrapper {
-  padding: 32px 70px;
-  width: calc(50% - 35px);
+  padding: 32px 64px;
+  width: calc(50% + 60px);
   min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-}
-
-.headerWrapper {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 161px;
-}
-
-.headerLogo {
-  font-family: "Roboto";
-  font-style: normal;
-  font-weight: bold;
-  font-size: 30px;
-  line-height: 35px;
-
-  /* Main accent */
-
-  color: #0ec261;
-}
-
-.currentCity {
-  display: flex;
-  align-items: center;
-}
-
-.city {
-  font-family: "Roboto";
-  font-style: normal;
-  font-weight: normal;
-  font-size: 14px;
-  line-height: 16px;
-  /* identical to box height */
-
-  /* Gray */
-
-  color: #999999;
-
-  margin-left: 7px;
+  @include flexColumn();
 }
 
 .mainTitle {
-  display: flex;
-  flex-direction: column;
+  @include flexColumn();
+  margin-top: 161px;
 }
 
 .mainLogo {
-  font-family: "Roboto";
-  font-style: normal;
+  @include RobotoText();
   font-weight: bold;
   font-size: 70px;
   line-height: 66px;
-  /* identical to box height */
-
-  /* Black */
-
   color: #121212;
 }
 
@@ -71,12 +26,10 @@
 }
 
 .mainSlog {
-  font-family: "Roboto-Light";
-  font-style: normal;
+  @include RobotoLightText();
   font-weight: 300;
   font-size: 26px;
   line-height: 30px;
-  /* Gray */
   color: #999999;
   margin-bottom: 62px;
 }
@@ -88,15 +41,10 @@
 }
 
 .copyright {
-  font-family: "Roboto-Light";
-  font-style: normal;
+  @include RobotoLightText();
   font-weight: normal;
   font-size: 13px;
   line-height: 15px;
-  /* identical to box height */
-
-  /* Gray */
-
   color: #999999;
 }
 
@@ -104,30 +52,22 @@
   @include phone();
 }
 
-.phone:hover {
-  color: #0ec261;
-}
-
-.phone:active {
-  color: #0ec261;
-}
-
 @media screen and (max-width: 1024px) {
   .mainWrapper {
-    width: calc(60% + 10px);
+    padding: 32px 32px;
+    width: calc(60% + 64px);
   }
 }
 
 @media screen and (max-width: 900px) {
   .mainWrapper {
     width: 100%;
-    padding: 35px 35px;
+    padding: 32px 32px 38px;
   }
 }
 
 @media screen and (max-width: 540px) {
   .mainWrapper {
-    width: 100%;
     padding: 0;
   }
   .mainLogo {
@@ -139,21 +79,21 @@
     line-height: 21px;
   }
 
-  .headerWrapper {
-    flex-direction: column;
-    align-items: flex-end;
-    margin-bottom: 34px;
-    padding: 16px;
-  }
-
   .mainTitle {
     padding: 0 16px;
-  }
 
+    margin-top: 34px;
+  }
+  .name {
+    margin-bottom: 16px;
+  }
+  .mainSlog {
+    margin-bottom: 32px;
+  }
   .mainFooter {
     flex-direction: column-reverse;
     align-items: flex-end;
-    background-color: #000;
+    background-color: #151B1F;
     padding: 16px;
   }
   .copyright {

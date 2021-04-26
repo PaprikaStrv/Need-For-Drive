@@ -1,3 +1,5 @@
+@import "../../scss/mixins.scss";
+
 .sideBarWrapper {
   width: 64px;
   background: #151b1f;
@@ -5,7 +7,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-  padding: 32px 16px 32px;
+  padding: 32px 16px 16px;
   position: relative;
 }
 
@@ -25,15 +27,40 @@
   line-height: 15px;
   color: #0ec261;
   text-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+  cursor: pointer;
 }
 
-@media (max-width: 900px) {
-  .sideBarWrapper {
-    width: 86px;
-    padding: 37px 27px;
+.langBtnWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 48px;
+  width: 48px;
+  cursor: pointer;
+}
+
+.langBtnWrapper:hover {
+  padding: 16px 13px 16px;
+  border: 1px solid #eeeeee;
+  border-radius: 50%;
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+  .langBtn {
+    @include grey_light_color();
   }
 }
-@media (max-width: 540px) {
+.langBtnWrapper:active {
+  .langBtn {
+    @include main_aссent_color();
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .sideBarWrapper {
+    width: 86px;
+    padding: 29px 27px 22px;
+  }
+}
+@media screen and (max-width: 540px) {
   .sideBarWrapper {
     width: 51px;
     padding: 21px 24px;
@@ -44,14 +71,23 @@
     height: 100%;
   }
   .langBtn {
-      display: none;
-  }
-  .langBtnMobile {
-    z-index: 100;
-    display: block;
-  }
-  .menuBtn, .openMenuBtn svg path {
-    stroke: #000;
+    display: none;
   }
 
+  .langBtnMobile {
+    display: block;
+  }
+  
+  .langBtnWrapper {
+    display: none;
+  }
+  .langBtnWrapperMobile {
+    display: inherit;
+    z-index: 100;
+  }
+
+  .menuBtn,
+  .openMenuBtn svg path {
+    stroke: #000;
+  }
 }

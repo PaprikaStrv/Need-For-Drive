@@ -1,7 +1,5 @@
 import "./App.css";
-import StartScreen from "./Components/StartSreen/StartScreen";
-
-
+import StartScreen from "./Pages/StartSreen/StartScreen";
 
 const App = (props) => {
   return (

@@ -1,10 +1,10 @@
 import React from "react";
 import { ReactSVG } from "react-svg";
-import Header from "../Header/Header";
 import s from "./BoopPage.module.scss";
 import nextStep from "../../Images/next_step.svg";
 import { NavLink } from "react-router-dom";
 import { Form, Field } from "react-final-form";
+import Header from './../../Components/Header/Header';
 
 const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 

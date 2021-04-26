@@ -14,7 +14,7 @@
   @include flexColumn();
   justify-content: center;
   padding-left: 128px;
-  width: calc(50% + 66px);
+  width: calc(50% + 68px);
   height: 100%;
   background: #111518;
 }
@@ -54,7 +54,7 @@ a:hover {
 @media screen and (max-width: 1024px) {
   .burgerMenuContainer {
     padding-left: 97px;
-    width: calc(57% + 32px);
+    width: calc(57% + 30px);
   }
   .burgerMenuLinksWrapper {
     max-width: 485px;

@@ -54,7 +54,7 @@ a:hover {
 @media screen and (max-width: 1024px) {
   .burgerMenuContainer {
     padding-left: 97px;
-    width: calc(60% + 55px);
+    width: calc(60% + 28px);
   }
   .burgerMenuLinksWrapper {
     max-width: 485px;
@@ -77,6 +77,8 @@ a:hover {
 @media screen and (max-width: 540px) {
   .burgerMenuContainer {
     padding-left: 28px;
+    padding-top: 80px;
+    justify-content: flex-start;
   }
   .burgerMenuLinksWrapper {
     max-width: 182px;

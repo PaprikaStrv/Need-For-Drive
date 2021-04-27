@@ -32,6 +32,12 @@ body {
   fill: #0ec261 !important;
 }
 
+
+.ymaps-2-1-78-map {
+  width: 736px !important;
+  height: 352px !important;
+}
+
 @media (max-width: 1024px) {
   .slider {
     width: 43% !important;

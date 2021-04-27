@@ -6,7 +6,7 @@ import Slider from "../../Components/Slider/Slider";
 import s from "./StrartSrceen.module.scss";
 import BurgerMenu from "../../Components/BurgerMenu/BurgerMenu";
 import { Route, Switch } from "react-router";
-import BookPage from "./../BookPage/BookPage";
+import BookPage from './../BookPage/BookPage';
 
 const StartScreen = (props) => {
   const [menuIsActive, setMenuActive] = useState(false);
@@ -14,14 +14,19 @@ const StartScreen = (props) => {
   return (
     <div className={s.startScreenWrapper}>
       {menuIsActive && <BurgerMenu />}
-      <SideBar isActive={menuIsActive} setActive={setMenuActive} langBtnClicked={langBtnClicked} changeSiteLang={changeSiteLang}/>
+      <SideBar
+        isActive={menuIsActive}
+        setActive={setMenuActive}
+        langBtnClicked={langBtnClicked}
+        changeSiteLang={changeSiteLang}
+      />
       <Switch>
         <Route exact path="/need-for-drive">
           <Main />
           <Slider />
         </Route>
-        <Route path="/bookCar">
-          <BookPage />
+        <Route path="/need-for-drive/bookCar">
+          <BookPage/>
         </Route>
       </Switch>
     </div>

@@ -1,0 +1,51 @@
+@import '../../scss/mixins.scss';
+
+.autocomplete {
+    width: 224px;
+    background: transparent;
+    border: 1px solid #999999;
+    border-top: none;
+    list-style: none;
+    margin: 0;
+    padding: 0 0 0 8px;
+    margin-left: 96px;
+    max-height: 100px;
+    overflow: scroll;
+    overflow-x: hidden;
+    height: auto;
+  }
+
+  .autocompleteHide {
+    display: none;
+  }
+  
+  .autocompleteItem {
+    @include RobotoLightText();
+    font-weight: 300;
+    font-size: 14px;
+    line-height: 16px;
+    margin-top: 8px;
+    color: #999999;
+    cursor: pointer;
+  }
+
+  
+  .autocompleteItem:hover {
+    @include main_aссent_color();
+  }
+  
+  /* полоса прокрутки (скроллбар) */
+  ::-webkit-scrollbar {
+    width: 4px;
+    height: 100%;
+    border-left: 1px solid #999999;
+  }
+  
+  /* ползунок скроллбара */
+  ::-webkit-scrollbar-thumb {
+    width: 4px;
+    height: 33px;
+    background: #999999;
+    border-radius: 2px;
+  }
+  

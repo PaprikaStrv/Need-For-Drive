@@ -11,15 +11,15 @@ const BurgerMenu = (props) => {
       <div className={s.burgerMenuContainer}>
         <div className={s.burgerMenuLinksWrapper}>
           <div className={s.burgerMenuLinks}>
-            <a href="#">ПАРКОВКА</a>
-            <a href="#">СТРАХОВКА</a>
-            <a href="#">БЕНЗИН</a>
-            <a href="#">ОБСЛУЖИВАНИЕ</a>
+            <a href="q">ПАРКОВКА</a>
+            <a href="q">СТРАХОВКА</a>
+            <a href="q">БЕНЗИН</a>
+            <a href="q">ОБСЛУЖИВАНИЕ</a>
           </div>
           <div className={s.socialLinks}>
-            <a href="#"><ReactSVG src={tg}/></a>
-            <a href="#"><ReactSVG src={fb}/></a>
-            <a href="#"><ReactSVG src={inst}/></a>
+            <a href="q"><ReactSVG src={tg}/></a>
+            <a href="q"><ReactSVG src={fb}/></a>
+            <a href="q"><ReactSVG src={inst}/></a>
           </div>
         </div>
       </div>

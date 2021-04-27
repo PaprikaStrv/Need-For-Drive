@@ -1,0 +1,88 @@
+@import "../../scss/mixins.scss";
+
+.findLocationFormWrapper {
+  padding: 32px 64px;
+  border-top: 1px solid #999999;
+}
+
+.formContainer {
+  margin-bottom: 13px;
+}
+
+.formContainer:nth-child(2) {
+  margin-bottom: 48px;
+}
+
+.fieldWrapper {
+  display: flex;
+  align-items: center;
+  max-width: 320px;
+  justify-content: flex-end;
+}
+
+label {
+  @include RobotoLightText();
+  font-weight: 300;
+  font-size: 14px;
+  line-height: 16px;
+  color: #121212;
+}
+
+input {
+  @include RobotoLightText();
+  border: none;
+  outline: none;
+  width: 224px;
+}
+
+.inputField {
+  width: 224px;
+  margin-left: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid #999999;
+}
+
+.cleanInputBtn {
+  border: none;
+  background: transparent;
+  cursor: pointer;
+}
+
+/*убирает bg родного автокомплита */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+  -webkit-box-shadow: 0 0 0px 1000px #ffffff inset !important;
+}
+
+/*placeholder*/
+::-webkit-input-placeholder {
+  @include RobotoLightText();
+  @include grey_light_color();
+  font-weight: 14px;
+  padding-left: 12px;
+}
+::-moz-placeholder {
+  @include RobotoLightText();
+  @include grey_light_color();
+  font-weight: 14px;
+  padding-left: 12px;
+}
+:-moz-placeholder {
+  @include RobotoLightText();
+  @include grey_light_color();
+  font-weight: 14px;
+  padding-left: 12px;
+}
+:-ms-input-placeholder {
+  @include RobotoLightText();
+  @include grey_light_color();
+  font-weight: 14px;
+  padding-left: 12px;
+}

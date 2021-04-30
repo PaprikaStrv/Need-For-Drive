@@ -1,6 +1,5 @@
 import React from "react";
 import { connect } from "react-redux";
-import { setAvailable } from "../../Redux/orderPage-reducer";
 import BookingStages from './BookingStages';
 
 
@@ -10,7 +9,7 @@ const BookingStagesContainer = (props) => {
 };
 
 const mapStateToProps = (state) => ({
-  isAvail: state.orderPage.isAvailable,
+  isModelAvail: state.orderPage.isModelAvailable,
 });
 
-export default connect(mapStateToProps, { setAvailable })(BookingStagesContainer);
+export default connect(mapStateToProps)(BookingStagesContainer);

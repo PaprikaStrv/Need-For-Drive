@@ -1,12 +1,11 @@
-import React, { useState } from "react";
-import { ReactSVG } from "react-svg";
+import React from "react";
 import s from "./BookPage.module.scss";
-import { NavLink, Route, Switch } from "react-router-dom";
-import { Form, Field } from "react-final-form";
+import { Route, Switch } from "react-router-dom";
 import Header from "./../../Components/Header/Header";
 import BookPageLocationContainer from "../BookPageLocation/BookPageLocationContainer";
 import BookingStagesContainer from "./../../Components/BookingStages/BookingStagesContainer";
 import BookPageModel from "./../BookPageModel/Model";
+import OrderInfoContainer from './../../Components/OrderInfo/OrderInfoContainer';
 
 const BookPage = (props) => {
   return (
@@ -26,6 +25,9 @@ const BookPage = (props) => {
 
         <Route path="/need-for-drive/bookCar/Model" component={BookPageModel} />
       </Switch>
+
+
+     
     </section>
   );
 };

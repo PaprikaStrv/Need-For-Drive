@@ -3,7 +3,6 @@ import { ReactSVG } from "react-svg";
 import city from "../../Images/map_city.svg";
 import s from "./Header.module.scss";
 import { NavLink } from "react-router-dom";
-import { connect } from 'react-redux';
 
 const Header = (props) => {
   return (
@@ -13,7 +12,7 @@ const Header = (props) => {
         <span className={s.headerLogo}>Need for drive</span>
         <div className={s.currentCity}>
           <ReactSVG src={city} />
-          <span className={s.city}>{props.location}</span>
+          <span className={s.city}>Саранск</span>
         </div>
         </NavLink>
     </div>
@@ -22,8 +21,5 @@ const Header = (props) => {
 };
 
 
-const mapStateToProps = (state) => ({
-  location: state.location.geolocation,
-})
 
-export default connect(mapStateToProps)(Header);
+export default Header;

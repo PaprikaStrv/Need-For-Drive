@@ -2,7 +2,7 @@
 
 .findLocationFormWrapper {
   padding: 32px 64px;
-  border-top: 1px solid #999999;
+  border-top: 1px solid #EEEEEE;
 }
 
 .formContainer {
@@ -48,6 +48,14 @@ input {
   border: none;
   background: transparent;
   cursor: pointer;
+}
+
+.findLocationFormContainer {
+  max-width: 320px;
+}
+
+.mapContainer {
+  max-width: 736px;
 }
 
 /*убирает bg родного автокомплита */

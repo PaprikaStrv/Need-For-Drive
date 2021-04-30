@@ -1,11 +1,12 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect} from "react";
 import { connect } from "react-redux";
 import {
   getCitiesThunkCreator,
   getPointsThunkCreator,
-  setAvailable,
+  setModelAvailable,
   setInputCityValue,
   setInputPointValue,
+  setCityAdresses,
 } from "../../Redux/orderPage-reducer";
 import Preloader from "./../../Components/Preloader/Preloader";
 import BookPageLocation from './BookPageLocation';
@@ -32,7 +33,7 @@ const mapStateToProps = (state) => ({
   cities: state.orderPage.cities,
   points: state.orderPage.points,
   location: state.location.geolocation,
-  isAvail: state.orderPage.isAvailable,
+  isModelAvail: state.orderPage.isAvailable,
   inputCityValue: state.orderPage.currentInputCityValue,
   inputPointValue: state.orderPage.currentInputPointValue,
 });
@@ -40,7 +41,8 @@ const mapStateToProps = (state) => ({
 export default connect(mapStateToProps, {
   getCitiesThunkCreator,
   getPointsThunkCreator,
-  setAvailable,
+  setModelAvailable,
   setInputCityValue,
   setInputPointValue,
+  setCityAdresses,
 })(BookPageLocationContainer);

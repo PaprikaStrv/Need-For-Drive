@@ -1,34 +1,37 @@
-const SET_CURRENT_LOCATION = "SET_CURRENT_LOCATION";
+import { simbirsoftAPI } from "./../API/api";
+const SET_ADDRESS_COORDS = "SET_ADDRESS_COORDS";
 
 let initialState = {
-  geolocation: "Саранск",
+  coords: [],
 };
 
 const locationReducer = (state = initialState, action) => {
   switch (action.type) {
-    // case SET_CURRENT_LOCATION:
-    //   return {
-    //     ...state,
-    //     ...action,
-    //     geolocation: action.data,
-    //   };
-
+    case SET_ADDRESS_COORDS:
+      return {
+        ...state,
+        ...action,
+        coords: action.coords,
+      };
     default:
       return state;
   }
 };
 
-// const setCurrentLocation = (location) => ({
-//   type: SET_CURRENT_LOCATION,
-//   data: location,
-// });
-
-// const getCurrentLocationThunkCreator = () => {
-//   return (dispatch) => {
-//     navigator.geolocation.getCurrentPosition(position => {
-//         console.log(position);
-//     })
-//   };
-// };
+export const setCoords = (coords) => ({
+  type: SET_ADDRESS_COORDS,
+  coords,
+});
+export const getCoords = (address, city) => {
+  return async (dispatch) => {
+    const response = await simbirsoftAPI.addressGeocode(address, city);
+    dispatch(
+      setCoords(
+        response.response.GeoObjectCollection.featureMember[0].GeoObject.Point
+          .pos
+      )
+    );
+  };
+};
 
 export default locationReducer;

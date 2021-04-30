@@ -5,13 +5,15 @@ const SET_POINTS = "SET_POINTS";
 const SET_AVAILABLE = "SET_AVAILABLE";
 const SET_INPUT_CITY_VALUE = "SET_INPUT_CITY_VALUE";
 const SET_INPUT_POINT_VALUE = "SET_INPUT_POINT_VALUE";
+const SET_CITY_ADRESSES = "SET_CITY_ADRESSES";
 
 let initialState = {
   cities: [],
   points: [],
-  isAvailable: true,
+  isModelAvailable: true,
   currentInputCityValue: "",
   currentInputPointValue: "",
+  cityAdresses: [],
 };
 
 const orderPageReducer = (state = initialState, action) => {
@@ -28,24 +30,31 @@ const orderPageReducer = (state = initialState, action) => {
         ...action,
         points: action.data,
       };
-      case SET_AVAILABLE: 
+    case SET_AVAILABLE:
       return {
         ...state,
         ...action,
-        isAvailable: action.data
-      }
-      case SET_INPUT_CITY_VALUE:
-        return {
-          ...state,
-          ...action,
-          currentInputCityValue: action.data
-        }
-        case SET_INPUT_POINT_VALUE:
-        return {
-          ...state,
-          ...action,
-          currentInputPointValue: action.data
-        }
+        isModelAvailable: action.data,
+      };
+    case SET_INPUT_CITY_VALUE:
+      return {
+        ...state,
+        ...action,
+        currentInputCityValue: action.data,
+      };
+    case SET_INPUT_POINT_VALUE:
+      return {
+        ...state,
+        ...action,
+        currentInputPointValue: action.data,
+      };
+    case SET_CITY_ADRESSES:
+      return {
+        ...state,
+        ...action,
+        cityAdresses: action.data,
+      };
+      
     default:
       return state;
   }
@@ -54,14 +63,17 @@ const orderPageReducer = (state = initialState, action) => {
 export const setInputCityValue = (value) => ({
   type: SET_INPUT_CITY_VALUE,
   data: value,
-})
+});
 
 export const setInputPointValue = (value) => ({
   type: SET_INPUT_POINT_VALUE,
   data: value,
-})
+});
 
-
+export const setCityAdresses = (adresses) => ({
+  type: SET_CITY_ADRESSES,
+  data: adresses,
+});
 
 export const setCities = (cities) => ({
   type: SET_CITIES,
@@ -73,10 +85,11 @@ export const setPoints = (points) => ({
   data: points,
 });
 
-export const setAvailable = (bool) => ({
-  type:  SET_AVAILABLE,
-  data: bool 
-})
+export const setModelAvailable = (bool) => ({
+  type: SET_AVAILABLE,
+  data: bool,
+});
+
 
 export const getCitiesThunkCreator = () => {
   return async (dispatch) => {

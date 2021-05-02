@@ -5,9 +5,13 @@ import { getCoords } from "../../Redux/location-reducer";
 import Preloader from './../Preloader/Preloader';
 
 const PointsMapContainer = (props) => {
+  let coordsArr = [];
   useEffect(() => {
     if (props.cityAdresses.length > 0) {
-      props.getCoords(props.cityAdresses[0].name, props.city);
+      for(let i = 0; i < props.cityAdresses.length; i++) {
+        props.getCoords(props.cityAdresses[i].name, props.city);
+      }
+     
     }
   }, [props.city]);
 

@@ -1,34 +1,51 @@
-@import '../../scss/mixins.scss';
+@import "../../scss/mixins.scss";
 
 .orderStepsWrapper {
-    display: flex;
-    padding: 7px 64px;
+  padding: 7px 64px;
+}
+
+.orderStep:not(:last-child) {
+  display: flex;
+}
+
+.nextStepIcon {
+  margin-left: 16px;
+  margin-right: 16px;
+}
+
+.stepLinks {
+  @include RobotoText();
+  font-weight: bold;
+  font-size: 14px;
+  line-height: 16px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+}
+
+.orderStep button:hover:not([disabled]) {
+  color: #0ec261;
+}
+
+.orderStep button[disabled] {
+  cursor: default;
+}
+
+.orderStepsContainer {
+  display: flex;
+  margin: 0 auto;
+  max-width: 1440px;
+}
+
+@media screen and (max-width: 540px) {
+  .orderStepsWrapper {
+    padding: 0;
   }
-  
-  .orderStep:not(:last-child) {
-    display: flex;
+  .orderStepsContainer {
+    flex-direction: column;
+    align-items: center;
   }
-  
   .nextStepIcon {
-    margin-left: 16px;
-    margin-right: 16px;
+    display: none;
   }
-  
-  .stepLinks {
-    @include RobotoText();
-    font-weight: bold;
-    font-size: 14px;
-    line-height: 16px;
-    border: none;
-    background: transparent;
-    cursor: pointer;
-  }
-  
-  .orderStep button:hover:not([disabled]) {
-    color: #0ec261;
-  }
-  
-  .orderStep button[disabled] {
-    cursor: default;
-  }
-  
+}

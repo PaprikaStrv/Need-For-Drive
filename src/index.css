@@ -38,14 +38,29 @@ body {
   height: 352px !important;
 }
 
-@media (max-width: 1024px) {
+@media screen and (max-width: 1024px) {
   .slider {
     width: 43% !important;
   }
+  .ymaps-2-1-78-map {
+    width: 450px !important;
+    height: 300px !important;
+  }
 }
 
-@media (max-width: 900px) {
+@media screen and (max-width: 900px) {
   .slider {
     display: none !important;
+  }
+  .ymaps-2-1-78-map {
+    width: 350px !important;
+    height: 200px !important;
+  }
+}
+
+@media screen and (max-width: 540px) {
+  .ymaps-2-1-78-map {
+    width: 100% !important;
+    height: 100% !important;
   }
 }

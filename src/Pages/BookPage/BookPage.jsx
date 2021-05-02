@@ -5,13 +5,15 @@ import Header from "./../../Components/Header/Header";
 import BookPageLocationContainer from "../BookPageLocation/BookPageLocationContainer";
 import BookingStagesContainer from "./../../Components/BookingStages/BookingStagesContainer";
 import BookPageModel from "./../BookPageModel/Model";
-import OrderInfoContainer from './../../Components/OrderInfo/OrderInfoContainer';
+import OrderInfoContainer from "./../../Components/OrderInfo/OrderInfoContainer";
 
 const BookPage = (props) => {
   return (
     <section className={s.bookPageWrapper}>
       <div className={s.bookHeaderWrapper}>
-        <Header />
+        <div className={s.bookHeadContainer}>
+          <Header />
+        </div>
       </div>
 
       <BookingStagesContainer />
@@ -25,9 +27,6 @@ const BookPage = (props) => {
 
         <Route path="/need-for-drive/bookCar/Model" component={BookPageModel} />
       </Switch>
-
-
-     
     </section>
   );
 };

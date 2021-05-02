@@ -6,6 +6,17 @@
 
 .bookHeaderWrapper {
   padding: 32px 64px;
-  border-bottom: 1px solid #EEEEEE;
+  border-bottom: 1px solid #EEEEEE; 
 }
 
+.bookHeadContainer {
+  margin: 0 auto;
+  max-width: 1440px;
+}
+
+
+@media screen and (max-width: 540px) {
+  .bookHeaderWrapper {
+    padding: 0;
+  }
+}

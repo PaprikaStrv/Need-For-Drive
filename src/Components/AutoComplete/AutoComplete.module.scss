@@ -46,3 +46,10 @@
   background: #999999;
   border-radius: 2px;
 }
+
+
+@media screen and (max-width: 540px) {
+  .autocomplete {
+    margin-left: 64px;
+  }
+}

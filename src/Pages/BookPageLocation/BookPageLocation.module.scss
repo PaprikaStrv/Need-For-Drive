@@ -1,8 +1,16 @@
 @import "../../scss/mixins.scss";
 
 .findLocationFormWrapper {
-  padding: 32px 64px;
   border-top: 1px solid #EEEEEE;
+  height: 100%;
+}
+
+.locationContainer {
+  display: flex;
+  justify-content: space-between;
+  margin: 0 auto;
+  max-width: 1440px;
+  height: 100%;
 }
 
 .formContainer {
@@ -51,7 +59,8 @@ input {
 }
 
 .findLocationFormContainer {
-  max-width: 320px;
+  padding: 32px 0px 0px 32px;
+  width: 100%;
 }
 
 .mapContainer {
@@ -93,4 +102,17 @@ select:-webkit-autofill:focus {
   @include grey_light_color();
   font-weight: 14px;
   padding-left: 12px;
+}
+
+
+
+@media screen and (max-width: 540px) {
+  .test {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .findLocationFormContainer {
+    padding: 32px 16px 0px 16px;
+  }
 }

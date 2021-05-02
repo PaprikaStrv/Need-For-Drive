@@ -1,15 +1,10 @@
 @import "../../scss/mixins.scss";
 
 .orderInfoWrapper {
-  position: absolute;
   display: flex;
   flex-direction: column;
-  top: 133px;
-  //left: 1088px;
-  right: 32px;
   border-left: 1px solid #EEEEEE;
-  padding: 32px 32px 0px 32px;
-  height: 100%;
+  padding: 32px 64px 0px 34px;
   @include orderInfoList();
 }
 
@@ -48,6 +43,9 @@
   margin-bottom: 10px;
   color: #999999;
 }
+.addressOrderInfo span:nth-child(1){
+    margin-bottom: 5px;
+}
 
 .liName {
   @include RobotoLightText();
@@ -55,4 +53,12 @@
   font-size: 14px;
   line-height: 16px;
   color: #121212;
+}
+
+
+@media screen and (max-width: 540px) {
+  .orderInfoWrapper {
+    border: none;
+    padding: 0;
+  }
 }

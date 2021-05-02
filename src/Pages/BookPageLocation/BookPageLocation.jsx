@@ -88,69 +88,73 @@ const BookPageLocation = (props) => {
 
   return (
     <div className={s.findLocationFormWrapper}>
-      <div className={s.findLocationFormContainer}>
-        <div className={s.formContainer}>
-          <div className={s.fieldWrapper}>
-            <label>Город</label>
-            <div className={s.inputField}>
-              <input
-                type="text"
-                name="city"
-                value={curCityInputValue}
-                placeholder="Начните вводить город"
-                autoComplete="off"
-                onChange={(event) => setCurCityValue(event.target.value)}
-                onClick={cityInputClickHandler}
-              />
-              <button onClick={cityBtnClickHandler} className={s.cleanInputBtn}>
-                <ReactSVG src={clean_input} />
-              </button>
+      <div className={s.locationContainer}>
+        <div className={s.findLocationFormContainer}>
+          <div className={s.formContainer}>
+            <div className={s.fieldWrapper}>
+              <label>Город</label>
+              <div className={s.inputField}>
+                <input
+                  type="text"
+                  name="city"
+                  value={curCityInputValue}
+                  placeholder="Начните вводить город"
+                  autoComplete="off"
+                  onChange={(event) => setCurCityValue(event.target.value)}
+                  onClick={cityInputClickHandler}
+                />
+                <button
+                  onClick={cityBtnClickHandler}
+                  className={s.cleanInputBtn}
+                >
+                  <ReactSVG src={clean_input} />
+                </button>
+              </div>
             </div>
-          </div>
 
-          <Autocomplete
-            filteredValues={filteredCities}
-            itemClickHandler={itemCityAutoСompleteClickHandler}
-            value={curCityInputValue}
-            isOpen={isInputCityAutoCompleteOpen}
-          />
-        </div>
-        <div className={s.formContainer}>
-          <div className={s.fieldWrapper}>
-            <label>Пункт выдачи</label>
-            <div className={s.inputField}>
-              <input
-                type="text"
-                name="point"
-                value={curPointInputValue}
-                placeholder="Начните вводить пункт..."
-                autoComplete="off"
-                onChange={(event) => setCurPointValue(event.target.value)}
-                onClick={pointInputClickHandler}
-              />
-              <button
-                onClick={pointBtnClickHandler}
-                className={s.cleanInputBtn}
-              >
-                <ReactSVG src={clean_input} />
-              </button>
+            <Autocomplete
+              filteredValues={filteredCities}
+              itemClickHandler={itemCityAutoСompleteClickHandler}
+              value={curCityInputValue}
+              isOpen={isInputCityAutoCompleteOpen}
+            />
+          </div>
+          <div className={s.formContainer}>
+            <div className={s.fieldWrapper}>
+              <label>Пункт выдачи</label>
+              <div className={s.inputField}>
+                <input
+                  type="text"
+                  name="point"
+                  value={curPointInputValue}
+                  placeholder="Начните вводить пункт..."
+                  autoComplete="off"
+                  onChange={(event) => setCurPointValue(event.target.value)}
+                  onClick={pointInputClickHandler}
+                />
+                <button
+                  onClick={pointBtnClickHandler}
+                  className={s.cleanInputBtn}
+                >
+                  <ReactSVG src={clean_input} />
+                </button>
+              </div>
             </div>
+            <Autocomplete
+              filteredValues={points}
+              itemClickHandler={itemPointAutoСompleteClickHandler}
+              value={curPointInputValue}
+              isOpen={isInputPointAutoCompleteOpen}
+            />
           </div>
-          <Autocomplete
-            filteredValues={points}
-            itemClickHandler={itemPointAutoСompleteClickHandler}
-            value={curPointInputValue}
-            isOpen={isInputPointAutoCompleteOpen}
-          />
+          <div className={s.mapContainer}>
+            <label>Выбрать на карте:</label>
+            <PointsMapContainer />
+          </div>
         </div>
-      </div>
 
-      <div className={s.mapContainer}>
-        <label>Выбрать на карте:</label>
-        <PointsMapContainer />
+        <OrderInfoContainer btnName={"Выбрать модель"} />
       </div>
-
-      <OrderInfoContainer btnName={"Выбрать модель"} />
     </div>
   );
 };

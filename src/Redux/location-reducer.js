@@ -11,7 +11,7 @@ const locationReducer = (state = initialState, action) => {
       return {
         ...state,
         ...action,
-        coords: action.coords,
+        coords: [...state.coords, {coords: action.coords}],
       };
     default:
       return state;

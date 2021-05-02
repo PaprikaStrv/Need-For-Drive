@@ -4,7 +4,7 @@
   display: flex;
   flex-direction: column;
   border-left: 1px solid #EEEEEE;
-  padding: 32px 64px 0px 34px;
+  padding: 32px 64px 0px 32px;
   @include orderInfoList();
 }
 
@@ -56,9 +56,22 @@
 }
 
 
-@media screen and (max-width: 540px) {
+@media screen and (max-width: 1024px) {
+  .orderInfoWrapper {
+    padding-right: 32px;
+  }
+}
+
+@media screen and (max-width: 900px) {
   .orderInfoWrapper {
     border: none;
+  }
+}
+
+@media screen and (max-width: 540px) {
+  .orderInfoWrapper {
     padding: 0;
+    padding-bottom: 32px;
+    margin-top: 32px;
   }
 }

@@ -43,8 +43,8 @@ body {
     width: 43% !important;
   }
   .ymaps-2-1-78-map {
-    width: 450px !important;
-    height: 300px !important;
+    width: 100% !important;
+    height: 100% !important;
   }
 }
 
@@ -52,8 +52,17 @@ body {
   .slider {
     display: none !important;
   }
-  .ymaps-2-1-78-map {
+  /* .ymaps-2-1-78-map {
     width: 350px !important;
     height: 200px !important;
-  }
+  } */
+}
+
+
+@media screen and (max-width: 540px) {
+
+  /* .ymaps-2-1-78-map {
+    width: 100% !important;
+    height: 100% !important;
+  } */
 }

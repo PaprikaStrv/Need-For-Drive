@@ -21,7 +21,7 @@ const BookPage = (props) => {
       <Switch>
         <Route
           exact
-          path={process.env.PUBLIC_URL + "/bookCar"}
+          path={"/need-for-drive/bookCar"}
           component={BookPageLocationContainer}
         />
 

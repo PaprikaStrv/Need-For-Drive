@@ -37,3 +37,23 @@
   max-width: 1440px;
 }
 
+
+@media screen and (max-width: 1024px) {
+  .orderStepsWrapper {
+    padding: 7px 32px;
+  }
+}
+
+@media screen and (max-width: 540px) {
+  .orderStepsWrapper {
+    padding: 7px 16px;
+  }
+
+  .nextStepIcon {
+    display: none;
+  }
+  .orderStepsContainer {
+    flex-direction: column;
+    align-items: center;
+  }
+}

@@ -15,7 +15,7 @@ const Main = (props) => {
         <span className={s.mainSlog}>Поминутная аренда авто твоего города</span>
       </div>
 
-      <NavLink to="/need-for-drive/bookCar/">
+      <NavLink to={"/need-for-drive/bookCar"}>
         <BookButton btnName={"Забронировать"} />
       </NavLink>
 

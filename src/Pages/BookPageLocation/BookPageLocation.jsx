@@ -78,11 +78,13 @@ const BookPageLocation = (props) => {
   // clean_city_input_on_btn_click
   const cityBtnClickHandler = () => {
     props.setModelAvailable(true);
+    props.resetCoords();
     setCurCityValue("");
   };
   // clean_point_input_on_btn_click
   const pointBtnClickHandler = () => {
     props.setModelAvailable(true);
+    props.resetCoords();
     setCurPointValue("");
   };
 

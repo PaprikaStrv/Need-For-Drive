@@ -21,11 +21,11 @@ const StartScreen = (props) => {
         changeSiteLang={changeSiteLang}
       />
       <Switch>
-        <Route exact path="/need-for-drive">
+        <Route exact path="/need-for-drive/">
           <Main />
           <Slider />
         </Route>
-        <Route path={process.env.PUBLIC_URL + "/bookCar"}>
+        <Route path={"/need-for-drive/bookCar"}>
           <BookPage/>
         </Route>
       </Switch>

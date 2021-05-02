@@ -2,6 +2,7 @@
 
 .bookPageWrapper {
   width: 100%;
+  overflow: hidden;
 }
 
 .bookHeaderWrapper {
@@ -14,6 +15,12 @@
   max-width: 1440px;
 }
 
+
+@media screen and (max-width: 1024px) {
+  .bookHeaderWrapper {
+    padding: 32px 32px;
+  }
+}
 
 @media screen and (max-width: 540px) {
   .bookHeaderWrapper {

@@ -8,6 +8,7 @@ import {
   setInputPointValue,
   setCityAdresses,
 } from "../../Redux/orderPage-reducer";
+import {  resetCoords } from "../../Redux/location-reducer";
 import Preloader from "./../../Components/Preloader/Preloader";
 import BookPageLocation from './BookPageLocation';
 
@@ -45,4 +46,5 @@ export default connect(mapStateToProps, {
   setInputCityValue,
   setInputPointValue,
   setCityAdresses,
+  resetCoords,
 })(BookPageLocationContainer);

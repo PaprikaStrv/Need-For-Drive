@@ -105,14 +105,3 @@ select:-webkit-autofill:focus {
 }
 
 
-
-@media screen and (max-width: 540px) {
-  .locationContainer {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .findLocationFormContainer {
-    padding: 32px 16px 0px 16px;
-  }
-}

@@ -10,7 +10,7 @@ a {
 body {
   margin: 0;
   padding: 0;
-  overflow: hidden;
+  /* overflow: hidden; */
   /* min-height: 320px; */
 }
 
@@ -55,12 +55,5 @@ body {
   .ymaps-2-1-78-map {
     width: 350px !important;
     height: 200px !important;
-  }
-}
-
-@media screen and (max-width: 540px) {
-  .ymaps-2-1-78-map {
-    width: 100% !important;
-    height: 100% !important;
   }
 }

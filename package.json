@@ -31,7 +31,7 @@
     "yarn": "^1.22.10"
   },
   "scripts": {
-    "start": "set HTTPS=true && react-scripts start",
+    "start": "react-scripts start",
     "build": "react-scripts build",
     "predeploy": "yarn run build",
     "deploy": "gh-pages -d build",

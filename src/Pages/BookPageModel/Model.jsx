@@ -1,10 +1,7 @@
 import React, { useState } from "react";
 import OrderInfoContainer from "../../Components/OrderInfo/OrderInfoContainer";
 import s from "./ModelPage.module.scss";
-import car_1 from "../../Images/car_1.png";
-import car_2 from "../../Images/car_2.png";
-import car_3 from "../../Images/car_3.png";
-import car_4 from "../../Images/car_4.png";
+
 
 const BookPageModel = (props) => {
   const [currentModelType, setModelType] = useState("Все модели");

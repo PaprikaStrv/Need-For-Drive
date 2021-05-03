@@ -4,8 +4,7 @@ import { Route, Switch } from "react-router-dom";
 import Header from "./../../Components/Header/Header";
 import BookPageLocationContainer from "../BookPageLocation/BookPageLocationContainer";
 import BookingStagesContainer from "./../../Components/BookingStages/BookingStagesContainer";
-import BookPageModel from "./../BookPageModel/Model";
-import OrderInfoContainer from "./../../Components/OrderInfo/OrderInfoContainer";
+import BookPageModelContainer from './../BookPageModel/ModelContainer';
 
 const BookPage = (props) => {
   return (
@@ -24,8 +23,10 @@ const BookPage = (props) => {
           path={"/need-for-drive/bookCar"}
           component={BookPageLocationContainer}
         />
-
-        <Route path="/need-for-drive/bookCar/Model" component={BookPageModel} />
+        {!props.isAvail && (
+          <Route path="/need-for-drive/bookCar/Model" component={BookPageModelContainer} />
+        )}
+        
       </Switch>
     </section>
   );

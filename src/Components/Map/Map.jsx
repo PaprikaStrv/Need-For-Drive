@@ -1,9 +1,10 @@
-import React, { useRef, useState } from "react";
+import React from "react";
 import { Map, Placemark, YMaps } from "react-yandex-maps";
 import s from "./Map.module.scss";
 import map_marker from "../../Images/map_marker.svg";
 
 const PointsMap = (props) => {
+
   let coor = [];
 
   coor = props.coords.map((c) => {

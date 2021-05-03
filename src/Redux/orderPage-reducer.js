@@ -6,6 +6,7 @@ const SET_AVAILABLE = "SET_AVAILABLE";
 const SET_INPUT_CITY_VALUE = "SET_INPUT_CITY_VALUE";
 const SET_INPUT_POINT_VALUE = "SET_INPUT_POINT_VALUE";
 const SET_CITY_ADRESSES = "SET_CITY_ADRESSES";
+const SET_MODELS = "SET_MODELS";
 
 let initialState = {
   cities: [],
@@ -14,6 +15,7 @@ let initialState = {
   currentInputCityValue: "",
   currentInputPointValue: "",
   cityAdresses: [],
+  models: [],
 };
 
 const orderPageReducer = (state = initialState, action) => {
@@ -54,7 +56,12 @@ const orderPageReducer = (state = initialState, action) => {
         ...action,
         cityAdresses: action.data,
       };
-      
+    case SET_MODELS:
+      return {
+        ...state,
+        ...action,
+        models: action.data,
+      };
     default:
       return state;
   }
@@ -90,6 +97,10 @@ export const setModelAvailable = (bool) => ({
   data: bool,
 });
 
+export const setCars = (cars) => ({
+  type: SET_MODELS,
+  data: cars,
+});
 
 export const getCitiesThunkCreator = () => {
   return async (dispatch) => {
@@ -102,6 +113,13 @@ export const getPointsThunkCreator = () => {
   return async (dispatch) => {
     const response = await simbirsoftAPI.getPoints();
     dispatch(setPoints(response));
+  };
+};
+
+export const getCars = () => {
+  return async (dispatch) => {
+    const response = await simbirsoftAPI.getCars();
+    dispatch(setCars(response));
   };
 };
 

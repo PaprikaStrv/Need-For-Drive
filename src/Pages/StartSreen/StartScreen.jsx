@@ -6,7 +6,7 @@ import Slider from "../../Components/Slider/Slider";
 import s from "./StrartSrceen.module.scss";
 import BurgerMenu from "../../Components/BurgerMenu/BurgerMenu";
 import { Route, Switch } from "react-router";
-import BookPage from './../BookPage/BookPage';
+import BookPageContainer from './../BookPage/BookPageContainer';
 
 const StartScreen = (props) => {
   const [menuIsActive, setMenuActive] = useState(false);
@@ -26,7 +26,7 @@ const StartScreen = (props) => {
           <Slider />
         </Route>
         <Route path={"/need-for-drive/bookCar"}>
-          <BookPage/>
+          <BookPageContainer/>
         </Route>
       </Switch>
     </div>

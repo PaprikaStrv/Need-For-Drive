@@ -19,11 +19,27 @@ const OrderInfo = (props) => {
             )}
           </div>
         </li>
-        {/* ....... */}
+        {props.modelName && (
+          <li>
+            <div className={s.liName}>Модель</div>
+            <div></div>
+            <div className={s.addressOrderInfo}>
+              <span></span>
+              <span>{props.modelName}</span>
+            </div>
+          </li>
+        )}
       </ul>
+      
+      {props.priceMin && props.priceMax && (
+        <div className={s.modelPrice}>
+          <span className={s.price}>Цена: </span>
+          <span className={s.priceBorder}>от {props.priceMin} до {props.priceMax} ₽</span>
+        </div>
+      )}
 
       <NavLink to="/need-for-drive/bookCar/Model">
-        <button disabled={props.isModelAvail} className={s.orderInfoBtn}>
+        <button disabled={props.available} className={s.orderInfoBtn}>
           {props.btnName}
         </button>
       </NavLink>

@@ -3,6 +3,7 @@ import s from "./BookingStages.module.scss";
 import { ReactSVG } from "react-svg";
 import { NavLink } from "react-router-dom";
 import nextStep from "../../Images/next_step.svg";
+import { Switch } from 'react-router';
 
 const BookingStages = (props) => {
   return (
@@ -28,7 +29,7 @@ const BookingStages = (props) => {
 
         <div className={s.orderStep}>
           <NavLink to="/">
-            <button disabled={true} className={s.stepLinks}>
+            <button disabled={!props.modelName} className={s.stepLinks}>
               Дополнительно
             </button>
           </NavLink>

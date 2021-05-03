@@ -1,0 +1,74 @@
+@import "../../scss/mixins.scss";
+
+.modelPageWrapper {
+  border-top: 1px solid #eeeeee;
+}
+
+.modelPageContainer {
+  display: flex;
+  justify-content: space-between;
+  margin: 0 auto;
+  max-width: 1440px;
+}
+
+.modelCarChoose {
+  padding: 32px 0px 0px 64px;
+}
+
+.checkBoxesWrapper {
+  display: flex;
+}
+
+.checkBox {
+  margin-right: 8px;
+}
+
+.checkBoxWrapper {
+  display: flex;
+  align-items: center;
+  margin-right: 16px;
+}
+
+.modelCarImagesWrapper {
+  display: flex;
+  flex-wrap: wrap;
+  padding-top: 32px;
+  width: 736px;
+}
+
+.modelCarBlock {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 368px;
+  height: 224px;
+  border: 1px solid #eeeeee;
+  cursor: pointer;
+}
+
+.carInfo {
+  display: flex;
+  flex-direction: column;
+  padding: 16px 16px 36px 16px;
+}
+
+.carImg {
+  width: 256px;
+  height: 116px;
+  object-fit: cover;
+  margin: 0px 17px 16px 96px;
+}
+
+.modelCarBlock:hover {
+  border: 1px solid #0ec261;
+}
+
+.carModelName {
+  @include yourOrderText();
+  font-weight: 400px;
+  text-align: left;
+}
+
+.carModelPrice {
+  @include lightGreyText();
+}

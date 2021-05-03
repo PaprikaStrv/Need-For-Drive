@@ -10,6 +10,7 @@ const BookingStagesContainer = (props) => {
 
 const mapStateToProps = (state) => ({
   isModelAvail: state.orderPage.isModelAvailable,
+  modelName: state.model.modelName,
 });
 
 export default connect(mapStateToProps)(BookingStagesContainer);

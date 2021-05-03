@@ -9,6 +9,7 @@ import {
   setCityAdresses,
 } from "../../Redux/orderPage-reducer";
 import {  resetCoords } from "../../Redux/location-reducer";
+import { setCarModelName } from "../../Redux/model-reducer.js";
 import Preloader from "./../../Components/Preloader/Preloader";
 import BookPageLocation from './BookPageLocation';
 
@@ -34,7 +35,7 @@ const mapStateToProps = (state) => ({
   cities: state.orderPage.cities,
   points: state.orderPage.points,
   location: state.location.geolocation,
-  isModelAvail: state.orderPage.isAvailable,
+  isModelAvail: state.orderPage.isModelAvailable,
   inputCityValue: state.orderPage.currentInputCityValue,
   inputPointValue: state.orderPage.currentInputPointValue,
 });
@@ -47,4 +48,5 @@ export default connect(mapStateToProps, {
   setInputPointValue,
   setCityAdresses,
   resetCoords,
+  setCarModelName,
 })(BookPageLocationContainer);

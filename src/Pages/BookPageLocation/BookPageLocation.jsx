@@ -79,12 +79,14 @@ const BookPageLocation = (props) => {
   const cityBtnClickHandler = () => {
     props.setModelAvailable(true);
     props.resetCoords();
+    props.setCarModelName("");
     setCurCityValue("");
   };
   // clean_point_input_on_btn_click
   const pointBtnClickHandler = () => {
     props.setModelAvailable(true);
     props.resetCoords();
+    props.setCarModelName("");
     setCurPointValue("");
   };
 
@@ -155,7 +157,7 @@ const BookPageLocation = (props) => {
           </div>
         </div>
 
-        <OrderInfoContainer btnName={"Выбрать модель"} />
+        <OrderInfoContainer btnName={"Выбрать модель"} available={props.isModelAvail}/>
       </div>
     </div>
   );

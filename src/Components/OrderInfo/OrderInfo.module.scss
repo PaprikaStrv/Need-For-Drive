@@ -3,7 +3,7 @@
 .orderInfoWrapper {
   display: flex;
   flex-direction: column;
-  border-left: 1px solid #EEEEEE;
+  border-left: 1px solid #eeeeee;
   padding: 32px 64px 0px 32px;
   @include orderInfoList();
 }
@@ -43,8 +43,8 @@
   margin-bottom: 10px;
   color: #999999;
 }
-.addressOrderInfo span:nth-child(1){
-    margin-bottom: 5px;
+.addressOrderInfo span:nth-child(1) {
+  margin-bottom: 5px;
 }
 
 .liName {
@@ -54,6 +54,23 @@
   line-height: 16px;
   color: #121212;
 }
+
+.modelPrice {
+  margin-top: 32px;
+  color: #121212;
+  @include RobotoText();
+  font-size: 16px;
+  line-height: 16px;
+  .price {
+    font-weight: 600;
+  }
+  .priceBorder {
+    font-weight: normal;
+  }
+}
+
+
+
 
 
 @media screen and (max-width: 1024px) {

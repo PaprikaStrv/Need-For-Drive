@@ -84,4 +84,15 @@
   .modelCarImagesWrapper {
     justify-content: center;
   }
+  .modelCarBlock {
+    width: 100%;
+  }
+  .carImg {
+    width: 100%;
+    margin: 0px 0px 16px 0px;
+  }
+  .checkBoxesWrapper {
+    flex-direction: column;
+  }
 }
+

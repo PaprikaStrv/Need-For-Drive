@@ -37,6 +37,9 @@
   max-width: 1440px;
 }
 
+.stepLinks:active, .stepLinks:focus {
+  color: #0ec261;
+}
 
 @media screen and (max-width: 1024px) {
   .orderStepsWrapper {

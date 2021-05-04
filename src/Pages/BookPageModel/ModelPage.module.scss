@@ -19,21 +19,11 @@
   display: flex;
 }
 
-.checkBox {
-  margin-right: 8px;
-}
-
-.checkBoxWrapper {
-  display: flex;
-  align-items: center;
-  margin-right: 16px;
-}
-
 .modelCarImagesWrapper {
   display: flex;
   flex-wrap: wrap;
   padding-top: 32px;
-  width: 736px;
+ //width: 736px;
 }
 
 .modelCarBlock {
@@ -71,4 +61,27 @@
 
 .carModelPrice {
   @include lightGreyText();
+}
+
+
+
+@media screen and (max-width: 1024px) {
+  .modelCarChoose {
+    padding: 32px 32px 0px 32px;
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .modelPageContainer {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+ 
+}
+
+@media screen and (max-width: 540px) {
+  .modelCarImagesWrapper {
+    justify-content: center;
+  }
 }

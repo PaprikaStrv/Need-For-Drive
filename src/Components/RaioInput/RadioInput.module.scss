@@ -1,0 +1,87 @@
+.checkBox {
+  margin-right: 8px;
+}
+
+.checkBoxWrapper {
+  display: flex;
+  align-items: center;
+  margin-right: 16px;
+}
+
+.notActiveLable {
+    color: #999999;
+  }
+  
+
+/* для элемента input c type="radio" */
+.checkBox {
+  position: absolute;
+  z-index: -1;
+  opacity: 0;
+}
+
+/* для элемента label связанного с .checkBox */
+.checkBox + label {
+  display: inline-flex;
+  align-items: center;
+  user-select: none;
+}
+
+/* создание в label псевдоэлемента  before со следующими стилями */
+.checkBox + label::before {
+  content: "";
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  flex-shrink: 0;
+  flex-grow: 0;
+  border: 1px solid #999999;
+  border-radius: 50%;
+  margin-right: 8px;
+  box-sizing: border-box;
+}
+
+/* стили при наведении курсора на радио */
+.checkBox:not(:disabled):not(:checked) + label:hover::before {
+  border-color: #0ec261;
+}
+
+/* стили для активной радиокнопки (при нажатии на неё) */
+.checkBox:not(:disabled):active + label::before {
+  background-color: transparent;
+  border-color: #0ec261;
+}
+
+/* стили для радиокнопки, находящейся в фокусе */
+// .checkBox:focus + label::before {
+//   box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+// }
+
+/* стили для радиокнопки, находящейся в фокусе и не находящейся в состоянии checked */
+.checkBox:focus:not(:checked) + label::before {
+  border-color: #0ec261;
+}
+
+/* стили для радиокнопки, находящейся в состоянии checked */
+.checkBox:checked + label::before {
+  border: 3px solid #0ec261;
+  background-color: transparent;
+}
+
+@media screen and (max-width: 1024px) {
+  .modelCarChoose {
+    padding: 32px 32px 0px 32px;
+  }
+  .modelCarImagesWrapper {
+    align-items: center;
+    width: 500px;
+    flex-direction: column;
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .modelPageContainer {
+    flex-direction: column;
+    align-items: center;
+  }
+}

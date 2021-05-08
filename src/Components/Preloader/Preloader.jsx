@@ -1,9 +1,13 @@
-import React from 'react';
+import React from "react";
+import loader from "../../Images/loader.gif";
+import s from './preloader.module.scss';
 
 const Preloader = (props) => {
-    return (
-        <div>Loading data...</div>
-    );
-}
+  return (
+    <div className={s.preloaderWrapper}>
+      <img src={loader} alt="" />
+    </div>
+  );
+};
 
 export default Preloader;

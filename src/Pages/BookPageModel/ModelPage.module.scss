@@ -22,34 +22,47 @@
 .modelCarImagesWrapper {
   display: flex;
   flex-wrap: wrap;
-  padding-top: 32px;
- //width: 736px;
+  overflow-y: scroll;
+  max-height: 540px;
 }
 
 .modelCarBlock {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  width: 368px;
+  width: 40%;
   height: 224px;
-  border: 1px solid #eeeeee;
+  border: none;
+  background: transparent;
   cursor: pointer;
 }
 
 .carInfo {
   display: flex;
   flex-direction: column;
+  text-align: left;
   padding: 16px 16px 36px 16px;
 }
 
 .carImg {
-  width: 256px;
+  width: 100%;
   height: 116px;
-  object-fit: cover;
-  margin: 0px 17px 16px 96px;
+  background-size: contain;
+    background-repeat: no-repeat;
+    background-position: 100%;
+  margin: 0px 17px 16px auto;
 }
 
 .modelCarBlock:hover {
+  border: 1px solid #999999;
+}
+
+.modelCarBlock:active, :focus {
+  border: 1px solid #0ec261;
+}
+
+
+.modelCarBlock.touch:active,:focus {
   border: 1px solid #0ec261;
 }
 
@@ -63,11 +76,28 @@
   @include lightGreyText();
 }
 
+.modelCarImagesWrapper::-webkit-scrollbar {
+  width: 8px;
+  height: 100%;
+  border: 1px solid #eeeeee;
+}
+
+/* ползунок скроллбара */
+.modelCarImagesWrapper::-webkit-scrollbar-thumb {
+  background: #0ec261;
+  border-radius: 2px;
+}
 
 
 @media screen and (max-width: 1024px) {
   .modelCarChoose {
     padding: 32px 32px 0px 32px;
+  }
+  .carModelName {
+    font-size: 16px;
+  }
+  .carModelPrice {
+    font-size: 12px;
   }
 }
 
@@ -80,7 +110,7 @@
  
 }
 
-@media screen and (max-width: 540px) {
+@media screen and (max-width: 620px) {
   .modelCarImagesWrapper {
     justify-content: center;
   }

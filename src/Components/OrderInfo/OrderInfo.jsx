@@ -1,6 +1,7 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import s from "./OrderInfo.module.scss";
+import  { XFormatPrice } from '../../commonScripts/scripts.js';
 
 const OrderInfo = (props) => {
   return (
@@ -34,7 +35,7 @@ const OrderInfo = (props) => {
       {props.priceMin && props.priceMax && (
         <div className={s.modelPrice}>
           <span className={s.price}>Цена: </span>
-          <span className={s.priceBorder}>от {props.priceMin} до {props.priceMax} ₽</span>
+          <span className={s.priceBorder}>от {XFormatPrice(props.priceMin)} до {XFormatPrice(props.priceMax)} ₽</span>
         </div>
       )}
 

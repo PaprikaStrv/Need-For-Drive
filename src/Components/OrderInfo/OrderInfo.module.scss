@@ -69,10 +69,6 @@
   }
 }
 
-
-
-
-
 @media screen and (max-width: 1024px) {
   .orderInfoWrapper {
     padding-right: 32px;
@@ -82,13 +78,12 @@
 @media screen and (max-width: 900px) {
   .orderInfoWrapper {
     border: none;
+    padding-bottom: 32px;
   }
 }
 
 @media screen and (max-width: 540px) {
   .orderInfoWrapper {
-    padding: 0;
-    padding-bottom: 32px;
     margin-top: 32px;
   }
 }

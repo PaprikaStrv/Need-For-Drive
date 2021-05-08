@@ -2,8 +2,11 @@ import React, { useState } from "react";
 import OrderInfoContainer from "../../Components/OrderInfo/OrderInfoContainer";
 import RadioInput from "../../Components/RaioInput/RadioInput";
 import s from "./ModelPage.module.scss";
+import  { XFormatPrice } from '../../commonScripts/scripts.js';
+import { prepareImgLink } from '../../commonScripts/scripts.js';
 
 const BookPageModel = (props) => {
+
   const [currentModelType, setModelType] = useState("Все модели");
   const handleChange = (e) => {
     setModelType(e.target.value);
@@ -26,6 +29,7 @@ const BookPageModel = (props) => {
 
   return (
     <div className={s.modelPageWrapper}>
+    
       <div className={s.modelPageContainer}>
         <div className={s.modelCarChoose}>
           <div className={s.checkBoxesWrapper}>
@@ -63,7 +67,7 @@ const BookPageModel = (props) => {
           <div className={s.modelCarImagesWrapper}>
             {filteredCars.map((car, index) => {
               return (
-                <div
+                <button
                   key={index}
                   className={s.modelCarBlock}
                   onClick={() =>
@@ -71,13 +75,13 @@ const BookPageModel = (props) => {
                   }
                 >
                   <div className={s.carInfo}>
-                    <span className={s.carModelName}>{car.name}</span>
+                    <span className={s.carModelName}>{car.name.toUpperCase()}</span>
                     <span className={s.carModelPrice}>
-                      {car.priceMin} - {car.priceMax} ₽
+                      { XFormatPrice(car.priceMin) } - {XFormatPrice(car.priceMax)} ₽
                     </span>
                   </div>
-                  <img src={car.thumbnail.path} alt="" className={s.carImg} />
-                </div>
+                  <div className={s.carImg} style={{'backgroundImage' : `url(${prepareImgLink(car.thumbnail.path)})`}}></div>
+                </button>
               );
             })}
           </div>

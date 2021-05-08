@@ -33,14 +33,14 @@
 }
 
 /* полоса прокрутки (скроллбар) */
-::-webkit-scrollbar {
+.autocomplete::-webkit-scrollbar {
   width: 4px;
   height: 100%;
   border-left: 1px solid #999999;
 }
 
 /* ползунок скроллбара */
-::-webkit-scrollbar-thumb {
+.autocomplete::-webkit-scrollbar-thumb {
   width: 4px;
   height: 33px;
   background: #999999;

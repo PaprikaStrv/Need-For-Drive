@@ -41,6 +41,7 @@ label {
   border: none;
   outline: none;
   width: 224px;
+  padding-left: 8px;
 }
 
 .inputField {
@@ -59,7 +60,7 @@ label {
 }
 
 .findLocationFormContainer {
-  padding: 32px 32px 0px 32px;
+  padding: 32px 32px 0px 64px;
   width: 100%;
 }
 
@@ -83,25 +84,21 @@ select:-webkit-autofill:focus {
   @include RobotoLightText();
   @include grey_light_color();
   font-weight: 14px;
-  padding-left: 12px;
 }
 ::-moz-placeholder {
   @include RobotoLightText();
   @include grey_light_color();
   font-weight: 14px;
-  padding-left: 12px;
 }
 :-moz-placeholder {
   @include RobotoLightText();
   @include grey_light_color();
   font-weight: 14px;
-  padding-left: 12px;
 }
 :-ms-input-placeholder {
   @include RobotoLightText();
   @include grey_light_color();
   font-weight: 14px;
-  padding-left: 12px;
 }
 
 @media screen and (max-width: 1024px) {

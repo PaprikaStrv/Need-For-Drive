@@ -9,8 +9,8 @@
 }
 
 .nextStepIcon {
-  margin-left: 16px;
-  margin-right: 16px;
+  margin-left: 10px;
+  margin-right: 10px;
 }
 
 .stepLinks {
@@ -58,5 +58,9 @@
   .orderStepsContainer {
     flex-direction: column;
     align-items: center;
+  }
+
+  .orderStep {
+    margin-bottom: 8px;
   }
 }

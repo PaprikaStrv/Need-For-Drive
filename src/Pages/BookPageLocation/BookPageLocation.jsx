@@ -80,13 +80,17 @@ const BookPageLocation = (props) => {
     props.setModelAvailable(true);
     props.resetCoords();
     props.setCarModelName("");
+    props.setInputCityValue("");
+    props.setInputPointValue("");
     setCurCityValue("");
+    setCurPointValue("");
   };
   // clean_point_input_on_btn_click
   const pointBtnClickHandler = () => {
     props.setModelAvailable(true);
     props.resetCoords();
     props.setCarModelName("");
+    props.setInputPointValue("");
     setCurPointValue("");
   };
 

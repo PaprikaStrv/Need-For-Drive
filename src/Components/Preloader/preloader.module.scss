@@ -2,3 +2,16 @@
      margin: 200px auto;
      max-width: 500px;
 }
+
+
+@media screen and (max-width: 900px) {
+     .preloaderWrapper {
+          max-width: 200px;
+     }
+}
+
+@media screen and (max-width: 540px) {
+     .preloaderWrapper {
+          max-width: 150px;
+     }
+}

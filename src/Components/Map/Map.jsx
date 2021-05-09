@@ -17,7 +17,6 @@ const PointsMap = (props) => {
     map.current.setCenter(coordinates);
   };
 
- // let curPointCoords = [];
   if (props.curPointCoords.length !== 0) {
     let curPointCoords = props.curPointCoords.split(" ");
     mySetCenter([curPointCoords[1], curPointCoords[0]]);

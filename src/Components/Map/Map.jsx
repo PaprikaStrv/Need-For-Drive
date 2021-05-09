@@ -12,12 +12,12 @@ const PointsMap = (props) => {
     });
   }
   const map = useRef();
-
+ 
   const mySetCenter = (coordinates) => {
     map.current.setCenter(coordinates);
   };
 
-  if (props.curPointCoords.length !== 0) {
+  if (map.current && props.curPointCoords.length !== 0) {
     let curPointCoords = props.curPointCoords.split(" ");
     mySetCenter([curPointCoords[1], curPointCoords[0]]);
   }

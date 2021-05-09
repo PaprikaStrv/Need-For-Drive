@@ -10,7 +10,7 @@ const EmptyMap = (props) => {
           <Map
             state={{
               center: [55, 54],
-              zoom: 10,
+              zoom: 5,
             }}
             width="100%"
           >

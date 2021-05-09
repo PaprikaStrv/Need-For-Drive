@@ -14,7 +14,7 @@ const instance = axios.create({
 
 const instanceGeoCode = axios.create({
   baseURL:
-    "https://geocode-maps.yandex.ru/1.x/?apikey=3be0518b-8427-48e3-806e-8e61ce1c921f&format=json&geocode=",
+    "https://geocode-maps.yandex.ru/1.x/?apikey=a514df5b-163d-423e-b12e-b007b4649231&format=json&geocode=",
   headers: {
     "Access-Control-Allow-Origin": "*",
     "Access-Control-Allow-Credentials": "true",
@@ -41,9 +41,21 @@ export const simbirsoftAPI = {
     });
   },
 
+  getCategories() {
+    return instance.get(`category`).then((response) => {
+      return response.data;
+    });
+  },
+
   addressGeocode(address, city) {
     return instanceGeoCode.get(`${address} " " ${city}`).then((response) => {
       return response.data;
     });
   },
+
+  coordsGeocode(ln,lat) {
+    return instanceGeoCode.get(ln,lat).then((response) => {
+      return response.data;
+    })
+  }
 };

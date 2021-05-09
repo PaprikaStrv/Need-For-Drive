@@ -8,7 +8,7 @@
   list-style: none;
   margin: 0;
   padding: 0px 0 0 8px;
-  margin-left: 96px;
+  margin-left: auto;
   max-height: 100px;
   overflow: scroll;
   height: auto;
@@ -45,11 +45,4 @@
   height: 33px;
   background: #999999;
   border-radius: 2px;
-}
-
-
-@media screen and (max-width: 540px) {
-  .autocomplete {
-    margin-left: 64px;
-  }
 }

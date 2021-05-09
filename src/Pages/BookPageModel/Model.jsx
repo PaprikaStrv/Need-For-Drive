@@ -2,11 +2,10 @@ import React, { useState } from "react";
 import OrderInfoContainer from "../../Components/OrderInfo/OrderInfoContainer";
 import RadioInput from "../../Components/RaioInput/RadioInput";
 import s from "./ModelPage.module.scss";
-import  { XFormatPrice } from '../../commonScripts/scripts.js';
-import { prepareImgLink } from '../../commonScripts/scripts.js';
+import { XFormatPrice } from "../../commonScripts/scripts.js";
+import { prepareImgLink } from "../../commonScripts/scripts.js";
 
 const BookPageModel = (props) => {
-
   const [currentModelType, setModelType] = useState("Все модели");
   const handleChange = (e) => {
     setModelType(e.target.value);
@@ -29,40 +28,20 @@ const BookPageModel = (props) => {
 
   return (
     <div className={s.modelPageWrapper}>
-    
       <div className={s.modelPageContainer}>
         <div className={s.modelCarChoose}>
           <div className={s.checkBoxesWrapper}>
-            <RadioInput
-              id={"1"}
-              modelName={"Все модели"}
-              currentModelType={currentModelType}
-              handleChange={handleChange}
-            />
-            <RadioInput
-              id={"2"}
-              modelName={"Эконом"}
-              currentModelType={currentModelType}
-              handleChange={handleChange}
-            />
-            <RadioInput
-              id={"3"}
-              modelName={"Премиум"}
-              currentModelType={currentModelType}
-              handleChange={handleChange}
-            />
-            <RadioInput
-              id={"4"}
-              modelName={"Спорт"}
-              currentModelType={currentModelType}
-              handleChange={handleChange}
-            />
-            <RadioInput
-              id={"5"}
-              modelName={"Супер эконом"}
-              currentModelType={currentModelType}
-              handleChange={handleChange}
-            />
+            {props.categories.data.map((c) => {
+              return (
+                <RadioInput
+                  key={c.id}
+                  id={c.id}
+                  modelName={c.name}
+                  currentModelType={currentModelType}
+                  handleChange={handleChange}
+                />
+              );
+            })}
           </div>
           <div className={s.modelCarImagesWrapper}>
             {filteredCars.map((car, index) => {
@@ -75,12 +54,22 @@ const BookPageModel = (props) => {
                   }
                 >
                   <div className={s.carInfo}>
-                    <span className={s.carModelName}>{car.name.toUpperCase()}</span>
+                    <span className={s.carModelName}>
+                      {car.name.toUpperCase()}
+                    </span>
                     <span className={s.carModelPrice}>
-                      { XFormatPrice(car.priceMin) } - {XFormatPrice(car.priceMax)} ₽
+                      {XFormatPrice(car.priceMin)} -{" "}
+                      {XFormatPrice(car.priceMax)} ₽
                     </span>
                   </div>
-                  <div className={s.carImg} style={{'backgroundImage' : `url(${prepareImgLink(car.thumbnail.path)})`}}></div>
+                  <div
+                    className={s.carImg}
+                    style={{
+                      backgroundImage: `url(${prepareImgLink(
+                        car.thumbnail.path
+                      )})`,
+                    }}
+                  ></div>
                 </button>
               );
             })}

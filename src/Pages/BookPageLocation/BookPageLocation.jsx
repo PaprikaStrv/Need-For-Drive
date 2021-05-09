@@ -88,17 +88,22 @@ const BookPageLocation = (props) => {
   // clean_point_input_on_btn_click
   const pointBtnClickHandler = () => {
     props.setModelAvailable(true);
-    props.resetCoords();
+    //props.resetCoords();
     props.setCarModelName("");
     props.setInputPointValue("");
     setCurPointValue("");
   };
 
+  const hideAutocomplete = () => {
+    setInputCityAutoCompleteIsOpen(false);
+    setInputPointAutoCompleteIsOpen(false);
+  }
+
   return (
     <div className={s.findLocationFormWrapper}>
       <div className={s.locationContainer}>
-        <div className={s.findLocationFormContainer}>
-          <div className={s.formContainer}>
+        <div className={s.findLocationFormContainer} onClick={hideAutocomplete}>
+          <div className={s.formContainer} onClick={(e) => e.stopPropagation()}>
             <div className={s.fieldWrapper}>
               <label>Город</label>
               <div className={s.inputField}>
@@ -125,9 +130,10 @@ const BookPageLocation = (props) => {
               itemClickHandler={itemCityAutoСompleteClickHandler}
               value={curCityInputValue}
               isOpen={isInputCityAutoCompleteOpen}
+              setOpen={setInputCityAutoCompleteIsOpen}
             />
           </div>
-          <div className={s.formContainer}>
+          <div className={s.formContainer} onClick={(e) => e.stopPropagation()}>
             <div className={s.fieldWrapper}>
               <label>Пункт выдачи</label>
               <div className={s.inputField}>

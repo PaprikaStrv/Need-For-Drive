@@ -22,7 +22,7 @@
 .modelCarImagesWrapper {
   display: flex;
   flex-wrap: wrap;
-  overflow-y: scroll;
+  overflow-y: auto;
   max-height: 540px;
 }
 
@@ -57,12 +57,21 @@
   border: 1px solid #999999;
 }
 
-.modelCarBlock:active, :focus {
+.modelCarBlock:active{
+  border: 1px solid #0ec261;
+}
+
+.modelCarBlock:focus {
   border: 1px solid #0ec261;
 }
 
 
-.modelCarBlock.touch:active,:focus {
+
+.modelCarBlock.touch:active{
+  border: 1px solid #0ec261;
+}
+
+.modelCarBlock.touch:focus {
   border: 1px solid #0ec261;
 }
 

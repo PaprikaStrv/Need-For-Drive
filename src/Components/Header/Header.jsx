@@ -6,20 +6,16 @@ import { NavLink } from "react-router-dom";
 
 const Header = (props) => {
   return (
-
     <div className={s.headerWrapper}>
-         <NavLink to="/need-for-drive">
+      <NavLink to="/need-for-drive">
         <span className={s.headerLogo}>Need for drive</span>
-        <div className={s.currentCity}>
-          <ReactSVG src={city} />
-          <span className={s.city}>Саранск</span>
-        </div>
-        </NavLink>
+      </NavLink>
+      <div className={s.currentCity}>
+        <ReactSVG src={city} />
+        <span className={s.city}>Саранск</span>
+      </div>
     </div>
-   
   );
 };
-
-
 
 export default Header;

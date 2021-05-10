@@ -22,6 +22,8 @@ const PointsMap = (props) => {
     mySetCenter([curPointCoords[1], curPointCoords[0]]);
   }
 
+
+
   return (
     <div className={s.mapWrapper}>
       {props.coords.length !== 0 ? (
@@ -45,7 +47,7 @@ const PointsMap = (props) => {
                     iconImageSize: [32, 32],
                     useMapMarginInDragging: true,
                   }}
-                  onClick={() => mySetCenter([c[1], c[0]])}
+                  onClick={() => {mySetCenter([c[1], c[0]]); props.handlerGetPointCoords(c)}}
                 />
               );
             })}

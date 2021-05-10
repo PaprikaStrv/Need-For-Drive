@@ -28,7 +28,7 @@ const BookingStages = (props) => {
         </div>
 
         <div className={s.orderStep}>
-          <NavLink to="/">
+          <NavLink to="/need-for-drive/bookCar/Additionally">
             <button disabled={!props.modelName} className={s.stepLinks}>
               Дополнительно
             </button>

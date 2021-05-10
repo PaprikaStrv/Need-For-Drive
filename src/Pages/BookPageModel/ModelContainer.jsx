@@ -5,6 +5,7 @@ import {
   setCarModelName,
   setCarModelPriceMin,
   setCarModelPriceMax,
+  setCarColor,
 } from "./../../Redux/model-reducer";
 import {
   getCategories,
@@ -37,4 +38,5 @@ export default connect(mapStateToProps, {
   setCarModelName,
   setCarModelPriceMin,
   setCarModelPriceMax,
+  setCarColor,
 })(BookPageModelContainer);

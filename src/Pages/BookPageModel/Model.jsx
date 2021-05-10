@@ -24,6 +24,7 @@ const BookPageModel = (props) => {
     props.setCarModelName(model);
     props.setCarModelPriceMin(priceMin);
     props.setCarModelPriceMax(priceMax);
+    props.setCarColor("");
   };
 
   return (
@@ -79,6 +80,7 @@ const BookPageModel = (props) => {
         <OrderInfoContainer
           btnName={"Дополнительно"}
           available={!props.modelName}
+          btnLink={"Additionally"}
         />
       </div>
     </div>

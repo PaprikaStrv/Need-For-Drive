@@ -1,12 +1,19 @@
 import React, { useEffect, useState } from "react";
 import PointsMap from "./Map";
 import { connect } from "react-redux";
-import { getCoords, getCurPointCoords } from "../../Redux/location-reducer";
+import {
+  getCoords,
+  getCurPointCoords,
+} from "../../Redux/location-reducer";
 import Preloader from "./../Preloader/Preloader";
 import { simbirsoftAPI } from "./../../API/api";
 import { compose } from "redux";
 
 const PointsMapContainer = (props) => {
+  const handlerGetPointCoords = (coords) => {
+  };
+
+
   useEffect(() => {
     if (props.cityAdresses.length > 0) {
       for (let i = 0; i < props.cityAdresses.length; i++) {
@@ -21,8 +28,7 @@ const PointsMapContainer = (props) => {
     }
   }, [props.pointAddress]);
 
- 
-  return <PointsMap {...props} />;
+  return <PointsMap {...props} handlerGetPointCoords={handlerGetPointCoords} />;
 };
 
 const mapStateToProps = (state) => ({
@@ -33,6 +39,7 @@ const mapStateToProps = (state) => ({
   curPointCoords: state.location.curAddressCoords,
 });
 
-export default connect(mapStateToProps, { getCoords, getCurPointCoords })(
-  PointsMapContainer
-);
+export default connect(mapStateToProps, {
+  getCoords,
+  getCurPointCoords,
+})(PointsMapContainer);

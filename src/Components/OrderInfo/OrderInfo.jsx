@@ -30,6 +30,16 @@ const OrderInfo = (props) => {
             </div>
           </li>
         )}
+        {props.color && (
+          <li>
+            <div className={s.liName}>Цвет</div>
+            <div></div>
+            <div className={s.addressOrderInfo}>
+              <span></span>
+              <span>{props.color}</span>
+            </div>
+          </li>
+        )}
       </ul>
       
       {props.priceMin && props.priceMax && (
@@ -39,7 +49,7 @@ const OrderInfo = (props) => {
         </div>
       )}
 
-      <NavLink to="/need-for-drive/bookCar/Model">
+      <NavLink to={"/need-for-drive/bookCar/" + props.btnLink}>
         <button disabled={props.available} className={s.orderInfoBtn}>
           {props.btnName}
         </button>

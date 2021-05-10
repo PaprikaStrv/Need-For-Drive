@@ -8,6 +8,7 @@ const SET_INPUT_POINT_VALUE = "SET_INPUT_POINT_VALUE";
 const SET_CITY_ADRESSES = "SET_CITY_ADRESSES";
 const SET_MODELS = "SET_MODELS";
 const SET_CATEGORIES = "SET_CATEGORIES";
+const SET_RATE = "SET_RATE";
 
 let initialState = {
   cities: [],
@@ -18,6 +19,7 @@ let initialState = {
   cityAdresses: [],
   models: [],
   categories: [],
+  rate: [],
 };
 
 const orderPageReducer = (state = initialState, action) => {
@@ -70,6 +72,12 @@ const orderPageReducer = (state = initialState, action) => {
         ...action,
         categories: action.data,
       };
+      case SET_RATE:
+      return {
+        ...state,
+        ...action,
+        rate: action.data,
+      };
     default:
       return state;
   }
@@ -115,6 +123,11 @@ export const setCategories = (categories) => ({
   data: categories,
 });
 
+export const setRate = (rate) => ({
+  type: SET_RATE,
+  data: rate,
+});
+
 export const getCitiesThunkCreator = () => {
   return async (dispatch) => {
     const response = await simbirsoftAPI.getCities();
@@ -140,6 +153,13 @@ export const getCategories = () => {
   return async (dispatch) => {
     const response = await simbirsoftAPI.getCategories();
     dispatch(setCategories(response));
+  };
+};
+
+export const getRate = () => {
+  return async (dispatch) => {
+    const response = await simbirsoftAPI.getRate();
+    dispatch(setRate(response));
   };
 };
 

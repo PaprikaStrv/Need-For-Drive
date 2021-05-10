@@ -5,6 +5,7 @@ import Header from "./../../Components/Header/Header";
 import BookPageLocationContainer from "../BookPageLocation/BookPageLocationContainer";
 import BookingStagesContainer from "./../../Components/BookingStages/BookingStagesContainer";
 import BookPageModelContainer from './../BookPageModel/ModelContainer';
+import AdditionalContainer from './../BookPageAdditional/AdditionalContainer';
 
 const BookPage = (props) => {
   return (
@@ -26,6 +27,7 @@ const BookPage = (props) => {
         {!props.isAvail && (
           <Route path="/need-for-drive/bookCar/Model" component={BookPageModelContainer} />
         )}
+        <Route path="/need-for-drive/bookCar/Additionally" component={AdditionalContainer}/>
         
       </Switch>
     </section>

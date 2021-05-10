@@ -1,0 +1,63 @@
+@import "../../scss/mixins.scss";
+
+.additionalPageWrapepr {
+  display: flex;
+  justify-content: space-between;
+
+  border-top: 1px solid #eeeeee;
+}
+
+.additionalPageContainer {
+  padding: 32px 0px 0px 64px;
+  width: 100%;
+}
+.additionalBlock {
+  margin-bottom: 32px;
+  span {
+    @include RobotoLightText();
+    font-weight: 300;
+    font-size: 14px;
+    line-height: 16px;
+  }
+}
+
+.checkBoxesWrapper {
+  display: flex;
+ 
+}
+
+.checkBoxWrapper {
+  margin-bottom: 0;
+}
+
+.additionalInputBlock {
+  margin-top: 22px;
+}
+
+.dataPickWrapper {
+  display: flex;
+ flex-direction: column;
+}
+
+.dataFieldWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  max-width: 272px;
+  margin-bottom: 16px;
+}
+
+.dataInputField {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid #999999;
+  width: 248px;
+  margin-left: 5px;
+  input {
+    @include RobotoLightText();
+    border: none;
+    outline: none;
+    padding-left: 8px;
+  }
+}

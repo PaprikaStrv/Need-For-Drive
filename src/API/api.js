@@ -47,15 +47,16 @@ export const simbirsoftAPI = {
     });
   },
 
+  getRate() {
+    return instance.get(`rate`).then((response) => {
+      return response.data;
+    });
+  },
+
   addressGeocode(address, city) {
     return instanceGeoCode.get(`${address} " " ${city}`).then((response) => {
       return response.data;
     });
   },
 
-  coordsGeocode(ln,lat) {
-    return instanceGeoCode.get(ln,lat).then((response) => {
-      return response.data;
-    })
-  }
 };

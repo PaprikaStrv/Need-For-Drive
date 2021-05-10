@@ -167,7 +167,7 @@ const BookPageLocation = (props) => {
           </div>
         </div>
 
-        <OrderInfoContainer btnName={"Выбрать модель"} available={props.isModelAvail}/>
+        <OrderInfoContainer btnName={"Выбрать модель"} available={props.isModelAvail} btnLink={"Model"}/>
       </div>
     </div>
   );

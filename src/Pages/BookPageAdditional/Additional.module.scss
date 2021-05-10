@@ -32,6 +32,9 @@
 
 .additionalInputBlock {
   margin-top: 22px;
+  div {
+    margin-bottom: 0;
+  }
 }
 
 .dataPickWrapper {
@@ -44,7 +47,7 @@
   align-items: center;
   justify-content: flex-end;
   max-width: 272px;
-  margin-bottom: 16px;
+  margin-bottom: 16px !important;
 }
 
 .dataInputField {
@@ -59,5 +62,32 @@
     border: none;
     outline: none;
     padding-left: 8px;
+  }
+}
+
+.rateCheckBoxesWrapper {
+  display: flex;
+  flex-direction: column;
+  margin-top: 24px;
+}
+
+.rateCheckBoxesWrapper div {
+  margin-bottom: 24px;
+}
+
+@media screen and (max-width: 1024px) {
+  .additionalPageContainer {
+    padding-left: 32px;
+  }
+}
+
+@media screen and (max-width:900px) {
+  .additionalPageWrapepr {
+    flex-direction: column;
+    align-items: center;
+  }
+  .additionalPageContainer {
+    justify-content: center;
+    align-items: center;
   }
 }

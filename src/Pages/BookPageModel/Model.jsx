@@ -32,14 +32,14 @@ const BookPageModel = (props) => {
       <div className={s.modelPageContainer}>
         <div className={s.modelCarChoose}>
           <div className={s.checkBoxesWrapper}>
-            <RadioInput id={1} modelName="Все модели"  currentModelType={currentModelType}  handleChange={handleChange}/>
+            <RadioInput id={1} inputName="Все модели"  currentInputType={currentModelType}  handleChange={handleChange}/>
             {props.categories.data.map((c) => {
               return (
                 <RadioInput
                   key={c.id}
                   id={c.id}
-                  modelName={c.name}
-                  currentModelType={currentModelType}
+                  inputName={c.name}
+                  currentInputType={currentModelType}
                   handleChange={handleChange}
                 />
               );

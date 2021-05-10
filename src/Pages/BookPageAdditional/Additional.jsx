@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import RadioInput from "../../Components/RaioInput/RadioInput";
 import OrderInfoContainer from "./../../Components/OrderInfo/OrderInfoContainer";
 import s from "./Additional.module.scss";
-import radioStyle from "./../../Components/RaioInput/RadioInput.module.scss";
 import baseInput from "../BookPageLocation/BookPageLocation.module.scss";
 import { ReactSVG } from "react-svg";
 import clean_input from "../../Images/clean_input.svg";
@@ -24,6 +23,7 @@ const Additional = (props) => {
   const [currentRate, setRate] = useState("");
   const handleRateChange = (e) => {
     setRate(e.target.value);
+    props.setCarRate(e.target.value);
   };
 
   return (
@@ -34,26 +34,13 @@ const Additional = (props) => {
           <div className={`${s.checkBoxesWrapper} ${s.additionalInputBlock}`}>
             {filteredColors[0].colors.map((color, index) => {
               return (
-                <div
-                  className={`${radioStyle.checkBoxWrapper} ${s.checkBoxWrapper}`}
-                >
-                  <input
-                    type="radio"
-                    id={index}
-                    className={radioStyle.checkBox}
-                    checked={currentColor === color}
-                    onChange={handleColorChange}
-                    value={color}
-                  />
-                  <label
-                    htmlFor={index}
-                    className={
-                      currentColor === color ? "" : radioStyle.notActiveLable
-                    }
-                  >
-                    {color}
-                  </label>
-                </div>
+                <RadioInput
+                  key={index}
+                  id={index}
+                  inputName={color}
+                  currentInputType={currentColor}
+                  handleChange={handleColorChange}
+                />
               );
             })}
           </div>
@@ -84,23 +71,20 @@ const Additional = (props) => {
 
         <div className={s.additionalBlock}>
           <span className={`${s.additionalInputBlock}`}>Тариф</span>
-          <div>
+          <div className={s.rateCheckBoxesWrapper}>
             {props.rate.data.map((rate) => {
               return (
-                <div>
-                  <input
-                    type="radio"
-                    className={radioStyle.checkBox}
-                    id={rate.rateTypeId.id}
-                    value={rate.rateTypeId.name}
-                    checked={currentRate === rate.rateTypeId.name}
-                    onChange={handleRateChange}
-                  />
-                  <label htmlFor={rate.rateTypeId.id}>
-                    {rate.rateTypeId.name}, {rate.price}₽/{rate.rateTypeId.unit}
-                  </label>
-                </div>
+                <RadioInput
+                  key={rate.rateTypeId.id}
+                  id={rate.rateTypeId.id}
+                  inputName={rate.rateTypeId.name}
+                  currentInputType={currentRate}
+                  handleChange={handleRateChange}
+                  ratePrice={rate.price}
+                  rateUnit={rate.rateTypeId.unit}
+                />
               );
+              {/* console.log(rate); */}
             })}
           </div>
         </div>

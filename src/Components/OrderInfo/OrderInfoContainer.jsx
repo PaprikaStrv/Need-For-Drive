@@ -13,6 +13,7 @@ const mapStateToProps = (state) => ({
   priceMin: state.model.priceMin,
   priceMax: state.model.priceMax,
   color: state.model.color,
+  rate: state.model.rate,
 });
 
 export default connect(mapStateToProps)(OrderInfoContainer);

@@ -5,11 +5,13 @@ const SET_CAR_MODEL_NAME = "SET_CAR_MODEL_NAME";
 const SET_CAR_PRICE_MIN = "SET_CAR_PRICE_MIN";
 const SET_CAR_PRICE_MAX = "SET_CAR_PRICE_MAX";
 const SET_CAR_COLOR = "SET_CAR_COLOR";
+const SET_CAR_RATE = "SET_CAT_RATE";
 
 let initialState = {
   models: [],
   modelName: "",
   color: "",
+  rate: "",
   priceMin: "",
   priceMax: "",
 };
@@ -28,11 +30,17 @@ const modelReducer = (state = initialState, action) => {
         ...action,
         modelName: action.data,
       };
-      case SET_CAR_COLOR:
+    case SET_CAR_COLOR:
       return {
         ...state,
         ...action,
         color: action.data,
+      };
+    case SET_CAR_RATE:
+      return {
+        ...state,
+        ...action,
+        rate: action.data,
       };
     case SET_CAR_PRICE_MIN:
       return {
@@ -64,7 +72,12 @@ export const setCarModelName = (model) => ({
 export const setCarColor = (color) => ({
   type: SET_CAR_COLOR,
   data: color,
-})
+});
+
+export const setCarRate = (rate) => ({
+  type: SET_CAR_RATE,
+  data: rate,
+});
 
 export const setCarModelPriceMin = (priceMin) => ({
   type: SET_CAR_PRICE_MIN,

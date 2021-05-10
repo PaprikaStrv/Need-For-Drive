@@ -36,7 +36,17 @@ const OrderInfo = (props) => {
             <div></div>
             <div className={s.addressOrderInfo}>
               <span></span>
-              <span>{props.color}</span>
+              <span>{props.color[0].toUpperCase() + props.color.slice(1)}</span>
+            </div>
+          </li>
+        )}
+        {props.rate && (
+          <li>
+            <div className={s.liName}>Тариф</div>
+            <div></div>
+            <div className={s.addressOrderInfo}>
+              <span></span>
+              <span>{props.rate}</span>
             </div>
           </li>
         )}

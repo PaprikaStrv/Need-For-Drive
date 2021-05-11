@@ -2,11 +2,13 @@ import { simbirsoftAPI } from "./../API/api";
 
 const SET_ADDRESS_COORDS = "SET_ADDRESS_COORDS";
 const SET_CUR_ADDRESS_COORDS = "SET_CUR_ADDRESS_COORDS";
+const SET_CUR_POINT_ADDRESS = "SET_CUR_POINT_ADDRESS";
 const RESET_COORDS = "RESET_COORDS";
 
 let initialState = {
   coords: [],
   curAddressCoords: [],
+  curPointAddress: "",
 };
 
 const locationReducer = (state = initialState, action) => {
@@ -23,6 +25,12 @@ const locationReducer = (state = initialState, action) => {
         ...action,
         curAddressCoords: action.data,
       };
+      case SET_CUR_POINT_ADDRESS:
+        return {
+          ...state,
+          ...action,
+          curPointAddress: action.data,
+        };
     case RESET_COORDS:
       return {
         ...state,
@@ -42,6 +50,11 @@ export const setCoords = (coords) => ({
 export const setCurPointCoords = (coords) => ({
   type: SET_CUR_ADDRESS_COORDS,
   data: coords,
+});
+
+export const setCurPointAddress = (address) => ({
+  type: SET_CUR_POINT_ADDRESS,
+  data: address,
 });
 
 export const resetCoords = () => ({
@@ -72,11 +85,11 @@ export const getCurPointCoords = (address, city) => {
   };
 };
 
-// export const getAddress = (lat, ln) => {
-//   return async (dispatch) => {
-//     const response = await simbirsoftAPI.coordsGeocode(lat, ln);
-//     console.log(response.response.GeoObjectCollection);
-//   };
-// };
+export const getAddress = (coords) => {
+  return async (dispatch) => {
+    const response = await simbirsoftAPI.coordsGeocode(coords);
+    dispatch(setCurPointAddress(response.response.GeoObjectCollection.featureMember[0].GeoObject.name))
+  };
+};
 
 export default locationReducer;

@@ -99,6 +99,7 @@ const BookPageLocation = (props) => {
     setInputPointAutoCompleteIsOpen(false);
   }
 
+
   return (
     <div className={s.findLocationFormWrapper}>
       <div className={s.locationContainer}>
@@ -140,7 +141,8 @@ const BookPageLocation = (props) => {
                 <input
                   type="text"
                   name="point"
-                  value={curPointInputValue}
+                  //value={curPointInputValue}
+                  value={props.inputPointValue || curPointInputValue}
                   placeholder="Начните вводить пункт..."
                   autoComplete="off"
                   onChange={(event) => setCurPointValue(event.target.value)}

@@ -4,15 +4,26 @@ import { connect } from "react-redux";
 import {
   getCoords,
   getCurPointCoords,
+  getAddress,
 } from "../../Redux/location-reducer";
 import Preloader from "./../Preloader/Preloader";
 import { simbirsoftAPI } from "./../../API/api";
 import { compose } from "redux";
+import { setInputPointValue } from './../../Redux/orderPage-reducer';
 
 const PointsMapContainer = (props) => {
+
   const handlerGetPointCoords = (coords) => {
+    props.getAddress(coords);
+   
   };
 
+  useEffect(() => {
+    if(props.curPointAddress) {
+      props.setInputPointValue(props.curPointAddress);
+    }
+  }, [props.curPointAddress])
+  
 
   useEffect(() => {
     if (props.cityAdresses.length > 0) {
@@ -37,9 +48,12 @@ const mapStateToProps = (state) => ({
   coords: state.location.coords,
   pointAddress: state.orderPage.currentInputPointValue,
   curPointCoords: state.location.curAddressCoords,
+  curPointAddress: state.location.curPointAddress,
 });
 
 export default connect(mapStateToProps, {
   getCoords,
   getCurPointCoords,
+  getAddress,
+  setInputPointValue,
 })(PointsMapContainer);

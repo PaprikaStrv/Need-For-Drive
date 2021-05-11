@@ -20,6 +20,9 @@ const BookPageLocationContainer = (props) => {
     props.getPointsThunkCreator();
   }, []); //зависимости?!
 
+  useEffect(() => {
+  }, [props.inputPointValue])
+
   if (!props.cities || props.cities.length === 0 || !props.points || props.points.length === 0) {
     return <Preloader />;
   }

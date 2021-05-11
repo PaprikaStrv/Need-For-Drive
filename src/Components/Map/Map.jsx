@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Map, Placemark, YMaps } from "react-yandex-maps";
 import s from "./Map.module.scss";
 import map_marker from "../../Images/map_marker.svg";
@@ -6,13 +6,15 @@ import EmptyMap from "./EmptyMap";
 
 const PointsMap = (props) => {
   let coor = [];
+
   if (props.coords) {
     coor = props.coords.map((c) => {
       return c.coords.split(" ");
     });
   }
+
   const map = useRef();
- 
+
   const mySetCenter = (coordinates) => {
     map.current.setCenter(coordinates);
   };
@@ -21,8 +23,6 @@ const PointsMap = (props) => {
     let curPointCoords = props.curPointCoords.split(" ");
     mySetCenter([curPointCoords[1], curPointCoords[0]]);
   }
-
-
 
   return (
     <div className={s.mapWrapper}>
@@ -47,7 +47,10 @@ const PointsMap = (props) => {
                     iconImageSize: [32, 32],
                     useMapMarginInDragging: true,
                   }}
-                  onClick={() => {mySetCenter([c[1], c[0]]); props.handlerGetPointCoords(c)}}
+                  onClick={() => {
+                    mySetCenter([c[1], c[0]]);
+                    props.handlerGetPointCoords(c);
+                  }}
                 />
               );
             })}

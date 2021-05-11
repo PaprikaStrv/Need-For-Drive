@@ -14,7 +14,7 @@ const instance = axios.create({
 
 const instanceGeoCode = axios.create({
   baseURL:
-    "https://geocode-maps.yandex.ru/1.x/?apikey=a514df5b-163d-423e-b12e-b007b4649231&format=json&geocode=",
+    "https://geocode-maps.yandex.ru/1.x/?apikey=a514df5b-163d-423e-b12e-b007b4649231&format=json",
   headers: {
     "Access-Control-Allow-Origin": "*",
     "Access-Control-Allow-Credentials": "true",
@@ -54,7 +54,21 @@ export const simbirsoftAPI = {
   },
 
   addressGeocode(address, city) {
-    return instanceGeoCode.get(`${address} " " ${city}`).then((response) => {
+    return instanceGeoCode.get('',{
+      params: {
+        geocode: `${address} ${city}`
+      }
+    }).then((response) => {
+      return response.data;
+    });
+  },
+
+  coordsGeocode(coords) {
+    return instanceGeoCode.get('',{
+      params: {
+        geocode: `${coords}`
+      }
+    }).then((response) => {
       return response.data;
     });
   },

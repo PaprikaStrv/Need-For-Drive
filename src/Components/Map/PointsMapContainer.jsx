@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import PointsMap from "./Map";
 import { connect } from "react-redux";
 import {
@@ -6,9 +6,7 @@ import {
   getCurPointCoords,
   getAddress,
 } from "../../Redux/location-reducer";
-import Preloader from "./../Preloader/Preloader";
-import { simbirsoftAPI } from "./../../API/api";
-import { compose } from "redux";
+
 import { setInputPointValue } from './../../Redux/orderPage-reducer';
 
 const PointsMapContainer = (props) => {

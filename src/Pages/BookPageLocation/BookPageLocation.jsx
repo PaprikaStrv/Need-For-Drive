@@ -5,6 +5,7 @@ import clean_input from "../../Images/clean_input.svg";
 import s from "./BookPageLocation.module.scss";
 import PointsMapContainer from "./../../Components/Map/PointsMapContainer";
 import OrderInfoContainer from "./../../Components/OrderInfo/OrderInfoContainer";
+import { useEffect } from "react";
 
 const BookPageLocation = (props) => {
 
@@ -27,9 +28,7 @@ const BookPageLocation = (props) => {
   });
 
   //choose point adress for current chosen city
-  let poinstWithoutNullCity;
   let filteredPoints = [];
-
   props.points.data.filter((p) => {
     if(p.cityId != null && p.cityId.name === curCityInputValue){
       filteredPoints.push(p.address);
@@ -65,6 +64,7 @@ const BookPageLocation = (props) => {
   };
 
   // make model step available
+ 
   if (
     props.inputCityValue !== "" &&
     curCityInputValue === props.inputCityValue &&

@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useRef } from "react";
 import { Map, Placemark, YMaps } from "react-yandex-maps";
 import s from "./Map.module.scss";
 import map_marker from "../../Images/map_marker.svg";

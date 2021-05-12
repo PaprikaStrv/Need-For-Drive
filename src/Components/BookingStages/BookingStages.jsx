@@ -1,8 +1,6 @@
 import React from "react";
 import s from "./BookingStages.module.scss";
 import { NavLink } from "react-router-dom";
-import nextStep from "../../Images/next_step.svg";
-import { Switch } from "react-router";
 
 const BookingStages = (props) => {
   return (

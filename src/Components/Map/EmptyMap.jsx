@@ -1,7 +1,6 @@
 import React from "react";
-import { Map, Placemark, YMaps } from "react-yandex-maps";
+import { Map, YMaps } from "react-yandex-maps";
 import s from "./Map.module.scss";
-import map_marker from "../../Images/map_marker.svg";
 
 const EmptyMap = (props) => {
   return (

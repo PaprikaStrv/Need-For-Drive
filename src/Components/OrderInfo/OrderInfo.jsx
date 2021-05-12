@@ -9,12 +9,12 @@ const OrderInfo = (props) => {
       <span className={s.yourOrderText}>Ваш заказ:</span>
       <ul>
         <li>
-          <div className={s.liName}>Пункт выдачи</div>
-          <div></div>
+          <div className={`${s.liName} ${s.liPointName}`}>Пункт выдачи</div>
+          <div className={s.addressDots}></div>
           <div className={s.addressOrderInfo}>
             {props.city && props.address && (
               <>
-                <span>{props.city}</span>
+                <span className={s.orderInfoCity}>{props.city},</span>
                 <span>{props.address}</span>
               </>
             )}
@@ -24,8 +24,8 @@ const OrderInfo = (props) => {
           <li>
             <div className={s.liName}>Модель</div>
             <div></div>
-            <div className={s.addressOrderInfo}>
-              <span></span>
+            <div className={`${s.addressOrderInfo} ${s.attrSpan}`}>
+              {/* <span></span> */}
               <span>{props.modelName}</span>
             </div>
           </li>
@@ -34,8 +34,8 @@ const OrderInfo = (props) => {
           <li>
             <div className={s.liName}>Цвет</div>
             <div></div>
-            <div className={s.addressOrderInfo}>
-              <span></span>
+            <div  className={`${s.addressOrderInfo} ${s.attrSpan}`}>
+              {/* <span></span> */}
               <span>{props.color[0].toUpperCase() + props.color.slice(1)}</span>
             </div>
           </li>
@@ -44,8 +44,8 @@ const OrderInfo = (props) => {
           <li>
             <div className={s.liName}>Тариф</div>
             <div></div>
-            <div className={s.addressOrderInfo}>
-              <span></span>
+            <div  className={`${s.addressOrderInfo} ${s.attrSpan}`}>
+              {/* <span></span> */}
               <span>{props.rate}</span>
             </div>
           </li>
@@ -59,10 +59,11 @@ const OrderInfo = (props) => {
         </div>
       )}
 
-      <NavLink to={"/need-for-drive/bookCar/" + props.btnLink}>
-        <button disabled={props.available} className={s.orderInfoBtn}>
-          {props.btnName}
-        </button>
+      <NavLink to={"/need-for-drive/bookCar/" + props.btnLink} className={props.available ? `${s.orderInfoBtn} ${s.disabled}` : s.orderInfoBtn}>
+        {/* <button disabled={props.available} className={}>
+         
+        </button> */}
+        {props.btnName}
       </NavLink>
     </div>
   );

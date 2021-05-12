@@ -69,11 +69,11 @@
   display: flex;
   flex-direction: column;
   margin-top: 24px;
+  div {
+    margin-bottom: 24px;
+  }
 }
 
-.rateCheckBoxesWrapper div {
-  margin-bottom: 24px;
-}
 
 @media screen and (max-width: 1024px) {
   .additionalPageContainer {

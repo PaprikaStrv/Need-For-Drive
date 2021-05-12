@@ -1,7 +1,3 @@
-.checkBox {
-  margin-right: 8px;
-}
-
 .checkBoxWrapper {
   display: flex;
   align-items: center;
@@ -18,6 +14,7 @@
   position: absolute;
   z-index: -1;
   opacity: 0;
+  margin-right: 8px;
 }
 
 /* для элемента label связанного с .checkBox */
@@ -51,11 +48,6 @@
   background-color: transparent;
   border-color: #0ec261;
 }
-
-/* стили для радиокнопки, находящейся в фокусе */
-// .checkBox:focus + label::before {
-//   box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
-// }
 
 /* стили для радиокнопки, находящейся в фокусе и не находящейся в состоянии checked */
 .checkBox:focus:not(:checked) + label::before {

@@ -7,6 +7,7 @@ import PointsMapContainer from "./../../Components/Map/PointsMapContainer";
 import OrderInfoContainer from "./../../Components/OrderInfo/OrderInfoContainer";
 
 const BookPageLocation = (props) => {
+
   const [curCityInputValue, setCurCityValue] = useState(props.inputCityValue);
   const [curPointInputValue, setCurPointValue] = useState(
     props.inputPointValue
@@ -29,14 +30,11 @@ const BookPageLocation = (props) => {
   let poinstWithoutNullCity;
   let filteredPoints = [];
 
-  for (let i = 0; i < props.points.data.length; i++) {
-    if (props.points.data[i].cityId != null) {
-      poinstWithoutNullCity = props.points.data[i];
-      if (poinstWithoutNullCity.cityId.name === curCityInputValue) {
-        filteredPoints.push(props.points.data[i].address);
-      }
+  props.points.data.filter((p) => {
+    if(p.cityId != null && p.cityId.name === curCityInputValue){
+      filteredPoints.push(p.address);
     }
-  }
+  })
 
   const arrKey = "name";
   const points = filteredPoints.map((item) => ({ [arrKey]: item.toString() }));
@@ -70,8 +68,8 @@ const BookPageLocation = (props) => {
   if (
     props.inputCityValue !== "" &&
     curCityInputValue === props.inputCityValue &&
-    props.inputPointValue !== "" &&
-    curPointInputValue === props.inputPointValue
+    props.inputPointValue !== "" 
+  
   )
     props.setModelAvailable(false);
 
@@ -82,6 +80,8 @@ const BookPageLocation = (props) => {
     props.setCarModelName("");
     props.setInputCityValue("");
     props.setInputPointValue("");
+    props.setCarModelPriceMax("");
+    props.setCarModelPriceMin(""); 
     setCurCityValue("");
     setCurPointValue("");
   };
@@ -92,6 +92,8 @@ const BookPageLocation = (props) => {
     props.setCarModelName("");
     props.setInputPointValue("");
     setCurPointValue("");
+    props.setCarModelPriceMax("");
+    props.setCarModelPriceMin("");
   };
 
   const hideAutocomplete = () => {

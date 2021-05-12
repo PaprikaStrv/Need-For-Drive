@@ -9,6 +9,7 @@
     "@testing-library/user-event": "^12.1.10",
     "add": "^2.0.6",
     "axios": "^0.21.1",
+    "before-after-react": "^1.0.5",
     "final-form": "^4.20.2",
     "node-sass": "^5.0.0",
     "nuka-carousel": "^4.7.7",

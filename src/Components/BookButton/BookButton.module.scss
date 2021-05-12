@@ -2,14 +2,13 @@
 
 .btn {
   @include btn();
-}
+  &:hover {
+    @include btnHover();
+  }
 
-.btn:hover {
-  @include btnHover();
-}
-
-.btn:active {
-  @include btnActive();
+  &:active {
+    @include btnActive();
+  }
 }
 
 @media screen and (max-width: 540px) {

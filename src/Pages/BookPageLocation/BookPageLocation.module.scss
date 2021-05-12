@@ -17,10 +17,10 @@
 .formContainer {
   margin-bottom: 13px;
   max-width: 320px;
-}
-
-.formContainer:nth-child(2) {
-  margin-bottom: 48px;
+  &:nth-child(2) {
+    margin-bottom: 48px;
+  }
+  
 }
 
 .fieldWrapper {

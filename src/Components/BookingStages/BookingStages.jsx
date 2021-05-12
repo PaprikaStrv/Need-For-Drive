@@ -1,47 +1,38 @@
 import React from "react";
 import s from "./BookingStages.module.scss";
-import { ReactSVG } from "react-svg";
 import { NavLink } from "react-router-dom";
 import nextStep from "../../Images/next_step.svg";
-import { Switch } from 'react-router';
+import { Switch } from "react-router";
 
 const BookingStages = (props) => {
   return (
     <div className={s.orderStepsWrapper}>
       <div className={s.orderStepsContainer}>
         <div className={s.orderStep}>
-          <NavLink to="/need-for-drive/bookCar/">
-            <button className={s.stepLinks}>Местоположение</button>
-          </NavLink>
-
-          <ReactSVG src={nextStep} className={s.nextStepIcon} />
+          <NavLink to="/need-for-drive/bookCar/">Местоположение</NavLink>
         </div>
 
         <div className={s.orderStep}>
-          <NavLink to="/need-for-drive/bookCar/Model">
-            <button disabled={props.isModelAvail} className={s.stepLinks}>
-              Модель{" "}
-            </button>
+          <NavLink
+            to="/need-for-drive/bookCar/Model"
+            className={props.isModelAvail ? s.disabled : ""}
+          >
+            Модель{" "}
           </NavLink>
-
-          <ReactSVG src={nextStep} className={s.nextStepIcon} />
         </div>
 
         <div className={s.orderStep}>
-          <NavLink to="/need-for-drive/bookCar/Additionally">
-            <button disabled={!props.modelName} className={s.stepLinks}>
-              Дополнительно
-            </button>
+          <NavLink
+            to="/need-for-drive/bookCar/Additionally"
+            className={!props.modelName ? s.disabled : ""}
+          >
+            Дополнительно
           </NavLink>
-
-          <ReactSVG src={nextStep} className={s.nextStepIcon} />
         </div>
 
         <div className={s.orderStep}>
-          <NavLink to="/">
-            <button disabled={true} className={s.stepLinks}>
-              Итого
-            </button>
+          <NavLink to="/" className={!props.modelName ? s.disabled : ""}>
+            Итого
           </NavLink>
         </div>
       </div>

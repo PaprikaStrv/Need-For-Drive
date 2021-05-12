@@ -9,7 +9,7 @@ import {
   setCityAdresses,
 } from "../../Redux/orderPage-reducer";
 import {  resetCoords } from "../../Redux/location-reducer";
-import { setCarModelName } from "../../Redux/model-reducer.js";
+import { setCarModelName,setCarModelPriceMax, setCarModelPriceMin  } from "../../Redux/model-reducer.js";
 import Preloader from "./../../Components/Preloader/Preloader";
 import BookPageLocation from './BookPageLocation';
 
@@ -26,6 +26,10 @@ const BookPageLocationContainer = (props) => {
   if (!props.cities || props.cities.length === 0 || !props.points || props.points.length === 0) {
     return <Preloader />;
   }
+  // if (!props?.cities?.ponts || props?.cities.length?.points.length === 0 ) {
+  //   return <Preloader />;
+  // }
+
 
   return (
     <>
@@ -50,6 +54,8 @@ export default connect(mapStateToProps, {
   setInputCityValue,
   setInputPointValue,
   setCityAdresses,
+  setCarModelPriceMax, 
+  setCarModelPriceMin, 
   resetCoords,
   setCarModelName,
 })(BookPageLocationContainer);

@@ -12,13 +12,14 @@ const BookPageModel = (props) => {
   };
 
   let filteredCars = [];
-  for (let i = 0; i < props.models.data.length; i++) {
-    if (currentModelType === "Все модели") {
-      filteredCars.push(props.models.data[i]);
-    } else if (props.models.data[i].categoryId.name === currentModelType) {
-      filteredCars.push(props.models.data[i]);
+  props.models.data.filter((m) => {
+    if(currentModelType === "Все модели"){
+      filteredCars.push(m);
+    } else if (m.categoryId.name === currentModelType) {
+      filteredCars.push(m);
     }
-  }
+    
+  })
 
   const modelClickHandler = (model, priceMin, priceMax) => {
     props.setCarModelName(model);

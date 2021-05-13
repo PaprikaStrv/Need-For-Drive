@@ -4,8 +4,8 @@ import BookingStages from './BookingStages';
 
 
 
-const BookingStagesContainer = (props) => {
-  return <BookingStages {...props} />;
+const BookingStagesContainer = ({isModelAvail, modelName,}) => {
+  return <BookingStages {...{isModelAvail, modelName,}} />;
 };
 
 const mapStateToProps = (state) => ({

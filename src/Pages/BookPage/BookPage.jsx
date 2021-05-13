@@ -7,7 +7,7 @@ import BookingStagesContainer from "./../../Components/BookingStages/BookingStag
 import BookPageModelContainer from './../BookPageModel/ModelContainer';
 import AdditionalContainer from './../BookPageAdditional/AdditionalContainer';
 
-const BookPage = (props) => {
+const BookPage = ({isAvail}) => {
   return (
     <section className={s.bookPageWrapper}>
       <div className={s.bookHeaderWrapper}>
@@ -24,7 +24,7 @@ const BookPage = (props) => {
           path={"/need-for-drive/bookCar"}
           component={BookPageLocationContainer}
         />
-        {!props.isAvail && (
+        {!isAvail && (
           <Route path="/need-for-drive/bookCar/Model" component={BookPageModelContainer} />
         )}
         <Route path="/need-for-drive/bookCar/Additionally" component={AdditionalContainer}/>

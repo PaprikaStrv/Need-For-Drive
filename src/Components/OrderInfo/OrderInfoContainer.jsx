@@ -2,8 +2,34 @@ import React from "react";
 import OrderInfo from "./OrderInfo";
 import { connect } from "react-redux";
 
-const OrderInfoContainer = (props) => {
-  return <OrderInfo {...props} />;
+const OrderInfoContainer = ({
+  city,
+  address,
+  modelName,
+  color,
+  rate,
+  priceMin,
+  priceMax,
+  available,
+  btnName,
+  btnLink,
+}) => {
+  return (
+    <OrderInfo
+      {...{
+        city,
+        address,
+        modelName,
+        color,
+        rate,
+        priceMin,
+        priceMax,
+        available,
+        btnName,
+        btnLink,
+      }}
+    />
+  );
 };
 
 const mapStateToProps = (state) => ({

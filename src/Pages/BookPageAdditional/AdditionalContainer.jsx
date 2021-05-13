@@ -3,17 +3,34 @@ import { connect } from "react-redux";
 import Additional from "./Additional";
 import { setCarColor, setCarRate } from "./../../Redux/model-reducer";
 import { getRate } from "./../../Redux/orderPage-reducer.js";
-import Preloader from './../../Components/Preloader/Preloader';
+import Preloader from "./../../Components/Preloader/Preloader";
 
-const AdditionalContainer = (props) => {
+const AdditionalContainer = ({
+  getRate,
+  cars,
+  rate,
+  modelName,
+  setCarColor,
+  setCarRate,
+}) => {
   useEffect(() => {
-      props.getRate();
+    getRate();
   }, []);
 
-  if(!props.rate || props.rate.length === 0) {
-      return <Preloader/>
+  if (!rate || rate.length === 0) {
+    return <Preloader />;
   }
-  return <Additional {...props} />;
+  return (
+    <Additional
+      {...{
+        cars,
+        rate,
+        modelName,
+        setCarColor,
+        setCarRate,
+      }}
+    />
+  );
 };
 
 const mapStateToProps = (state) => ({
@@ -24,4 +41,6 @@ const mapStateToProps = (state) => ({
   carRate: state.model.rate,
 });
 
-export default connect(mapStateToProps, { getRate, setCarColor, setCarRate })(AdditionalContainer);
+export default connect(mapStateToProps, { getRate, setCarColor, setCarRate })(
+  AdditionalContainer
+);

@@ -5,14 +5,22 @@ import s from "./ModelPage.module.scss";
 import { XFormatPrice } from "../../commonScripts/scripts.js";
 import { prepareImgLink } from "../../commonScripts/scripts.js";
 
-const BookPageModel = (props) => {
+const BookPageModel = ({
+  models,
+  setCarModelName,
+  setCarModelPriceMax,
+  setCarModelPriceMin,
+  setCarColor,
+  categories,
+  modelName,
+}) => {
   const [currentModelType, setModelType] = useState("Все модели");
   const handleChange = (e) => {
     setModelType(e.target.value);
   };
 
   let filteredCars = [];
-  props.models.data.filter((m) => {
+  models.data.filter((m) => {
     if(currentModelType === "Все модели"){
       filteredCars.push(m);
     } else if (m.categoryId.name === currentModelType) {
@@ -22,10 +30,10 @@ const BookPageModel = (props) => {
   })
 
   const modelClickHandler = (model, priceMin, priceMax) => {
-    props.setCarModelName(model);
-    props.setCarModelPriceMin(priceMin);
-    props.setCarModelPriceMax(priceMax);
-    props.setCarColor("");
+    setCarModelName(model);
+    setCarModelPriceMin(priceMin);
+    setCarModelPriceMax(priceMax);
+    setCarColor("");
   };
 
   return (
@@ -34,7 +42,7 @@ const BookPageModel = (props) => {
         <div className={s.modelCarChoose}>
           <div className={s.checkBoxesWrapper}>
             <RadioInput id={1} inputName="Все модели"  currentInputType={currentModelType}  handleChange={handleChange}/>
-            {props.categories.data.map((c) => {
+            {categories.data.map((c) => {
               return (
                 <RadioInput
                   key={c.id}
@@ -80,7 +88,7 @@ const BookPageModel = (props) => {
         </div>
         <OrderInfoContainer
           btnName={"Дополнительно"}
-          available={!props.modelName}
+          available={!modelName}
           btnLink={"Additionally"}
         />
       </div>

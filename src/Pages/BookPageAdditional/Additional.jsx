@@ -6,24 +6,30 @@ import baseInput from "../BookPageLocation/BookPageLocation.module.scss";
 import { ReactSVG } from "react-svg";
 import clean_input from "../../Images/clean_input.svg";
 
-const Additional = (props) => {
+const Additional = ({
+  cars,
+  rate,
+  modelName,
+  setCarColor,
+  setCarRate,
+}) => {
   let filteredColors = [];
-  if (props.cars && props.modelName) {
-    filteredColors = props.cars.data.filter((c) => {
-      return c.name.toLowerCase() === props.modelName.toLowerCase();
+  if (cars && modelName) {
+    filteredColors = cars.data.filter((c) => {
+      return c.name.toLowerCase() === modelName.toLowerCase();
     });
   }
 
   const [currentColor, setColor] = useState("");
   const handleColorChange = (e) => {
     setColor(e.target.value);
-    props.setCarColor(e.target.value);
+    setCarColor(e.target.value);
   };
 
   const [currentRate, setRate] = useState("");
   const handleRateChange = (e) => {
     setRate(e.target.value);
-    props.setCarRate(e.target.value);
+    setCarRate(e.target.value);
   };
 
   return (
@@ -72,7 +78,7 @@ const Additional = (props) => {
         <div className={s.additionalBlock}>
           <span className={`${s.additionalInputBlock}`}>Тариф</span>
           <div className={s.rateCheckBoxesWrapper}>
-            {props.rate.data.map((rate) => {
+            {rate.data.map((rate) => {
               return (
                 <RadioInput
                   key={rate.rateTypeId.id}

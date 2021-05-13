@@ -7,49 +7,55 @@ import PointsMapContainer from "./../../Components/Map/PointsMapContainer";
 import OrderInfoContainer from "./../../Components/OrderInfo/OrderInfoContainer";
 import { useEffect } from "react";
 
-const BookPageLocation = (props) => {
-
-  const [curCityInputValue, setCurCityValue] = useState(props.inputCityValue);
-  const [curPointInputValue, setCurPointValue] = useState(
-    props.inputPointValue
-  );
-  const [
-    isInputCityAutoCompleteOpen,
-    setInputCityAutoCompleteIsOpen,
-  ] = useState(false);
-  const [
-    isInputPointAutoCompleteOpen,
-    setInputPointAutoCompleteIsOpen,
-  ] = useState(false);
+const BookPageLocation = ({
+  cities,
+  points,
+  isModelAvail,
+  inputCityValue,
+  inputPointValue,
+  setCityAdresses,
+  setInputPointValue,
+  setInputCityValue,
+  setModelAvailable,
+  resetCoords,
+  setCarModelName,
+  setCarModelPriceMax,
+  setCarModelPriceMin,
+}) => {
+  const [curCityInputValue, setCurCityValue] = useState(inputCityValue);
+  const [curPointInputValue, setCurPointValue] = useState(inputPointValue);
+  const [isInputCityAutoCompleteOpen, setInputCityAutoCompleteIsOpen] =
+    useState(false);
+  const [isInputPointAutoCompleteOpen, setInputPointAutoCompleteIsOpen] =
+    useState(false);
 
   // choose cities including chars from input
-  const filteredCities = props.cities.data.filter((city) => {
+  const filteredCities = cities.data.filter((city) => {
     return city.name.toLowerCase().includes(curCityInputValue.toLowerCase());
   });
 
   //choose point adress for current chosen city
   let filteredPoints = [];
-  props.points.data.filter((p) => {
-    if(p.cityId != null && p.cityId.name === curCityInputValue){
+  points.data.filter((p) => {
+    if (p.cityId != null && p.cityId.name === curCityInputValue) {
       filteredPoints.push(p.address);
     }
-  })
-
+  });
   const arrKey = "name";
-  const points = filteredPoints.map((item) => ({ [arrKey]: item.toString() }));
-  props.setCityAdresses(points);
+  const point = filteredPoints.map((item) => ({ [arrKey]: item.toString() }));
+  setCityAdresses(point);
 
   // show filtered cities and put selected in redux state
   const itemCityAutoСompleteClickHandler = (e) => {
     setCurCityValue(e.target.textContent);
-    props.setInputCityValue(e.target.textContent);
+    setInputCityValue(e.target.textContent);
     setInputCityAutoCompleteIsOpen(!isInputCityAutoCompleteOpen);
   };
 
   // show filtered points and put selected in redux state
   const itemPointAutoСompleteClickHandler = (e) => {
     setCurPointValue(e.target.textContent);
-    props.setInputPointValue(e.target.textContent);
+    setInputPointValue(e.target.textContent);
     setInputPointAutoCompleteIsOpen(!isInputPointAutoCompleteOpen);
   };
 
@@ -64,43 +70,42 @@ const BookPageLocation = (props) => {
   };
 
   // make model step available
- 
-  if (
-    props.inputCityValue !== "" &&
-    curCityInputValue === props.inputCityValue &&
-    props.inputPointValue !== "" 
-  
-  )
-    props.setModelAvailable(false);
+  useEffect(() => {
+    if (
+      inputCityValue !== "" &&
+      curCityInputValue === inputCityValue &&
+      inputPointValue !== ""
+    )
+      setModelAvailable(false);
+  }, [inputPointValue]);
 
   // clean_city_input_on_btn_click
   const cityBtnClickHandler = () => {
-    props.setModelAvailable(true);
-    props.resetCoords();
-    props.setCarModelName("");
-    props.setInputCityValue("");
-    props.setInputPointValue("");
-    props.setCarModelPriceMax("");
-    props.setCarModelPriceMin(""); 
+    setModelAvailable(true);
+    resetCoords();
+    setCarModelName("");
+    setInputCityValue("");
+    setInputPointValue("");
+    setCarModelPriceMax("");
+    setCarModelPriceMin("");
     setCurCityValue("");
     setCurPointValue("");
   };
   // clean_point_input_on_btn_click
   const pointBtnClickHandler = () => {
-    props.setModelAvailable(true);
+    setModelAvailable(true);
     //props.resetCoords();
-    props.setCarModelName("");
-    props.setInputPointValue("");
+    setCarModelName("");
+    setInputPointValue("");
     setCurPointValue("");
-    props.setCarModelPriceMax("");
-    props.setCarModelPriceMin("");
+    setCarModelPriceMax("");
+    setCarModelPriceMin("");
   };
 
   const hideAutocomplete = () => {
     setInputCityAutoCompleteIsOpen(false);
     setInputPointAutoCompleteIsOpen(false);
-  }
-
+  };
 
   return (
     <div className={s.findLocationFormWrapper}>
@@ -144,7 +149,7 @@ const BookPageLocation = (props) => {
                   type="text"
                   name="point"
                   //value={curPointInputValue}
-                  value={props.inputPointValue || curPointInputValue}
+                  value={inputPointValue || curPointInputValue}
                   placeholder="Начните вводить пункт..."
                   autoComplete="off"
                   onChange={(event) => setCurPointValue(event.target.value)}
@@ -159,7 +164,7 @@ const BookPageLocation = (props) => {
               </div>
             </div>
             <Autocomplete
-              filteredValues={points}
+              filteredValues={point}
               itemClickHandler={itemPointAutoСompleteClickHandler}
               value={curPointInputValue}
               isOpen={isInputPointAutoCompleteOpen}
@@ -171,10 +176,13 @@ const BookPageLocation = (props) => {
           </div>
         </div>
 
-        <OrderInfoContainer btnName={"Выбрать модель"} available={props.isModelAvail} btnLink={"Model"}/>
+        <OrderInfoContainer
+          btnName={"Выбрать модель"}
+          available={isModelAvail}
+          btnLink={"Model"}
+        />
       </div>
     </div>
   );
 };
-
 export default BookPageLocation;

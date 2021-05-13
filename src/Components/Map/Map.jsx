@@ -4,11 +4,18 @@ import s from "./Map.module.scss";
 import map_marker from "../../Images/map_marker.svg";
 import EmptyMap from "./EmptyMap";
 
-const PointsMap = (props) => {
+const PointsMap = ({
+  handlerGetPointCoords,
+  curPointAddress,
+  pointAddress,
+  curPointCoords,
+  city,
+  coords,
+}) => {
   let coor = [];
 
-  if (props.coords) {
-    coor = props.coords.map((c) => {
+  if (coords) {
+    coor = coords.map((c) => {
       return c.coords.split(" ");
     });
   }
@@ -19,14 +26,14 @@ const PointsMap = (props) => {
     map.current.setCenter(coordinates);
   };
 
-  if (map.current && props.curPointCoords.length !== 0) {
-    let curPointCoords = props.curPointCoords.split(" ");
+  if (map.current && curPointCoords.length !== 0) {
+    curPointCoords = curPointCoords.split(" ");
     mySetCenter([curPointCoords[1], curPointCoords[0]]);
   }
 
   return (
     <div className={s.mapWrapper}>
-      {props.coords.length !== 0 ? (
+      {coords.length !== 0 ? (
         <YMaps>
           <Map
             defaultState={{
@@ -49,7 +56,7 @@ const PointsMap = (props) => {
                   }}
                   onClick={() => {
                     mySetCenter([c[1], c[0]]);
-                    props.handlerGetPointCoords(c);
+                    handlerGetPointCoords(c);
                   }}
                 />
               );

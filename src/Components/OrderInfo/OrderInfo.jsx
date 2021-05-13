@@ -3,7 +3,18 @@ import { NavLink } from "react-router-dom";
 import s from "./OrderInfo.module.scss";
 import  { XFormatPrice } from '../../commonScripts/scripts.js';
 
-const OrderInfo = (props) => {
+const OrderInfo = ({
+  city,
+  address,
+  modelName,
+  color,
+  rate,
+  priceMin,
+  priceMax,
+  available,
+  btnName,
+  btnLink,
+}) => {
   return (
     <div className={s.orderInfoWrapper}>
       <span className={s.yourOrderText}>Ваш заказ:</span>
@@ -12,58 +23,58 @@ const OrderInfo = (props) => {
           <div className={`${s.liName} ${s.liPointName}`}>Пункт выдачи</div>
           <div className={s.addressDots}></div>
           <div className={s.addressOrderInfo}>
-            {props.city && props.address && (
+            {city && address && (
               <>
-                <span className={s.orderInfoCity}>{props.city},</span>
-                <span>{props.address}</span>
+                <span className={s.orderInfoCity}>{city},</span>
+                <span>{address}</span>
               </>
             )}
           </div>
         </li>
-        {props.modelName && (
+        {modelName && (
           <li>
             <div className={s.liName}>Модель</div>
             <div></div>
             <div className={`${s.addressOrderInfo} ${s.attrSpan}`}>
               {/* <span></span> */}
-              <span>{props.modelName}</span>
+              <span>{modelName}</span>
             </div>
           </li>
         )}
-        {props.color && (
+        {color && (
           <li>
             <div className={s.liName}>Цвет</div>
             <div></div>
             <div  className={`${s.addressOrderInfo} ${s.attrSpan}`}>
               {/* <span></span> */}
-              <span>{props.color[0].toUpperCase() + props.color.slice(1)}</span>
+              <span>{color[0].toUpperCase() + color.slice(1)}</span>
             </div>
           </li>
         )}
-        {props.rate && (
+        {rate && (
           <li>
             <div className={s.liName}>Тариф</div>
             <div></div>
             <div  className={`${s.addressOrderInfo} ${s.attrSpan}`}>
               {/* <span></span> */}
-              <span>{props.rate}</span>
+              <span>{rate}</span>
             </div>
           </li>
         )}
       </ul>
       
-      {props.priceMin && props.priceMax && (
+      {priceMin && priceMax && (
         <div className={s.modelPrice}>
           <span className={s.price}>Цена: </span>
-          <span className={s.priceBorder}>от {XFormatPrice(props.priceMin)} до {XFormatPrice(props.priceMax)} ₽</span>
+          <span className={s.priceBorder}>от {XFormatPrice(priceMin)} до {XFormatPrice(priceMax)} ₽</span>
         </div>
       )}
 
-      <NavLink to={"/need-for-drive/bookCar/" + props.btnLink} className={props.available ? `${s.orderInfoBtn} ${s.disabled}` : s.orderInfoBtn}>
+      <NavLink to={"/need-for-drive/bookCar/" + btnLink} className={available ? `${s.orderInfoBtn} ${s.disabled}` : s.orderInfoBtn}>
         {/* <button disabled={props.available} className={}>
          
         </button> */}
-        {props.btnName}
+        {btnName}
       </NavLink>
     </div>
   );

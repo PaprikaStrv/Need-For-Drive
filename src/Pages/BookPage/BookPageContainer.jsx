@@ -3,9 +3,9 @@ import BookPage from './BookPage';
 import { connect } from 'react-redux';
 
 
-const BookPageContainer = (props) => {
+const BookPageContainer = ({isAvail}) => {
     return (
-        <BookPage {...props}/>
+        <BookPage {...isAvail}/>
     );
 }
 

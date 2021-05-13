@@ -7,23 +7,48 @@ import {
   setCarModelPriceMax,
   setCarColor,
 } from "./../../Redux/model-reducer";
-import {
-  getCategories,
-} from "./../../Redux/orderPage-reducer";
+import { getCategories } from "./../../Redux/orderPage-reducer";
 import { useEffect } from "react";
 import Preloader from "./../../Components/Preloader/Preloader";
 import { connect } from "react-redux";
 
-const BookPageModelContainer = (props) => {
+const BookPageModelContainer = ({
+  getCategories,
+  getCars,
+  models,
+  setCarModelName,
+  setCarModelPriceMax,
+  setCarModelPriceMin,
+  setCarColor,
+  categories,
+  modelName,
+}) => {
   useEffect(() => {
-    props.getCategories();
-    props.getCars();
+    getCategories();
+    getCars();
   }, []);
 
-  if (!props.models || props.models.length === 0 || !props.categories || props.categories.length === 0) {
+  if (
+    !models ||
+    models.length === 0 ||
+    !categories ||
+    categories.length === 0
+  ) {
     return <Preloader />;
   }
-  return <BookPageModel {...props} />;
+  return (
+    <BookPageModel
+      {...{
+        models,
+        setCarModelName,
+        setCarModelPriceMax,
+        setCarModelPriceMin,
+        setCarColor,
+        categories,
+        modelName,
+      }}
+    />
+  );
 };
 
 const mapStateToProps = (state) => ({

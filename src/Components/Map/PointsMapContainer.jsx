@@ -7,37 +7,51 @@ import {
   getAddress,
 } from "../../Redux/location-reducer";
 
-import { setInputPointValue } from './../../Redux/orderPage-reducer';
+import { setInputPointValue } from "./../../Redux/orderPage-reducer";
 
-const PointsMapContainer = (props) => {
-
+const PointsMapContainer = ({
+  getAddress,
+  setInputPointValue,
+  getCoords,
+  getCurPointCoords,
+  cityAdresses,
+  curPointAddress,
+  curPointCoords,
+  pointAddress,
+  city,
+  coords,
+}) => {
   const handlerGetPointCoords = (coords) => {
-    props.getAddress(coords);
-   
+    getAddress(coords);
   };
 
   useEffect(() => {
-    if(props.curPointAddress) {
-      props.setInputPointValue(props.curPointAddress);
+    if (curPointAddress) {
+      setInputPointValue(curPointAddress);
     }
-  }, [props.curPointAddress])
-  
+  }, [curPointAddress]);
 
   useEffect(() => {
-    if (props.cityAdresses.length > 0) {
-      for (let i = 0; i < props.cityAdresses.length; i++) {
-        props.getCoords(props.cityAdresses[i].name, props.city);
-      }
+    if (cityAdresses.length > 0) {
+      cityAdresses.forEach((item) => {
+        getCoords(item.name, city);
+      });
     }
-  }, [props.city]);
+  }, [city]);
 
   useEffect(() => {
-    if (props.pointAddress && props.pointAddress !== "") {
-      props.getCurPointCoords(props.pointAddress, props.city);
+    if (pointAddress && pointAddress !== "") {
+      getCurPointCoords(pointAddress, city);
     }
-  }, [props.pointAddress]);
+  }, [pointAddress]);
 
-  return <PointsMap {...props} handlerGetPointCoords={handlerGetPointCoords} />;
+  return <PointsMap {...{
+    curPointAddress,
+    curPointCoords,
+    pointAddress,
+    city,
+    coords,
+  }} handlerGetPointCoords={handlerGetPointCoords} />;
 };
 
 const mapStateToProps = (state) => ({

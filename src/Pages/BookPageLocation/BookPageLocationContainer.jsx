@@ -1,4 +1,4 @@
-import React, { useEffect} from "react";
+import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import {
   getCitiesThunkCreator,
@@ -8,32 +8,65 @@ import {
   setInputPointValue,
   setCityAdresses,
 } from "../../Redux/orderPage-reducer";
-import {  resetCoords } from "../../Redux/location-reducer";
-import { setCarModelName,setCarModelPriceMax, setCarModelPriceMin  } from "../../Redux/model-reducer.js";
+import { resetCoords } from "../../Redux/location-reducer";
+import {
+  setCarModelName,
+  setCarModelPriceMax,
+  setCarModelPriceMin,
+} from "../../Redux/model-reducer.js";
 import Preloader from "./../../Components/Preloader/Preloader";
-import BookPageLocation from './BookPageLocation';
+import BookPageLocation from "./BookPageLocation";
 
-const BookPageLocationContainer = (props) => {
-
+const BookPageLocationContainer = ({
+  getCitiesThunkCreator,
+  getPointsThunkCreator,
+  cities,
+  points,
+  isModelAvail,
+  inputCityValue,
+  inputPointValue,
+  setCityAdresses,
+  setInputCityValue,
+  setModelAvailable,
+  resetCoords,
+  setCarModelName,
+  setInputPointValue,
+  setCarModelPriceMax,
+  setCarModelPriceMin,
+}) => {
   useEffect(() => {
-    props.getCitiesThunkCreator();
-    props.getPointsThunkCreator();
+    getCitiesThunkCreator();
+    getPointsThunkCreator();
   }, []); //зависимости?!
 
-  useEffect(() => {
-  }, [props.inputPointValue])
+  useEffect(() => {}, [inputPointValue]);
 
-  if (!props.cities || props.cities.length === 0 || !props.points || props.points.length === 0) {
+  if (!cities || cities.length === 0 || !points || points.length === 0) {
     return <Preloader />;
   }
   // if (!props?.cities?.ponts || props?.cities.length?.points.length === 0 ) {
   //   return <Preloader />;
   // }
 
-
   return (
     <>
-      <BookPageLocation {...props}/>
+      <BookPageLocation
+        {...{
+          cities,
+          points,
+          isModelAvail,
+          inputCityValue,
+          inputPointValue,
+          setCityAdresses,
+          setInputPointValue,
+          setInputCityValue,
+          setModelAvailable,
+          resetCoords,
+          setCarModelName,
+          setCarModelPriceMax,
+          setCarModelPriceMin,
+        }}
+      />
     </>
   );
 };
@@ -54,8 +87,8 @@ export default connect(mapStateToProps, {
   setInputCityValue,
   setInputPointValue,
   setCityAdresses,
-  setCarModelPriceMax, 
-  setCarModelPriceMin, 
+  setCarModelPriceMax,
+  setCarModelPriceMin,
   resetCoords,
   setCarModelName,
 })(BookPageLocationContainer);

@@ -4,14 +4,19 @@ import s from "./SideBar.module.scss";
 import menu_btn from "../../Images/menu_btn.svg";
 import close_menu_btn from "../../Images/close_menu_btn.svg";
 
-const SideBar = (props) => {
+const SideBar = ({
+  setActive,
+  isActive,
+  langBtnClicked,
+  changeSiteLang
+}) => {
   return (
     <div className={s.sideBarWrapper}>
       <button
-        onClick={() => props.setActive(!props.isActive)}
+        onClick={() => setActive(!isActive)}
         className={s.menuBtn}
       >
-        {props.isActive ? (
+        {isActive ? (
           <ReactSVG src={close_menu_btn} />
         ) : (
           <ReactSVG src={menu_btn} className={s.openMenuBtn} />
@@ -19,19 +24,19 @@ const SideBar = (props) => {
       </button>
       <div
         className={[
-          props.isActive
+          isActive
             ? s.langBtnWrapper + " " + s.langBtnWrapperMobile
             : s.langBtnWrapper,
         ]}
-        onClick={() => props.changeSiteLang(!props.langBtnClicked)}
+        onClick={() => changeSiteLang(!langBtnClicked)}
       >
         <button
           className={[
-            props.isActive ? s.langBtn + " " + s.langBtnMobile : s.langBtn,
+            isActive ? s.langBtn + " " + s.langBtnMobile : s.langBtn,
           ]}
           
         >
-          {props.langBtnClicked ? "Eng" : "Рус"}
+          {langBtnClicked ? "Eng" : "Рус"}
         </button>
       </div>
     </div>

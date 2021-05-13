@@ -1,15 +1,19 @@
 @import "../../scss/mixins.scss";
 
 .additionalPageWrapepr {
-  display: flex;
-  justify-content: space-between;
-
+  padding: 0px 64px;
   border-top: 1px solid #eeeeee;
 }
 
 .additionalPageContainer {
-  padding: 32px 0px 0px 64px;
-  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  margin: 0 auto;
+  max-width: 1440px;
+}
+
+.additionalParameters {
+  padding-top: 32px;
 }
 .additionalBlock {
   margin-bottom: 32px;
@@ -23,7 +27,6 @@
 
 .checkBoxesWrapper {
   display: flex;
- 
 }
 
 .checkBoxWrapper {
@@ -39,7 +42,7 @@
 
 .dataPickWrapper {
   display: flex;
- flex-direction: column;
+  flex-direction: column;
 }
 
 .dataFieldWrapper {
@@ -74,20 +77,40 @@
   }
 }
 
-
-@media screen and (max-width: 1024px) {
-  .additionalPageContainer {
-    padding-left: 32px;
+.additionalParametersCheckboxes {
+  display: flex;
+  flex-direction: column;
+  margin-top: 16px;
+  div input{
+    margin: 0;
+    margin-right: 8px;
   }
+  div:not(:last-child) {
+    margin-bottom: 8px;
+  }
+  
 }
 
-@media screen and (max-width:900px) {
+@media screen and (max-width: 1024px) {
   .additionalPageWrapepr {
+    padding: 0 32px;
+  } 
+}
+
+@media screen and (max-width: 900px) {
+  .additionalPageContainer {
     flex-direction: column;
     align-items: center;
   }
-  .additionalPageContainer {
-    justify-content: center;
-    align-items: center;
-  }
+ @media screen and (max-width: 540px) {
+   .additionalInputBlock {
+     display: flex;
+     flex-direction: column;
+   }
+   .checkBoxesWrapper {
+     div {
+       margin-bottom: 24px;
+     }
+   }
+ }
 }

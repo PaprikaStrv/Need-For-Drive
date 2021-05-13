@@ -13,6 +13,7 @@ const OrderInfoContainer = ({
   available,
   btnName,
   btnLink,
+  addParams,
 }) => {
   return (
     <OrderInfo
@@ -27,6 +28,7 @@ const OrderInfoContainer = ({
         available,
         btnName,
         btnLink,
+        addParams,
       }}
     />
   );
@@ -40,6 +42,7 @@ const mapStateToProps = (state) => ({
   priceMax: state.model.priceMax,
   color: state.model.color,
   rate: state.model.rate,
+  addParams: state.model.additionalParameters
 });
 
 export default connect(mapStateToProps)(OrderInfoContainer);

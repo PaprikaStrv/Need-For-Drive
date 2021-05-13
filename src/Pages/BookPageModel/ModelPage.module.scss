@@ -2,7 +2,7 @@
 
 .modelPageWrapper {
   border-top: 1px solid #eeeeee;
-  padding: 32px 64px;
+  padding: 0 64px;
 }
 
 .modelPageContainer {
@@ -10,6 +10,10 @@
   justify-content: space-between;
   margin: 0 auto;
   max-width: 1440px;
+}
+
+.modelCarChoose {
+  padding-top: 32px;
 }
 
 .checkBoxesWrapper {
@@ -95,6 +99,9 @@
 @media screen and (max-width: 1024px) {
   .modelPageWrapper {
     padding: 32px 32px 0px 32px;
+  }
+  .modelCarChoose {
+    padding-top: 0px;
   }
   .carModelName {
     font-size: 16px;

@@ -6,6 +6,7 @@ const SET_CAR_PRICE_MIN = "SET_CAR_PRICE_MIN";
 const SET_CAR_PRICE_MAX = "SET_CAR_PRICE_MAX";
 const SET_CAR_COLOR = "SET_CAR_COLOR";
 const SET_CAR_RATE = "SET_CAT_RATE";
+const SET_CAR_PARAMS = "SET_CAR_PARAMS";
 
 let initialState = {
   models: [],
@@ -14,6 +15,14 @@ let initialState = {
   rate: "",
   priceMin: "",
   priceMax: "",
+  additionalParameters: [
+    { id: 12, name: "Полный бак", price: 500, checked: false },
+    { id: 23, name: "Детское кресло", price: 200, checked: false },
+    { id: 33, name: "Правый руль", price: 1600, checked: false },
+  ],
+  // fullTank: false,
+  // babyChair: false,
+  // rigthHandeDrive: false,
 };
 
 const modelReducer = (state = initialState, action) => {
@@ -54,6 +63,25 @@ const modelReducer = (state = initialState, action) => {
         ...action,
         priceMax: action.data,
       };
+    case SET_CAR_PARAMS: {
+      const id = action.id;
+      const exist = state.additionalParameters.some((item) => item.id === id);
+      if (exist) {
+        const additionalParameters = state.additionalParameters.map((item) =>
+          item.id === id
+            ? {
+                ...item,
+                checked: !item.checked,
+              }
+            : item
+        );
+        return { ...state, additionalParameters };
+      } else {
+        return {
+          ...state,
+        };
+      }
+    }
     default:
       return state;
   }
@@ -87,6 +115,11 @@ export const setCarModelPriceMin = (priceMin) => ({
 export const setCarModelPriceMax = (priceMax) => ({
   type: SET_CAR_PRICE_MAX,
   data: priceMax,
+});
+
+export const setCarParams = (id) => ({
+  type: SET_CAR_PARAMS,
+  id,
 });
 
 export const getCars = () => {

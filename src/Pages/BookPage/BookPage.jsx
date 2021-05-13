@@ -27,7 +27,10 @@ const BookPage = ({isAvail}) => {
         {!isAvail && (
           <Route path="/need-for-drive/bookCar/Model" component={BookPageModelContainer} />
         )}
-        <Route path="/need-for-drive/bookCar/Additionally" component={AdditionalContainer}/>
+        {!isAvail && (
+          <Route path="/need-for-drive/bookCar/Additionally" component={AdditionalContainer}/>
+        )}
+        
         
       </Switch>
     </section>

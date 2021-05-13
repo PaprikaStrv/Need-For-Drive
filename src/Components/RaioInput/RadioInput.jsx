@@ -23,7 +23,7 @@ const RadioInput = ({
         <label
           htmlFor={id}
           className={
-            currentInputType === inputName ? "" : s.notActiveLable
+            currentInputType === inputName ? s.radiLabel : `${s.radiLabel} ${s.notActiveLable}`
           }
         >
           {inputName}, {ratePrice}₽/{rateUnit}
@@ -32,7 +32,7 @@ const RadioInput = ({
         <label
           htmlFor={id}
           className={
-            currentInputType === inputName ? "" : s.notActiveLable
+            currentInputType === inputName ? s.radiLabel : `${s.radiLabel} ${s.notActiveLable}`
           }
         >
           {inputName[0].toUpperCase() + inputName.slice(1)}

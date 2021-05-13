@@ -14,6 +14,7 @@ const OrderInfo = ({
   available,
   btnName,
   btnLink,
+  addParams,
 }) => {
   return (
     <div className={s.orderInfoWrapper}>
@@ -36,7 +37,6 @@ const OrderInfo = ({
             <div className={s.liName}>Модель</div>
             <div></div>
             <div className={`${s.addressOrderInfo} ${s.attrSpan}`}>
-              {/* <span></span> */}
               <span>{modelName}</span>
             </div>
           </li>
@@ -46,7 +46,6 @@ const OrderInfo = ({
             <div className={s.liName}>Цвет</div>
             <div></div>
             <div  className={`${s.addressOrderInfo} ${s.attrSpan}`}>
-              {/* <span></span> */}
               <span>{color[0].toUpperCase() + color.slice(1)}</span>
             </div>
           </li>
@@ -56,11 +55,23 @@ const OrderInfo = ({
             <div className={s.liName}>Тариф</div>
             <div></div>
             <div  className={`${s.addressOrderInfo} ${s.attrSpan}`}>
-              {/* <span></span> */}
               <span>{rate}</span>
             </div>
           </li>
         )}
+
+        {addParams.map((item, index) => {
+          if(item.checked)
+          return (
+            <li key={index}>
+              <div className={s.liName}>{item.name}</div>
+              <div></div>
+              <div className={`${s.addressOrderInfo} ${s.attrSpan}`}>
+                <span>Да</span>
+              </div>
+            </li>
+          )
+        })}
       </ul>
       
       {priceMin && priceMax && (
@@ -71,9 +82,6 @@ const OrderInfo = ({
       )}
 
       <NavLink to={"/need-for-drive/bookCar/" + btnLink} className={available ? `${s.orderInfoBtn} ${s.disabled}` : s.orderInfoBtn}>
-        {/* <button disabled={props.available} className={}>
-         
-        </button> */}
         {btnName}
       </NavLink>
     </div>

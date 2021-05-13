@@ -2,7 +2,7 @@
 
 .findLocationFormWrapper {
   border-top: 1px solid #eeeeee;
-  padding: 32px 64px;
+  padding: 0 64px;
   height: 100%;
 }
 
@@ -64,7 +64,7 @@ label {
 .findLocationFormContainer {
   display: flex;
   flex-direction: column;
-  //padding: 32px 32px 0px 0px;
+  padding: 32px 0;
   width: 100%;
 }
 
@@ -110,6 +110,9 @@ select:-webkit-autofill:focus {
 @media screen and (max-width: 1024px) {
   .findLocationFormWrapper {
     padding: 32px 32px 0px 32px;
+  }
+  .findLocationFormContainer {
+    padding-top: 0;
   }
 }
 

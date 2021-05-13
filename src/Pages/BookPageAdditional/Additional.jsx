@@ -5,13 +5,17 @@ import s from "./Additional.module.scss";
 import baseInput from "../BookPageLocation/BookPageLocation.module.scss";
 import { ReactSVG } from "react-svg";
 import clean_input from "../../Images/clean_input.svg";
+import CheckBoxInput from "../../Components/CheckBoxInput/CheckBoxInput";
 
 const Additional = ({
   cars,
   rate,
+  color,
   modelName,
   setCarColor,
   setCarRate,
+  addParams,
+  setCarParams,
 }) => {
   let filteredColors = [];
   if (cars && modelName) {
@@ -31,77 +35,111 @@ const Additional = ({
     setRate(e.target.value);
     setCarRate(e.target.value);
   };
+  
+  const [isChecked, setCheck] = useState("");
+  const handleParamsChange = (e, id) => {
+     setCheck(e.target.value)
+     setCarParams(parseInt(id));
+  };
 
   return (
     <div className={s.additionalPageWrapepr}>
       <div className={s.additionalPageContainer}>
-        <div className={s.additionalBlock}>
-          <span>Цвет</span>
-          <div className={`${s.checkBoxesWrapper} ${s.additionalInputBlock}`}>
-            {filteredColors[0].colors.map((color, index) => {
-              return (
-                <RadioInput
-                  key={index}
-                  id={index}
-                  inputName={color}
-                  currentInputType={currentColor}
-                  handleChange={handleColorChange}
-                />
-              );
-            })}
+        <div className={s.additionalParameters}>
+          <div className={s.additionalBlock}>
+            {filteredColors[0] && filteredColors[0].colors.length === 0 ? (
+              <span>Извините, невозможно выбрать цвет</span>
+            ) : (
+              <span>Цвет</span>
+            )}
+            <div className={`${s.checkBoxesWrapper} ${s.additionalInputBlock}`}>
+              <RadioInput
+                id={10}
+                inputName="Любой"
+                currentInputType={currentColor}
+                handleChange={handleColorChange}
+              />
+              {filteredColors[0]
+                ? filteredColors[0].colors.map((color, index) => {
+                    return (
+                      <RadioInput
+                        key={index}
+                        id={index}
+                        inputName={color}
+                        currentInputType={currentColor}
+                        handleChange={handleColorChange}
+                      />
+                    );
+                  })
+                : null}
+            </div>
           </div>
-        </div>
-        <div className={s.additionalBlock}>
-          <span>Дата аренды</span>
-          <div className={`${s.dataPickWrapper} ${s.additionalInputBlock}`}>
-            <div className={s.dataFieldWrapper}>
-              <label>С</label>
-              <div className={s.dataInputField}>
-                <input type="date" />
-                <button className={baseInput.cleanInputBtn}>
-                  <ReactSVG src={clean_input} />
-                </button>
+          <div className={s.additionalBlock}>
+            <span>Дата аренды</span>
+            <div className={`${s.dataPickWrapper} ${s.additionalInputBlock}`}>
+              <div className={s.dataFieldWrapper}>
+                <label>С</label>
+                <div className={s.dataInputField}>
+                  <input type="date" />
+                  <button className={baseInput.cleanInputBtn}>
+                    <ReactSVG src={clean_input} />
+                  </button>
+                </div>
+              </div>
+              <div className={s.dataFieldWrapper}>
+                <label>По</label>
+                <div className={s.dataInputField}>
+                  <input type="date" />
+                  <button className={baseInput.cleanInputBtn}>
+                    <ReactSVG src={clean_input} />
+                  </button>
+                </div>
               </div>
             </div>
-            <div className={s.dataFieldWrapper}>
-              <label>По</label>
-              <div className={s.dataInputField}>
-                <input type="date" />
-                <button className={baseInput.cleanInputBtn}>
-                  <ReactSVG src={clean_input} />
-                </button>
-              </div>
+          </div>
+
+          <div className={s.additionalBlock}>
+            <span className={`${s.additionalInputBlock}`}>Тариф</span>
+            <div className={s.rateCheckBoxesWrapper}>
+              {rate.data.map((rate) => {
+                return (
+                  <RadioInput
+                    key={rate.rateTypeId.id}
+                    id={rate.rateTypeId.id}
+                    inputName={rate.rateTypeId.name}
+                    currentInputType={currentRate}
+                    handleChange={handleRateChange}
+                    ratePrice={rate.price}
+                    rateUnit={rate.rateTypeId.unit}
+                  />
+                );
+              })}
+            </div>
+          </div>
+
+          <div className={s.additionalBlock}>
+            <span className={`${s.additionalInputBlock}`}>Доп услуги</span>
+            <div
+              className={`${s.checkBoxesWrapper} ${s.additionalParametersCheckboxes}`}
+            >
+              {addParams.map((param) => {
+                return (
+                  <CheckBoxInput
+                    key={param.id}
+                    id={param.id}
+                    inputName={param.name}
+                    price={param.price}
+                    handleChange={handleParamsChange}
+                    currentInputType={isChecked}
+                  />
+                );
+              })}
             </div>
           </div>
         </div>
 
-        <div className={s.additionalBlock}>
-          <span className={`${s.additionalInputBlock}`}>Тариф</span>
-          <div className={s.rateCheckBoxesWrapper}>
-            {rate.data.map((rate) => {
-              return (
-                <RadioInput
-                  key={rate.rateTypeId.id}
-                  id={rate.rateTypeId.id}
-                  inputName={rate.rateTypeId.name}
-                  currentInputType={currentRate}
-                  handleChange={handleRateChange}
-                  ratePrice={rate.price}
-                  rateUnit={rate.rateTypeId.unit}
-                />
-              );
-              {/* console.log(rate); */}
-            })}
-          </div>
-        </div>
-
-        <div className={s.additionalBlock}>
-          <span className={`${s.additionalInputBlock}`}>Доп услуги</span>
-          <input type="checkbox" />
-          <input type="checkbox" />
-        </div>
+        <OrderInfoContainer btnName={"Итого"} available={!color || !rate}/>
       </div>
-      <OrderInfoContainer btnName={"Итого"} />
     </div>
   );
 };

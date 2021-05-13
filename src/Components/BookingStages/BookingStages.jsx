@@ -2,7 +2,7 @@ import React from "react";
 import s from "./BookingStages.module.scss";
 import { NavLink } from "react-router-dom";
 
-const BookingStages = ({isModelAvail, modelName,}) => {
+const BookingStages = ({isModelAvail, modelName, color, rate}) => {
   return (
     <div className={s.orderStepsWrapper}>
       <div className={s.orderStepsContainer}>
@@ -29,7 +29,7 @@ const BookingStages = ({isModelAvail, modelName,}) => {
         </div>
 
         <div className={s.orderStep}>
-          <NavLink to="/" className={!modelName ? s.disabled : ""}>
+          <NavLink to="/" className={!color && !rate ? s.disabled : ""}>
             Итого
           </NavLink>
         </div>

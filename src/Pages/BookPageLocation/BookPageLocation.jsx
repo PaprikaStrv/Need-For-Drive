@@ -113,6 +113,43 @@ const BookPageLocation = ({
     setInputPointAutoCompleteIsOpen(false);
   };
 
+  const bacspaceCityDel = (e) => {
+    let count = 0;
+    if (e.keyCode === 8) {
+      count++;
+      if (count === curCityInputValue.length) {
+        setModelAvailable(true);
+        resetCoords();
+        setCarModelName("");
+        setInputCityValue("");
+        setInputPointValue("");
+        setCarModelPriceMax("");
+        setCarModelPriceMin("");
+        setCurCityValue("");
+        setCurPointValue("");
+        setCurPointAddress("");
+        setCurPointCoords("");
+      }
+    }
+  };
+
+  const bacspacePointDel = (e) => {
+    let count = 0;
+    if (e.keyCode === 8) {
+      count++;
+      if (count === curPointInputValue.length) {
+        setModelAvailable(true);
+        setCarModelName("");
+        setInputPointValue("");
+        setCurPointValue("");
+        setCarModelPriceMax("");
+        setCarModelPriceMin("");
+        setCurPointAddress("");
+        setCurPointCoords("");
+      }
+    }
+  };
+
   return (
     <div className={s.findLocationFormWrapper}>
       <div className={s.locationContainer}>
@@ -129,6 +166,7 @@ const BookPageLocation = ({
                   autoComplete="off"
                   onChange={(event) => setCurCityValue(event.target.value)}
                   onClick={cityInputClickHandler}
+                  onKeyDown={bacspaceCityDel}
                 />
                 <button
                   onClick={cityBtnClickHandler}
@@ -154,12 +192,12 @@ const BookPageLocation = ({
                 <input
                   type="text"
                   name="point"
-                  //value={curPointInputValue}
                   value={inputPointValue || curPointInputValue}
                   placeholder="Начните вводить пункт..."
                   autoComplete="off"
                   onChange={(event) => setCurPointValue(event.target.value)}
                   onClick={pointInputClickHandler}
+                  onKeyDown={bacspacePointDel}
                 />
                 <button
                   onClick={pointBtnClickHandler}

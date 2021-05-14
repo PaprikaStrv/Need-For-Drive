@@ -192,7 +192,7 @@ const BookPageLocation = ({
                 <input
                   type="text"
                   name="point"
-                  value={inputPointValue || curPointInputValue}
+                  value={curPointInputValue || inputPointValue}
                   placeholder="Начните вводить пункт..."
                   autoComplete="off"
                   onChange={(event) => setCurPointValue(event.target.value)}

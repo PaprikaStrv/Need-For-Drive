@@ -1,4 +1,8 @@
 import React, { useState } from "react";
+import DatePicker, { registerLocale } from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
+import ru from "date-fns/locale/ru";
+
 import RadioInput from "../../Components/RaioInput/RadioInput";
 import OrderInfoContainer from "./../../Components/OrderInfo/OrderInfoContainer";
 import s from "./Additional.module.scss";
@@ -16,7 +20,9 @@ const Additional = ({
   setCarRate,
   addParams,
   setCarParams,
+  setStartDate,
 }) => {
+  registerLocale("ru", ru);
   let filteredColors = [];
   if (cars && modelName) {
     filteredColors = cars.data.filter((c) => {
@@ -35,12 +41,20 @@ const Additional = ({
     setRate(e.target.value);
     setCarRate(e.target.value);
   };
-  
+
   const [isChecked, setCheck] = useState("");
   const handleParamsChange = (e, id) => {
-     setCheck(e.target.value)
-     setCarParams(parseInt(id));
+    setCheck(e.target.value);
+    setCarParams(parseInt(id));
   };
+
+  const [startDate, setCurStartDate] = useState(new Date());
+  const [endDate, setEndDate] = useState(startDate);
+
+  const handleStartDate = (date) => {
+    setCurStartDate(date);
+    setStartDate(date);
+  }
 
   return (
     <div className={s.additionalPageWrapepr}>
@@ -80,8 +94,17 @@ const Additional = ({
               <div className={s.dataFieldWrapper}>
                 <label>С</label>
                 <div className={s.dataInputField}>
-                  <input type="date" />
-                  <button className={baseInput.cleanInputBtn}>
+                  <DatePicker
+                    placeholderText="Введите дату и время"
+                    locale="ru"
+                    clearButtonClassName={baseInput.cleanInputBtn}
+                    selected={startDate}
+                    minDate={new Date()}
+                    onChange={(date) => handleStartDate(date)}
+                    showTimeSelect
+                    dateFormat="dd.MM.yyyy HH:mm "
+                  />
+                  <button className={baseInput.cleanInputBtn} onClick={() => setStartDate("")}>
                     <ReactSVG src={clean_input} />
                   </button>
                 </div>
@@ -89,8 +112,16 @@ const Additional = ({
               <div className={s.dataFieldWrapper}>
                 <label>По</label>
                 <div className={s.dataInputField}>
-                  <input type="date" />
-                  <button className={baseInput.cleanInputBtn}>
+                <DatePicker
+                    placeholderText="Введите дату и время"
+                    locale="ru"
+                    selected={endDate}
+                    minDate={startDate}
+                    onChange={(date) => setEndDate(date)}
+                    showTimeSelect
+                    dateFormat="dd.MM.yyyy HH:mm "
+                  />
+                  <button className={baseInput.cleanInputBtn} onClick={() => setEndDate("")}>
                     <ReactSVG src={clean_input} />
                   </button>
                 </div>
@@ -138,7 +169,7 @@ const Additional = ({
           </div>
         </div>
 
-        <OrderInfoContainer btnName={"Итого"} available={!color || !rate}/>
+        <OrderInfoContainer btnName={"Итого"} available={!color || !rate} />
       </div>
     </div>
   );

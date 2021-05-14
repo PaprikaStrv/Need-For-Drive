@@ -8,7 +8,7 @@ import {
   setInputPointValue,
   setCityAdresses,
 } from "../../Redux/orderPage-reducer";
-import { resetCoords } from "../../Redux/location-reducer";
+import { resetCoords,setCurPointCoords } from "../../Redux/location-reducer";
 import {
   setCarModelName,
   setCarModelPriceMax,
@@ -35,6 +35,7 @@ const BookPageLocationContainer = ({
   setCarModelPriceMax,
   setCarModelPriceMin,
   setCurPointAddress,
+  setCurPointCoords
 
 }) => {
   useEffect(() => {
@@ -47,10 +48,6 @@ const BookPageLocationContainer = ({
   if (!cities || cities.length === 0 || !points || points.length === 0) {
     return <Preloader />;
   }
-  // if (!props?.cities?.ponts || props?.cities.length?.points.length === 0 ) {
-  //   return <Preloader />;
-  // }
-
   return (
     <>
       <BookPageLocation
@@ -69,6 +66,7 @@ const BookPageLocationContainer = ({
           setCarModelPriceMax,
           setCarModelPriceMin,
           setCurPointAddress,
+          setCurPointCoords
         }}
       />
     </>
@@ -97,4 +95,5 @@ export default connect(mapStateToProps, {
   resetCoords,
   setCarModelName,
   setCurPointAddress,
+  setCurPointCoords,
 })(BookPageLocationContainer);

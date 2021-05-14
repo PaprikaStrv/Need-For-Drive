@@ -22,6 +22,7 @@ const BookPageLocation = ({
   setCarModelPriceMax,
   setCarModelPriceMin,
   setCurPointAddress,
+  setCurPointCoords,
 }) => {
   const [curCityInputValue, setCurCityValue] = useState(inputCityValue);
   const [curPointInputValue, setCurPointValue] = useState(inputPointValue);
@@ -92,6 +93,7 @@ const BookPageLocation = ({
     setCurCityValue("");
     setCurPointValue("");
     setCurPointAddress("");
+    setCurPointCoords("");
   };
   // clean_point_input_on_btn_click
   const pointBtnClickHandler = () => {
@@ -103,6 +105,7 @@ const BookPageLocation = ({
     setCarModelPriceMax("");
     setCarModelPriceMin("");
     setCurPointAddress("");
+    setCurPointCoords("");
   };
 
   const hideAutocomplete = () => {

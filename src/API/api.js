@@ -14,7 +14,7 @@ const instance = axios.create({
 
 const instanceGeoCode = axios.create({
   baseURL:
-    "https://geocode-maps.yandex.ru/1.x/?apikey=a514df5b-163d-423e-b12e-b007b4649231&format=json",
+    "https://geocode-maps.yandex.ru/1.x/?apikey=8a72b731-1468-41f2-b794-9621a5f205e2&format=json",
   headers: {
     "Access-Control-Allow-Origin": "*",
     "Access-Control-Allow-Credentials": "true",

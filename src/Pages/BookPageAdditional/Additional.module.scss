@@ -91,26 +91,51 @@
   
 }
 
+
+.checkBoxesWrapper::-webkit-scrollbar {
+  width: 8px;
+  height: 100%;
+  border: 1px solid #eeeeee;
+}
+
+/* ползунок скроллбара */
+.checkBoxesWrapper::-webkit-scrollbar-thumb {
+  background: #0ec261;
+  border-radius: 2px;
+}
+
+@media screen and (max-width: 1145px) {
+  .checkBoxesWrapper {
+    overflow-x: auto;
+    max-width: 500px;
+  } 
+}
+
 @media screen and (max-width: 1024px) {
   .additionalPageWrapepr {
     padding: 0 32px;
+  }
+  .checkBoxesWrapper {
+    overflow-x: auto;
+    max-width: 400px;
   } 
 }
+
 
 @media screen and (max-width: 900px) {
   .additionalPageContainer {
     flex-direction: column;
     align-items: center;
   }
- @media screen and (max-width: 540px) {
-   .additionalInputBlock {
-     display: flex;
-     flex-direction: column;
-   }
-   .checkBoxesWrapper {
-     div {
-       margin-bottom: 24px;
-     }
-   }
- }
+}
+@media screen and (max-width: 540px) {
+  .additionalInputBlock {
+    display: flex;
+    flex-direction: column;
+  }
+  .checkBoxesWrapper {
+    div {
+      margin-bottom: 24px;
+    }
+  }
 }

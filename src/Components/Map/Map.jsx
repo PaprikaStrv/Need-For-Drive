@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Map, Placemark, YMaps } from "react-yandex-maps";
 import s from "./Map.module.scss";
 import map_marker from "../../Images/map_marker.svg";
@@ -22,14 +22,21 @@ const PointsMap = ({
 
   const map = useRef();
 
-  const mySetCenter = (coordinates) => {
-    map.current.setCenter(coordinates);
+  const mySetCenter = (coordinates, zoom) => {
+    map.current.setCenter(coordinates, zoom);
   };
 
-  if (map.current && curPointCoords.length !== 0) {
-    curPointCoords = curPointCoords.split(" ");
-    mySetCenter([curPointCoords[1], curPointCoords[0]]);
-  }
+  useEffect(() => {
+    if (map.current && city) mySetCenter([coor[0][1], coor[0][0]]);
+  }, [city]);
+
+  useEffect(() => {
+    if (map.current && curPointCoords.length !== 0) {
+      curPointCoords = curPointCoords.split(" ");
+      mySetCenter([curPointCoords[1], curPointCoords[0]], 13);
+    }
+  }, [curPointCoords])
+
 
   return (
     <div className={s.mapWrapper}>
@@ -38,7 +45,7 @@ const PointsMap = ({
           <Map
             defaultState={{
               center: [coor[0][1], coor[0][0]],
-              zoom: 13,
+              zoom: 12,
             }}
             width="100%"
             instanceRef={map}
@@ -55,8 +62,7 @@ const PointsMap = ({
                     useMapMarginInDragging: true,
                   }}
                   onClick={() => {
-                    mySetCenter([c[1], c[0]]);
-                    handlerGetPointCoords(c);
+                     handlerGetPointCoords(c);
                   }}
                 />
               );

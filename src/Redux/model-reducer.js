@@ -7,6 +7,7 @@ const SET_CAR_PRICE_MAX = "SET_CAR_PRICE_MAX";
 const SET_CAR_COLOR = "SET_CAR_COLOR";
 const SET_CAR_RATE = "SET_CAT_RATE";
 const SET_CAR_PARAMS = "SET_CAR_PARAMS";
+const SET_START_DATE = "SET_START_DATE";
 
 let initialState = {
   models: [],
@@ -15,6 +16,7 @@ let initialState = {
   rate: "",
   priceMin: "",
   priceMax: "",
+  startDate: "",
   additionalParameters: [
     { id: 12, name: "Полный бак", price: 500, checked: false },
     { id: 23, name: "Детское кресло", price: 200, checked: false },
@@ -63,6 +65,14 @@ const modelReducer = (state = initialState, action) => {
         ...action,
         priceMax: action.data,
       };
+
+    case SET_START_DATE: {
+      return {
+        ...state,
+        ...action,
+        startDate: action.date,
+      }
+    } 
     case SET_CAR_PARAMS: {
       const id = action.id;
       const exist = state.additionalParameters.some((item) => item.id === id);
@@ -121,6 +131,11 @@ export const setCarParams = (id) => ({
   type: SET_CAR_PARAMS,
   id,
 });
+
+export const setStartDate = (date) => ({
+  type: SET_START_DATE,
+  date,
+})
 
 export const getCars = () => {
   return async (dispatch) => {

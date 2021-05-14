@@ -27,11 +27,16 @@ const locationReducer = (state = initialState, action) => {
       };
       case SET_CUR_POINT_ADDRESS:
         let address = "";
+        const regexp = /\bк/gm;
         if(action.data.startsWith("улица")){
           address = action.data.replace("улица ", "");
         } else if (action.data.startsWith("проспект ")){
           address = action.data.replace("проспект ", ""); 
-        } else address = action.data;
+        }  else address = action.data;
+        if(address.match(regexp)) {
+          console.log(address);
+          address = address.replace(/\bк/gm, ", корп.");
+        }
         return {
           ...state,
           ...action,

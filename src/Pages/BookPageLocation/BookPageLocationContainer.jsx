@@ -14,6 +14,7 @@ import {
   setCarModelPriceMax,
   setCarModelPriceMin,
 } from "../../Redux/model-reducer.js";
+import { setCurPointAddress } from "../../Redux/location-reducer";
 import Preloader from "./../../Components/Preloader/Preloader";
 import BookPageLocation from "./BookPageLocation";
 
@@ -33,6 +34,8 @@ const BookPageLocationContainer = ({
   setInputPointValue,
   setCarModelPriceMax,
   setCarModelPriceMin,
+  setCurPointAddress,
+
 }) => {
   useEffect(() => {
     getCitiesThunkCreator();
@@ -65,6 +68,7 @@ const BookPageLocationContainer = ({
           setCarModelName,
           setCarModelPriceMax,
           setCarModelPriceMin,
+          setCurPointAddress,
         }}
       />
     </>
@@ -78,6 +82,7 @@ const mapStateToProps = (state) => ({
   isModelAvail: state.orderPage.isModelAvailable,
   inputCityValue: state.orderPage.currentInputCityValue,
   inputPointValue: state.orderPage.currentInputPointValue,
+  curPointAddress: state.location.curPointAddress,
 });
 
 export default connect(mapStateToProps, {
@@ -91,4 +96,5 @@ export default connect(mapStateToProps, {
   setCarModelPriceMin,
   resetCoords,
   setCarModelName,
+  setCurPointAddress,
 })(BookPageLocationContainer);

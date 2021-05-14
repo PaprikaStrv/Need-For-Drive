@@ -21,6 +21,7 @@ const BookPageLocation = ({
   setCarModelName,
   setCarModelPriceMax,
   setCarModelPriceMin,
+  setCurPointAddress,
 }) => {
   const [curCityInputValue, setCurCityValue] = useState(inputCityValue);
   const [curPointInputValue, setCurPointValue] = useState(inputPointValue);
@@ -90,6 +91,7 @@ const BookPageLocation = ({
     setCarModelPriceMin("");
     setCurCityValue("");
     setCurPointValue("");
+    setCurPointAddress("");
   };
   // clean_point_input_on_btn_click
   const pointBtnClickHandler = () => {
@@ -100,6 +102,7 @@ const BookPageLocation = ({
     setCurPointValue("");
     setCarModelPriceMax("");
     setCarModelPriceMin("");
+    setCurPointAddress("");
   };
 
   const hideAutocomplete = () => {

@@ -38,7 +38,7 @@ const PointsMap = ({
           <Map
             defaultState={{
               center: [coor[0][1], coor[0][0]],
-              zoom: 14,
+              zoom: 13,
             }}
             width="100%"
             instanceRef={map}

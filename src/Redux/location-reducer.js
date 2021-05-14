@@ -26,10 +26,16 @@ const locationReducer = (state = initialState, action) => {
         curAddressCoords: action.data,
       };
       case SET_CUR_POINT_ADDRESS:
+        let address = "";
+        if(action.data.startsWith("улица")){
+          address = action.data.replace("улица ", "");
+        } else if (action.data.startsWith("проспект ")){
+          address = action.data.replace("проспект ", ""); 
+        } else address = action.data;
         return {
           ...state,
           ...action,
-          curPointAddress: action.data,
+          curPointAddress: address,
         };
     case RESET_COORDS:
       return {

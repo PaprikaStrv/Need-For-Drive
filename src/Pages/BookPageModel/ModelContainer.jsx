@@ -6,6 +6,9 @@ import {
   setCarModelPriceMin,
   setCarModelPriceMax,
   setCarColor,
+  setDiffDate,
+  setCarRate,
+  unsetCarParams
 } from "./../../Redux/model-reducer";
 import { getCategories } from "./../../Redux/orderPage-reducer";
 import { useEffect } from "react";
@@ -22,6 +25,9 @@ const BookPageModelContainer = ({
   setCarColor,
   categories,
   modelName,
+  setDiffDate,
+  setCarRate,
+  unsetCarParams
 }) => {
   useEffect(() => {
     getCategories();
@@ -46,6 +52,9 @@ const BookPageModelContainer = ({
         setCarColor,
         categories,
         modelName,
+        setDiffDate,
+        setCarRate,
+        unsetCarParams
       }}
     />
   );
@@ -64,4 +73,7 @@ export default connect(mapStateToProps, {
   setCarModelPriceMin,
   setCarModelPriceMax,
   setCarColor,
+  setDiffDate,
+  setCarRate,
+  unsetCarParams
 })(BookPageModelContainer);

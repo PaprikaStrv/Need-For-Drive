@@ -34,7 +34,7 @@
 }
 
 .additionalInputBlock {
-  margin-top: 22px;
+  margin-top: 16px;
   div {
     margin-bottom: 0;
   }
@@ -43,6 +43,9 @@
 .dataPickWrapper {
   display: flex;
   flex-direction: column;
+  .dataFieldWrapper:not(:last-child) {
+    margin-bottom: 16px !important;
+  }
 }
 
 .dataFieldWrapper {
@@ -50,7 +53,6 @@
   align-items: center;
   justify-content: flex-end;
   max-width: 272px;
-  margin-bottom: 16px !important;
 }
 
 .dataInputField {
@@ -71,9 +73,12 @@
 .rateCheckBoxesWrapper {
   display: flex;
   flex-direction: column;
-  margin-top: 24px;
+  margin-top: 16px;
   div {
     margin-bottom: 16px;
+    &:last-child{
+      margin-bottom: 0px;
+    }
   }
 }
 
@@ -81,16 +86,14 @@
   display: flex;
   flex-direction: column;
   margin-top: 16px;
-  div input{
+  div input {
     margin: 0;
     margin-right: 8px;
   }
   div:not(:last-child) {
     margin-bottom: 8px;
   }
-  
 }
-
 
 .checkBoxesWrapper::-webkit-scrollbar {
   width: 8px;
@@ -108,7 +111,7 @@
   .checkBoxesWrapper {
     overflow-x: auto;
     max-width: 500px;
-  } 
+  }
 }
 
 @media screen and (max-width: 1024px) {
@@ -118,9 +121,8 @@
   .checkBoxesWrapper {
     overflow-x: auto;
     max-width: 400px;
-  } 
+  }
 }
-
 
 @media screen and (max-width: 900px) {
   .additionalPageContainer {

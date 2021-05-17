@@ -7,7 +7,8 @@ const SET_CAR_PRICE_MAX = "SET_CAR_PRICE_MAX";
 const SET_CAR_COLOR = "SET_CAR_COLOR";
 const SET_CAR_RATE = "SET_CAT_RATE";
 const SET_CAR_PARAMS = "SET_CAR_PARAMS";
-const SET_START_DATE = "SET_START_DATE";
+const SET_DIFF_DATE = "SET_DIFF_DATE";
+const UNSET_CAR_PARAMS = "UNSET_CAR_PARAMS";
 
 let initialState = {
   models: [],
@@ -16,15 +17,12 @@ let initialState = {
   rate: "",
   priceMin: "",
   priceMax: "",
-  startDate: "",
+  diffDate: [],
   additionalParameters: [
     { id: 12, name: "Полный бак", price: 500, checked: false },
     { id: 23, name: "Детское кресло", price: 200, checked: false },
     { id: 33, name: "Правый руль", price: 1600, checked: false },
   ],
-  // fullTank: false,
-  // babyChair: false,
-  // rigthHandeDrive: false,
 };
 
 const modelReducer = (state = initialState, action) => {
@@ -65,14 +63,13 @@ const modelReducer = (state = initialState, action) => {
         ...action,
         priceMax: action.data,
       };
-
-    case SET_START_DATE: {
+    case SET_DIFF_DATE: {
       return {
         ...state,
         ...action,
-        startDate: action.date,
-      }
-    } 
+        diffDate: action.date,
+      };
+    }
     case SET_CAR_PARAMS: {
       const id = action.id;
       const exist = state.additionalParameters.some((item) => item.id === id);
@@ -92,6 +89,14 @@ const modelReducer = (state = initialState, action) => {
         };
       }
     }
+    case UNSET_CAR_PARAMS:
+      return {
+        ...state,
+        additionalParameters: state.additionalParameters.map((item) => {
+          return { ...item, checked: false };
+        }),
+      };
+
     default:
       return state;
   }
@@ -132,10 +137,14 @@ export const setCarParams = (id) => ({
   id,
 });
 
-export const setStartDate = (date) => ({
-  type: SET_START_DATE,
+export const unsetCarParams = () => ({
+  type: UNSET_CAR_PARAMS,
+});
+
+export const setDiffDate = (date) => ({
+  type: SET_DIFF_DATE,
   date,
-})
+});
 
 export const getCars = () => {
   return async (dispatch) => {

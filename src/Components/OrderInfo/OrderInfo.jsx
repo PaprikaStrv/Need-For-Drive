@@ -1,7 +1,9 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import s from "./OrderInfo.module.scss";
-import  { XFormatPrice } from '../../commonScripts/scripts.js';
+import { XFormatPrice } from "../../commonScripts/scripts.js";
+import { diffDateFormat } from "../../commonScripts/diffDateFormat.js";
+import { calcPrice } from "./../../commonScripts/calcPrice";
 
 const OrderInfo = ({
   city,
@@ -15,6 +17,7 @@ const OrderInfo = ({
   btnName,
   btnLink,
   addParams,
+  diffDate,
 }) => {
   return (
     <div className={s.orderInfoWrapper}>
@@ -45,8 +48,17 @@ const OrderInfo = ({
           <li>
             <div className={s.liName}>Цвет</div>
             <div></div>
-            <div  className={`${s.addressOrderInfo} ${s.attrSpan}`}>
+            <div className={`${s.addressOrderInfo} ${s.attrSpan}`}>
               <span>{color[0].toUpperCase() + color.slice(1)}</span>
+            </div>
+          </li>
+        )}
+        {diffDate.length !== 0 && (
+          <li>
+            <div className={s.liName}>Длительность аренды</div>
+            <div></div>
+            <div className={`${s.addressOrderInfo} ${s.attrSpan}`}>
+              <span>{diffDateFormat(diffDate)}</span>
             </div>
           </li>
         )}
@@ -54,34 +66,49 @@ const OrderInfo = ({
           <li>
             <div className={s.liName}>Тариф</div>
             <div></div>
-            <div  className={`${s.addressOrderInfo} ${s.attrSpan}`}>
+            <div className={`${s.addressOrderInfo} ${s.attrSpan}`}>
               <span>{rate}</span>
             </div>
           </li>
         )}
 
         {addParams.map((item, index) => {
-          if(item.checked)
-          return (
-            <li key={index}>
-              <div className={s.liName}>{item.name}</div>
-              <div></div>
-              <div className={`${s.addressOrderInfo} ${s.attrSpan}`}>
-                <span>Да</span>
-              </div>
-            </li>
-          )
+          if (item.checked)
+            return (
+              <li key={index}>
+                <div className={s.liName}>{item.name}</div>
+                <div></div>
+                <div className={`${s.addressOrderInfo} ${s.attrSpan}`}>
+                  <span>Да</span>
+                </div>
+              </li>
+            );
         })}
       </ul>
-      
-      {priceMin && priceMax && (
+
+      {rate !== "" && diffDate && (
         <div className={s.modelPrice}>
           <span className={s.price}>Цена: </span>
-          <span className={s.priceBorder}>от {XFormatPrice(priceMin)} до {XFormatPrice(priceMax)} ₽</span>
+          <span className={s.priceBorder}>
+            {calcPrice(rate, diffDate, priceMin, addParams)} ₽
+          </span>
+        </div>
+      )}
+      {priceMin && priceMax && (
+        <div className={rate && diffDate ? `${s.modelPrice} ${s.modelPriceHide}` : s.modelPrice}>
+          <span className={s.price}>Цена: </span>
+          <span className={s.priceBorder}>
+            от {XFormatPrice(priceMin)} до {XFormatPrice(priceMax)} ₽
+          </span>
         </div>
       )}
 
-      <NavLink to={"/need-for-drive/bookCar/" + btnLink} className={available ? `${s.orderInfoBtn} ${s.disabled}` : s.orderInfoBtn}>
+      <NavLink
+        to={"/need-for-drive/bookCar/" + btnLink}
+        className={
+          available ? `${s.orderInfoBtn} ${s.disabled}` : s.orderInfoBtn
+        }
+      >
         {btnName}
       </NavLink>
     </div>

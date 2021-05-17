@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import DatePicker, { registerLocale } from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import ru from "date-fns/locale/ru";
@@ -10,6 +10,10 @@ import baseInput from "../BookPageLocation/BookPageLocation.module.scss";
 import { ReactSVG } from "react-svg";
 import clean_input from "../../Images/clean_input.svg";
 import CheckBoxInput from "../../Components/CheckBoxInput/CheckBoxInput";
+import moment from "moment";
+import "moment/locale/ru";
+import "moment-duration-format";
+require("moment-duration-format");
 
 const Additional = ({
   cars,
@@ -20,9 +24,10 @@ const Additional = ({
   setCarRate,
   addParams,
   setCarParams,
-  setStartDate,
+  setDiffDate,
 }) => {
   registerLocale("ru", ru);
+  moment.locale("ru");
   let filteredColors = [];
   if (cars && modelName) {
     filteredColors = cars.data.filter((c) => {
@@ -48,13 +53,25 @@ const Additional = ({
     setCarParams(parseInt(id));
   };
 
-  const [startDate, setCurStartDate] = useState(new Date());
-  const [endDate, setEndDate] = useState(startDate);
+  const [startDate, setCurStartDate] = useState("");
+  const [endDate, setCurEndDate] = useState(startDate);
 
   const handleStartDate = (date) => {
     setCurStartDate(date);
-    setStartDate(date);
-  }
+    setDiffDate("");
+  };
+
+  const handleEndDate = (date) => {
+    setCurEndDate(date);
+    setDiffDate("");
+  };
+
+  useEffect(() => {
+    if (startDate && endDate) {
+      const diff = moment.duration(moment(endDate).diff(moment(startDate)));
+      setDiffDate(diff);
+    }
+  }, [startDate, endDate]);
 
   return (
     <div className={s.additionalPageWrapepr}>
@@ -64,29 +81,33 @@ const Additional = ({
             {filteredColors[0] && filteredColors[0].colors.length === 0 ? (
               <span>Извините, невозможно выбрать цвет</span>
             ) : (
-              <span>Цвет</span>
+              <>
+                <span>Цвет</span>
+                <div
+                  className={`${s.checkBoxesWrapper} ${s.additionalInputBlock}`}
+                >
+                  <RadioInput
+                    id={10}
+                    inputName="Любой"
+                    currentInputType={currentColor}
+                    handleChange={handleColorChange}
+                  />
+                  {filteredColors[0]
+                    ? filteredColors[0].colors.map((color, index) => {
+                        return (
+                          <RadioInput
+                            key={index}
+                            id={index}
+                            inputName={color}
+                            currentInputType={currentColor}
+                            handleChange={handleColorChange}
+                          />
+                        );
+                      })
+                    : null}
+                </div>
+              </>
             )}
-            <div className={`${s.checkBoxesWrapper} ${s.additionalInputBlock}`}>
-              <RadioInput
-                id={10}
-                inputName="Любой"
-                currentInputType={currentColor}
-                handleChange={handleColorChange}
-              />
-              {filteredColors[0]
-                ? filteredColors[0].colors.map((color, index) => {
-                    return (
-                      <RadioInput
-                        key={index}
-                        id={index}
-                        inputName={color}
-                        currentInputType={currentColor}
-                        handleChange={handleColorChange}
-                      />
-                    );
-                  })
-                : null}
-            </div>
           </div>
           <div className={s.additionalBlock}>
             <span>Дата аренды</span>
@@ -104,7 +125,10 @@ const Additional = ({
                     showTimeSelect
                     dateFormat="dd.MM.yyyy HH:mm "
                   />
-                  <button className={baseInput.cleanInputBtn} onClick={() => setStartDate("")}>
+                  <button
+                    className={baseInput.cleanInputBtn}
+                    onClick={() => handleStartDate("")}
+                  >
                     <ReactSVG src={clean_input} />
                   </button>
                 </div>
@@ -112,16 +136,19 @@ const Additional = ({
               <div className={s.dataFieldWrapper}>
                 <label>По</label>
                 <div className={s.dataInputField}>
-                <DatePicker
+                  <DatePicker
                     placeholderText="Введите дату и время"
                     locale="ru"
                     selected={endDate}
                     minDate={startDate}
-                    onChange={(date) => setEndDate(date)}
+                    onChange={(date) => handleEndDate(date)}
                     showTimeSelect
                     dateFormat="dd.MM.yyyy HH:mm "
                   />
-                  <button className={baseInput.cleanInputBtn} onClick={() => setEndDate("")}>
+                  <button
+                    className={baseInput.cleanInputBtn}
+                    onClick={() => handleEndDate("")}
+                  >
                     <ReactSVG src={clean_input} />
                   </button>
                 </div>

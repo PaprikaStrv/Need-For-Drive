@@ -4,7 +4,7 @@ export const XFormatPrice = (_number) => {
   let decimal = 0;
   let separator = " ";
   let decpoint = ".";
-  let format_string = "# руб.";
+  let format_string = "#";
 
   let r = parseFloat(_number);
 

@@ -8,11 +8,15 @@ import {
   setInputPointValue,
   setCityAdresses,
 } from "../../Redux/orderPage-reducer";
-import { resetCoords,setCurPointCoords } from "../../Redux/location-reducer";
+import { resetCoords, setCurPointCoords } from "../../Redux/location-reducer";
 import {
   setCarModelName,
   setCarModelPriceMax,
   setCarModelPriceMin,
+  setCarColor,
+  setDiffDate,
+  setCarRate,
+  unsetCarParams,
 } from "../../Redux/model-reducer.js";
 import { setCurPointAddress } from "../../Redux/location-reducer";
 import Preloader from "./../../Components/Preloader/Preloader";
@@ -35,8 +39,11 @@ const BookPageLocationContainer = ({
   setCarModelPriceMax,
   setCarModelPriceMin,
   setCurPointAddress,
-  setCurPointCoords
-
+  setCurPointCoords,
+  setCarColor,
+  setDiffDate,
+  setCarRate,
+  unsetCarParams,
 }) => {
   useEffect(() => {
     getCitiesThunkCreator();
@@ -66,7 +73,11 @@ const BookPageLocationContainer = ({
           setCarModelPriceMax,
           setCarModelPriceMin,
           setCurPointAddress,
-          setCurPointCoords
+          setCurPointCoords,
+          setCarColor,
+          setDiffDate,
+          setCarRate,
+          unsetCarParams,
         }}
       />
     </>
@@ -96,4 +107,8 @@ export default connect(mapStateToProps, {
   setCarModelName,
   setCurPointAddress,
   setCurPointCoords,
+  setCarColor,
+  setDiffDate,
+  setCarRate,
+  unsetCarParams,
 })(BookPageLocationContainer);

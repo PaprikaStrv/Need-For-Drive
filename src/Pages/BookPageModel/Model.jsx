@@ -13,6 +13,9 @@ const BookPageModel = ({
   setCarColor,
   categories,
   modelName,
+  setDiffDate,
+  setCarRate,
+  unsetCarParams
 }) => {
   const [currentModelType, setModelType] = useState("Все модели");
   const handleChange = (e) => {
@@ -21,19 +24,21 @@ const BookPageModel = ({
 
   let filteredCars = [];
   models.data.filter((m) => {
-    if(currentModelType === "Все модели"){
+    if (currentModelType === "Все модели") {
       filteredCars.push(m);
     } else if (m.categoryId.name === currentModelType) {
       filteredCars.push(m);
     }
-    
-  })
+  });
 
   const modelClickHandler = (model, priceMin, priceMax) => {
     setCarModelName(model);
     setCarModelPriceMin(priceMin);
     setCarModelPriceMax(priceMax);
     setCarColor("");
+    setDiffDate("");
+    setCarRate("");
+    unsetCarParams();
   };
 
   return (
@@ -41,7 +46,12 @@ const BookPageModel = ({
       <div className={s.modelPageContainer}>
         <div className={s.modelCarChoose}>
           <div className={s.checkBoxesWrapper}>
-            <RadioInput id={1} inputName="Все модели"  currentInputType={currentModelType}  handleChange={handleChange}/>
+            <RadioInput
+              id={1}
+              inputName="Все модели"
+              currentInputType={currentModelType}
+              handleChange={handleChange}
+            />
             {categories.data.map((c) => {
               return (
                 <RadioInput

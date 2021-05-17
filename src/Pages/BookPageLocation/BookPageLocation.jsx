@@ -23,6 +23,10 @@ const BookPageLocation = ({
   setCarModelPriceMin,
   setCurPointAddress,
   setCurPointCoords,
+  setCarColor,
+  setDiffDate,
+  setCarRate,
+  unsetCarParams,
 }) => {
   const [curCityInputValue, setCurCityValue] = useState(inputCityValue);
   const [curPointInputValue, setCurPointValue] = useState(inputPointValue);
@@ -94,6 +98,10 @@ const BookPageLocation = ({
     setCurPointValue("");
     setCurPointAddress("");
     setCurPointCoords("");
+    setCarColor("");
+    setDiffDate("");
+    setCarRate("");
+    unsetCarParams();
   };
   // clean_point_input_on_btn_click
   const pointBtnClickHandler = () => {
@@ -106,6 +114,10 @@ const BookPageLocation = ({
     setCarModelPriceMin("");
     setCurPointAddress("");
     setCurPointCoords("");
+    setCarColor("");
+    setDiffDate("");
+    setCarRate("");
+    unsetCarParams();
   };
 
   const hideAutocomplete = () => {
@@ -129,6 +141,10 @@ const BookPageLocation = ({
         setCurPointValue("");
         setCurPointAddress("");
         setCurPointCoords("");
+        setCarColor("");
+        setDiffDate("");
+        setCarRate("");
+        unsetCarParams();
       }
     }
   };
@@ -146,6 +162,10 @@ const BookPageLocation = ({
         setCarModelPriceMin("");
         setCurPointAddress("");
         setCurPointCoords("");
+        setCarColor("");
+        setDiffDate("");
+        setCarRate("");
+        unsetCarParams();
       }
     }
   };

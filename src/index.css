@@ -30,10 +30,36 @@ body {
   fill: #0ec261 !important;
 }
 
-
 .ymaps-2-1-78-map {
   width: 100% !important;
   height: 352px !important;
+}
+
+.react-datepicker {
+  color: #0ec261 !important;
+}
+
+.react-datepicker__day {
+  color: #0ec261 !important;
+}
+.react-datepicker__day--selected {
+  background-color: transparent !important;
+}
+
+.react-datepicker__day--keyboard-selected {
+  background-color: transparent !important;
+}
+
+.react-datepicker__day--disabled,
+.react-datepicker__month-text--disabled,
+.react-datepicker__quarter-text--disabled,
+.react-datepicker__year-text--disabled {
+  cursor: default;
+  color: #ccc !important;
+}
+
+.react-datepicker__input-container input:disabled {
+  background-color: transparent !important;
 }
 
 @media screen and (max-width: 1024px) {
@@ -45,10 +71,56 @@ body {
   }
 }
 
+@media screen and (max-width: 450px) {
+  .react-datepicker__time-container {
+    display: flex !important;
+    flex-direction: column !important;
+    height: 120px !important;
+    width: 100% !important;
+  }
+
+  .react-datepicker__time {
+    width: 100% !important;
+    overflow: scroll !important;
+  }
+  .react-datepicker__time-container
+    .react-datepicker__time
+    .react-datepicker__time-box
+    ul.react-datepicker__time-list {
+    padding-left: unset !important;
+    padding-right: unset !important;
+    display: flex;
+    flex-wrap: wrap;
+  }
+  
+  .react-datepicker-popper {
+    transform: translate3d(6px, 25px, 0px) !important;
+}
+
+  .react-datepicker__time-container .react-datepicker__time .react-datepicker__time-box {
+    width: 100% !important;
+    margin: 0 !important;
+  }
+  .react-datepicker__input-container {
+    width: 100% !important;
+  }
+
+  .react-datepicker-wrapper {
+    width: 100% !important; 
+  }
+
+  .react-datepicker {
+    display: flex !important;
+    flex-direction: column !important;
+    width: 314px !important;
+  }
+
+  .react-datepicker__time-container .react-datepicker__time .react-datepicker__time-box ul.react-datepicker__time-list {
+    overflow: hidden !important;
+  }
+}
 @media screen and (max-width: 900px) {
   .slider {
     display: none !important;
   }
 }
-
-

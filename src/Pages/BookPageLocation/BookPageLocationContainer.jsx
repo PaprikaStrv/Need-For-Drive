@@ -10,13 +10,13 @@ import {
 } from "../../Redux/orderPage-reducer";
 import { resetCoords, setCurPointCoords } from "../../Redux/location-reducer";
 import {
-  setCarModelName,
-  setCarModelPriceMax,
-  setCarModelPriceMin,
   setCarColor,
   setDiffDate,
   setCarRate,
   unsetCarParams,
+  setCurrentModel,
+  setStartDate,
+  setEndDate,
 } from "../../Redux/model-reducer.js";
 import { setCurPointAddress } from "../../Redux/location-reducer";
 import Preloader from "./../../Components/Preloader/Preloader";
@@ -34,16 +34,16 @@ const BookPageLocationContainer = ({
   setInputCityValue,
   setModelAvailable,
   resetCoords,
-  setCarModelName,
   setInputPointValue,
-  setCarModelPriceMax,
-  setCarModelPriceMin,
   setCurPointAddress,
   setCurPointCoords,
   setCarColor,
   setDiffDate,
   setCarRate,
   unsetCarParams,
+  setCurrentModel,
+  setStartDate,
+  setEndDate,
 }) => {
   useEffect(() => {
     getCitiesThunkCreator();
@@ -69,15 +69,15 @@ const BookPageLocationContainer = ({
           setInputCityValue,
           setModelAvailable,
           resetCoords,
-          setCarModelName,
-          setCarModelPriceMax,
-          setCarModelPriceMin,
           setCurPointAddress,
           setCurPointCoords,
           setCarColor,
           setDiffDate,
           setCarRate,
           unsetCarParams,
+          setCurrentModel,
+          setStartDate,
+          setEndDate,
         }}
       />
     </>
@@ -101,14 +101,14 @@ export default connect(mapStateToProps, {
   setInputCityValue,
   setInputPointValue,
   setCityAdresses,
-  setCarModelPriceMax,
-  setCarModelPriceMin,
   resetCoords,
-  setCarModelName,
   setCurPointAddress,
   setCurPointCoords,
   setCarColor,
   setDiffDate,
   setCarRate,
   unsetCarParams,
+  setCurrentModel,
+  setStartDate,
+  setEndDate,
 })(BookPageLocationContainer);

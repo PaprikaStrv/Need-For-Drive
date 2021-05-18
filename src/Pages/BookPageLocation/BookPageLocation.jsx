@@ -18,15 +18,15 @@ const BookPageLocation = ({
   setInputCityValue,
   setModelAvailable,
   resetCoords,
-  setCarModelName,
-  setCarModelPriceMax,
-  setCarModelPriceMin,
   setCurPointAddress,
   setCurPointCoords,
   setCarColor,
   setDiffDate,
   setCarRate,
   unsetCarParams,
+  setCurrentModel,
+  setStartDate,
+  setEndDate,
 }) => {
   const [curCityInputValue, setCurCityValue] = useState(inputCityValue);
   const [curPointInputValue, setCurPointValue] = useState(inputPointValue);
@@ -36,15 +36,15 @@ const BookPageLocation = ({
     useState(false);
 
   // choose cities including chars from input
-  const filteredCities = cities.data.filter((city) => {
-    return city.name.toLowerCase().includes(curCityInputValue.toLowerCase());
+  const filteredCities = cities.data.filter(({ name }) => {
+    return name.toLowerCase().includes(curCityInputValue.toLowerCase());
   });
 
   //choose point adress for current chosen city
   let filteredPoints = [];
-  points.data.filter((p) => {
-    if (p.cityId != null && p.cityId.name === curCityInputValue) {
-      filteredPoints.push(p.address);
+  points.data.filter(({ cityId, address }) => {
+    if (cityId != null && cityId.name === curCityInputValue) {
+      filteredPoints.push(address);
     }
   });
   const arrKey = "name";
@@ -89,11 +89,9 @@ const BookPageLocation = ({
   const cityBtnClickHandler = () => {
     setModelAvailable(true);
     resetCoords();
-    setCarModelName("");
     setInputCityValue("");
     setInputPointValue("");
-    setCarModelPriceMax("");
-    setCarModelPriceMin("");
+    setCurrentModel("");
     setCurCityValue("");
     setCurPointValue("");
     setCurPointAddress("");
@@ -102,22 +100,23 @@ const BookPageLocation = ({
     setDiffDate("");
     setCarRate("");
     unsetCarParams();
+    setStartDate("");
+    setEndDate("");
   };
   // clean_point_input_on_btn_click
   const pointBtnClickHandler = () => {
     setModelAvailable(true);
-    //props.resetCoords();
-    setCarModelName("");
+    setCurrentModel("");
     setInputPointValue("");
     setCurPointValue("");
-    setCarModelPriceMax("");
-    setCarModelPriceMin("");
     setCurPointAddress("");
     setCurPointCoords("");
     setCarColor("");
     setDiffDate("");
     setCarRate("");
     unsetCarParams();
+    setStartDate("");
+    setEndDate("");
   };
 
   const hideAutocomplete = () => {
@@ -132,11 +131,9 @@ const BookPageLocation = ({
       if (count === curCityInputValue.length) {
         setModelAvailable(true);
         resetCoords();
-        setCarModelName("");
+        setCurrentModel("");
         setInputCityValue("");
         setInputPointValue("");
-        setCarModelPriceMax("");
-        setCarModelPriceMin("");
         setCurCityValue("");
         setCurPointValue("");
         setCurPointAddress("");
@@ -145,6 +142,8 @@ const BookPageLocation = ({
         setDiffDate("");
         setCarRate("");
         unsetCarParams();
+        setStartDate("");
+        setEndDate("");
       }
     }
   };
@@ -155,17 +154,17 @@ const BookPageLocation = ({
       count++;
       if (count === curPointInputValue.length) {
         setModelAvailable(true);
-        setCarModelName("");
+        setCurrentModel("");
         setInputPointValue("");
         setCurPointValue("");
-        setCarModelPriceMax("");
-        setCarModelPriceMin("");
         setCurPointAddress("");
         setCurPointCoords("");
         setCarColor("");
         setDiffDate("");
         setCarRate("");
         unsetCarParams();
+        setStartDate("");
+        setEndDate("");
       }
     }
   };

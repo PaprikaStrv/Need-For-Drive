@@ -1,7 +1,14 @@
 import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import Additional from "./Additional";
-import { setCarColor, setCarRate, setCarParams, setStartDate, setEndDate, setDiffDate } from "./../../Redux/model-reducer";
+import {
+  setCarColor,
+  setCarRate,
+  setCarParams,
+  setDiffDate,
+  setStartDate,
+  setEndDate,
+} from "./../../Redux/model-reducer";
 import { getRate } from "./../../Redux/orderPage-reducer.js";
 import Preloader from "./../../Components/Preloader/Preloader";
 
@@ -15,9 +22,14 @@ const AdditionalContainer = ({
   setCarRate,
   addParams,
   setCarParams,
+  setDiffDate,
+  currentModel,
+  diffDate,
+  modelRate,
+  startDateRedux,
+  endDateRedux,
   setStartDate,
   setEndDate,
-  setDiffDate,
 }) => {
   useEffect(() => {
     getRate();
@@ -38,6 +50,13 @@ const AdditionalContainer = ({
         addParams,
         setCarParams,
         setDiffDate,
+        currentModel,
+        diffDate,
+        modelRate,
+        startDateRedux,
+        endDateRedux,
+        setStartDate,
+        setEndDate,
       }}
     />
   );
@@ -48,10 +67,21 @@ const mapStateToProps = (state) => ({
   modelName: state.model.modelName,
   color: state.model.color,
   rate: state.orderPage.rate,
+  modelRate: state.model.rate,
   carRate: state.model.rate,
-  addParams: state.model.additionalParameters
+  addParams: state.model.additionalParameters,
+  currentModel: state.model.currentModel,
+  diffDate: state.model.diffDate,
+  startDateRedux: state.model.startDate,
+  endDateRedux: state.model.endDate,
 });
 
-export default connect(mapStateToProps, { getRate, setCarColor, setCarRate, setCarParams, setDiffDate })(
-  AdditionalContainer
-);
+export default connect(mapStateToProps, {
+  getRate,
+  setCarColor,
+  setCarRate,
+  setCarParams,
+  setDiffDate,
+  setStartDate,
+  setEndDate,
+})(AdditionalContainer);

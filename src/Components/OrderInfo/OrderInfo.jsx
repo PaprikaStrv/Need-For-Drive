@@ -8,16 +8,17 @@ import { calcPrice } from "./../../commonScripts/calcPrice";
 const OrderInfo = ({
   city,
   address,
-  modelName,
+  //modelName,
   color,
   rate,
-  priceMin,
-  priceMax,
+  //priceMin,
+  //priceMax,
   available,
   btnName,
   btnLink,
   addParams,
   diffDate,
+  currentModel
 }) => {
   return (
     <div className={s.orderInfoWrapper}>
@@ -35,12 +36,12 @@ const OrderInfo = ({
             )}
           </div>
         </li>
-        {modelName && (
+        {currentModel.name && (
           <li>
             <div className={s.liName}>Модель</div>
             <div></div>
             <div className={`${s.addressOrderInfo} ${s.attrSpan}`}>
-              <span>{modelName}</span>
+              <span>{currentModel.name}</span>
             </div>
           </li>
         )}
@@ -90,15 +91,15 @@ const OrderInfo = ({
         <div className={s.modelPrice}>
           <span className={s.price}>Цена: </span>
           <span className={s.priceBorder}>
-            {calcPrice(rate, diffDate, priceMin, addParams)} ₽
+            {calcPrice(rate, diffDate, currentModel.priceMin, addParams)} ₽
           </span>
         </div>
       )}
-      {priceMin && priceMax && (
+      {currentModel.priceMin && currentModel.priceMax && (
         <div className={rate && diffDate ? `${s.modelPrice} ${s.modelPriceHide}` : s.modelPrice}>
           <span className={s.price}>Цена: </span>
           <span className={s.priceBorder}>
-            от {XFormatPrice(priceMin)} до {XFormatPrice(priceMax)} ₽
+            от {XFormatPrice(currentModel.priceMin)} до {XFormatPrice(currentModel.priceMax)} ₽
           </span>
         </div>
       )}

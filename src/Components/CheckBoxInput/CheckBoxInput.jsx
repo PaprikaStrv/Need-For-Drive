@@ -7,6 +7,7 @@ const CheckBoxInput = ({
   price,
   handleChange,
   currentInputType,
+  checked
 }) => {
   return (
     <div className={s.checkBoxWrapper}>
@@ -14,6 +15,7 @@ const CheckBoxInput = ({
         type="checkbox"
         className={s.checkBoxInput}
         value={inputName}
+        checked={checked}
         id={id}
         onClick={(event) => handleChange(event, id)}
       />

@@ -7,15 +7,16 @@ import { prepareImgLink } from "../../commonScripts/scripts.js";
 
 const BookPageModel = ({
   models,
-  setCarModelName,
-  setCarModelPriceMax,
-  setCarModelPriceMin,
   setCarColor,
   categories,
   modelName,
   setDiffDate,
   setCarRate,
-  unsetCarParams
+  unsetCarParams,
+  setCurrentModel,
+  currentModel,
+  setStartDate,
+  setEndDate,
 }) => {
   const [currentModelType, setModelType] = useState("Все модели");
   const handleChange = (e) => {
@@ -31,14 +32,14 @@ const BookPageModel = ({
     }
   });
 
-  const modelClickHandler = (model, priceMin, priceMax) => {
-    setCarModelName(model);
-    setCarModelPriceMin(priceMin);
-    setCarModelPriceMax(priceMax);
+  const modelClickHandler = (car) => {
+    setCurrentModel(car);
     setCarColor("");
     setDiffDate("");
     setCarRate("");
     unsetCarParams();
+    setStartDate("");
+    setEndDate("");
   };
 
   return (
@@ -52,12 +53,12 @@ const BookPageModel = ({
               currentInputType={currentModelType}
               handleChange={handleChange}
             />
-            {categories.data.map((c) => {
+            {categories.data.map(({ id, name }) => {
               return (
                 <RadioInput
-                  key={c.id}
-                  id={c.id}
-                  inputName={c.name}
+                  key={id}
+                  id={id}
+                  inputName={name}
                   currentInputType={currentModelType}
                   handleChange={handleChange}
                 />
@@ -65,14 +66,12 @@ const BookPageModel = ({
             })}
           </div>
           <div className={s.modelCarImagesWrapper}>
-            {filteredCars.map((car, index) => {
+            {filteredCars.map((car) => {
               return (
                 <button
-                  key={index}
+                  key={car.id}
                   className={s.modelCarBlock}
-                  onClick={() =>
-                    modelClickHandler(car.name, car.priceMin, car.priceMax)
-                  }
+                  onClick={() => modelClickHandler(car)}
                 >
                   <div className={s.carInfo}>
                     <span className={s.carModelName}>
@@ -98,7 +97,7 @@ const BookPageModel = ({
         </div>
         <OrderInfoContainer
           btnName={"Дополнительно"}
-          available={!modelName}
+          available={!currentModel.name}
           btnLink={"Additionally"}
         />
       </div>

@@ -19,29 +19,30 @@ const Additional = ({
   cars,
   rate,
   color,
-  modelName,
   setCarColor,
   setCarRate,
   addParams,
   setCarParams,
   setDiffDate,
+  currentModel,
+  diffDate,
+  modelRate,
+  startDateRedux,
+  endDateRedux,
+  setStartDate,
+  setEndDate,
 }) => {
   registerLocale("ru", ru);
   moment.locale("ru");
   let filteredColors = [];
-  if (cars && modelName) {
-    filteredColors = cars.data.filter((c) => {
-      return c.name.toLowerCase() === modelName.toLowerCase();
-    });
-  }
 
-  const [currentColor, setColor] = useState("");
+  const [currentColor, setColor] = useState(color);
   const handleColorChange = (e) => {
     setColor(e.target.value);
     setCarColor(e.target.value);
   };
 
-  const [currentRate, setRate] = useState("");
+  const [currentRate, setRate] = useState(modelRate);
   const handleRateChange = (e) => {
     setRate(e.target.value);
     setCarRate(e.target.value);
@@ -53,16 +54,33 @@ const Additional = ({
     setCarParams(parseInt(id));
   };
 
-  const [startDate, setCurStartDate] = useState("");
-  const [endDate, setCurEndDate] = useState(startDate);
+  const [startDate, setCurStartDate] = useState(startDateRedux);
+  const [endDate, setCurEndDate] = useState(endDateRedux);
 
   const handleStartDate = (date) => {
     setCurStartDate(date);
+    setStartDate(date);
     setDiffDate("");
+    setActive(true);
+    setCurEndDate("");
   };
 
   const handleEndDate = (date) => {
     setCurEndDate(date);
+    setEndDate(date);
+  };
+
+  const handleStartDateCleanBtn = () => {
+    setCurStartDate("");
+    setCurEndDate("");
+    setEndDate("");
+    setStartDate("");
+    setDiffDate("");
+  };
+
+  const handleEndDateCleanBtn = () => {
+    setCurEndDate("");
+    setEndDate("");
     setDiffDate("");
   };
 
@@ -73,13 +91,34 @@ const Additional = ({
     }
   }, [startDate, endDate]);
 
+  const [isCalenadarActive, setActive] = useState(true);
+
+  useEffect(() => {
+    if (startDate || startDate !== "") setActive(false);
+  }, [startDate]);
+
+  const filterPassedTime = (time) => {
+    const selectedDate = new Date(time);
+    return startDate.getTime() < selectedDate.getTime();
+  };
+
+  const [isTest, setIsTest] = useState(true);
+  useEffect(() => {
+    if (modelRate !== "" && color !== "" && diffDate !== "") setIsTest(false);
+  }, [color, modelRate, diffDate]);
+
   return (
     <div className={s.additionalPageWrapepr}>
       <div className={s.additionalPageContainer}>
         <div className={s.additionalParameters}>
           <div className={s.additionalBlock}>
-            {filteredColors[0] && filteredColors[0].colors.length === 0 ? (
-              <span>Извините, невозможно выбрать цвет</span>
+            {currentModel.colors.length === 0 ? (
+              <RadioInput
+                id={10}
+                inputName="Любой"
+                currentInputType={currentColor}
+                handleChange={handleColorChange}
+              />
             ) : (
               <>
                 <span>Цвет</span>
@@ -92,12 +131,13 @@ const Additional = ({
                     currentInputType={currentColor}
                     handleChange={handleColorChange}
                   />
-                  {filteredColors[0]
-                    ? filteredColors[0].colors.map((color, index) => {
+                  {currentModel.colors
+                    ? currentModel.colors.map((color, index) => {
                         return (
                           <RadioInput
                             key={index}
                             id={index}
+                            value={currentColor || color}
                             inputName={color}
                             currentInputType={currentColor}
                             handleChange={handleColorChange}
@@ -123,11 +163,11 @@ const Additional = ({
                     minDate={new Date()}
                     onChange={(date) => handleStartDate(date)}
                     showTimeSelect
-                    dateFormat="dd.MM.yyyy HH:mm "
+                    dateFormat="dd.MM.yyyy HH:mm"
                   />
                   <button
                     className={baseInput.cleanInputBtn}
-                    onClick={() => handleStartDate("")}
+                    onClick={handleStartDateCleanBtn}
                   >
                     <ReactSVG src={clean_input} />
                   </button>
@@ -141,13 +181,15 @@ const Additional = ({
                     locale="ru"
                     selected={endDate}
                     minDate={startDate}
+                    filterTime={filterPassedTime}
+                    disabled={isCalenadarActive}
                     onChange={(date) => handleEndDate(date)}
                     showTimeSelect
                     dateFormat="dd.MM.yyyy HH:mm "
                   />
                   <button
                     className={baseInput.cleanInputBtn}
-                    onClick={() => handleEndDate("")}
+                    onClick={handleEndDateCleanBtn}
                   >
                     <ReactSVG src={clean_input} />
                   </button>
@@ -159,16 +201,17 @@ const Additional = ({
           <div className={s.additionalBlock}>
             <span className={`${s.additionalInputBlock}`}>Тариф</span>
             <div className={s.rateCheckBoxesWrapper}>
-              {rate.data.map((rate) => {
+              {rate.data.map(({ rateTypeId, price }) => {
                 return (
                   <RadioInput
-                    key={rate.rateTypeId.id}
-                    id={rate.rateTypeId.id}
-                    inputName={rate.rateTypeId.name}
+                    key={rateTypeId.id}
+                    id={rateTypeId.id}
+                    value={currentRate || rateTypeId.name}
+                    inputName={rateTypeId.name}
                     currentInputType={currentRate}
                     handleChange={handleRateChange}
-                    ratePrice={rate.price}
-                    rateUnit={rate.rateTypeId.unit}
+                    ratePrice={price}
+                    rateUnit={rateTypeId.unit}
                   />
                 );
               })}
@@ -180,13 +223,14 @@ const Additional = ({
             <div
               className={`${s.checkBoxesWrapper} ${s.additionalParametersCheckboxes}`}
             >
-              {addParams.map((param) => {
+              {addParams.map(({ id, name, price, checked }) => {
                 return (
                   <CheckBoxInput
-                    key={param.id}
-                    id={param.id}
-                    inputName={param.name}
-                    price={param.price}
+                    key={id}
+                    id={id}
+                    checked={checked}
+                    inputName={name}
+                    price={price}
                     handleChange={handleParamsChange}
                     currentInputType={isChecked}
                   />
@@ -196,7 +240,7 @@ const Additional = ({
           </div>
         </div>
 
-        <OrderInfoContainer btnName={"Итого"} available={!color || !rate} />
+        <OrderInfoContainer btnName={"Итого"} available={isTest} />
       </div>
     </div>
   );

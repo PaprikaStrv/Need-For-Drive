@@ -34,7 +34,6 @@ const locationReducer = (state = initialState, action) => {
           address = action.data.replace("проспект ", ""); 
         }  else address = action.data;
         if(address.match(regexp)) {
-          console.log(address);
           address = address.replace(/\bк/gm, ", корп.");
         }
         return {

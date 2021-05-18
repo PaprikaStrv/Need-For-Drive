@@ -1,22 +1,23 @@
 import { simbirsoftAPI } from "./../API/api";
 
 const SET_MODELS = "SET_MODELS";
-const SET_CAR_MODEL_NAME = "SET_CAR_MODEL_NAME";
-const SET_CAR_PRICE_MIN = "SET_CAR_PRICE_MIN";
-const SET_CAR_PRICE_MAX = "SET_CAR_PRICE_MAX";
 const SET_CAR_COLOR = "SET_CAR_COLOR";
 const SET_CAR_RATE = "SET_CAT_RATE";
 const SET_CAR_PARAMS = "SET_CAR_PARAMS";
 const SET_DIFF_DATE = "SET_DIFF_DATE";
 const UNSET_CAR_PARAMS = "UNSET_CAR_PARAMS";
+const SET_CURRENT_MODEL = "SET_CURRENT_MODEL";
+
+const SET_START_DATE = "SET_START_DATE";
+const SET_END_DATE = "SET_END_DATE";
 
 let initialState = {
   models: [],
-  modelName: "",
+  currentModel: [],
   color: "",
   rate: "",
-  priceMin: "",
-  priceMax: "",
+  startDate: "",
+  endDate: "",
   diffDate: [],
   additionalParameters: [
     { id: 12, name: "Полный бак", price: 500, checked: false },
@@ -33,12 +34,7 @@ const modelReducer = (state = initialState, action) => {
         ...action,
         models: action.data,
       };
-    case SET_CAR_MODEL_NAME:
-      return {
-        ...state,
-        ...action,
-        modelName: action.data,
-      };
+
     case SET_CAR_COLOR:
       return {
         ...state,
@@ -51,17 +47,24 @@ const modelReducer = (state = initialState, action) => {
         ...action,
         rate: action.data,
       };
-    case SET_CAR_PRICE_MIN:
+
+    case SET_CURRENT_MODEL:
       return {
         ...state,
         ...action,
-        priceMin: action.data,
+        currentModel: action.model,
       };
-    case SET_CAR_PRICE_MAX:
+    case SET_START_DATE:
       return {
         ...state,
         ...action,
-        priceMax: action.data,
+        startDate: action.date,
+      };
+    case SET_END_DATE:
+      return {
+        ...state,
+        ...action,
+        endDate: action.date,
       };
     case SET_DIFF_DATE: {
       return {
@@ -107,11 +110,6 @@ export const setCars = (cars) => ({
   data: cars,
 });
 
-export const setCarModelName = (model) => ({
-  type: SET_CAR_MODEL_NAME,
-  data: model,
-});
-
 export const setCarColor = (color) => ({
   type: SET_CAR_COLOR,
   data: color,
@@ -120,16 +118,6 @@ export const setCarColor = (color) => ({
 export const setCarRate = (rate) => ({
   type: SET_CAR_RATE,
   data: rate,
-});
-
-export const setCarModelPriceMin = (priceMin) => ({
-  type: SET_CAR_PRICE_MIN,
-  data: priceMin,
-});
-
-export const setCarModelPriceMax = (priceMax) => ({
-  type: SET_CAR_PRICE_MAX,
-  data: priceMax,
 });
 
 export const setCarParams = (id) => ({
@@ -144,6 +132,21 @@ export const unsetCarParams = () => ({
 export const setDiffDate = (date) => ({
   type: SET_DIFF_DATE,
   date,
+});
+
+export const setStartDate = (date) => ({
+  type: SET_START_DATE,
+  date,
+});
+
+export const setEndDate = (date) => ({
+  type: SET_END_DATE,
+  date,
+});
+
+export const setCurrentModel = (model) => ({
+  type: SET_CURRENT_MODEL,
+  model,
 });
 
 export const getCars = () => {

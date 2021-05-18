@@ -15,7 +15,7 @@ const CheckBoxInput = ({
         type="checkbox"
         className={s.checkBoxInput}
         value={inputName}
-        checked={checked}
+        defaultChecked={checked}
         id={id}
         onClick={(event) => handleChange(event, id)}
       />

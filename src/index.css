@@ -94,7 +94,7 @@ body {
   }
   
   .react-datepicker-popper {
-    transform: translate3d(6px, 25px, 0px) !important;
+    transform: translate3d(3px, 48px, 0px) !important;
 }
 
   .react-datepicker__time-container .react-datepicker__time .react-datepicker__time-box {

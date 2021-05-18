@@ -79,6 +79,12 @@
   }
 }
 
+@media screen and (max-width: 620px) {
+  .checkBoxWrapper {
+    margin-bottom: 16px;
+  }
+}
+
 @media screen and (max-width: 540px) {
   .checkBoxWrapper {
     margin-bottom: 8px;

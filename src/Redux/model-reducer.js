@@ -3,6 +3,7 @@ import { simbirsoftAPI } from "./../API/api";
 const SET_MODELS = "SET_MODELS";
 const SET_CAR_COLOR = "SET_CAR_COLOR";
 const SET_CAR_RATE = "SET_CAT_RATE";
+const SET_CAR_RATE_ID = "SET_CAT_RATE_ID";
 const SET_CAR_PARAMS = "SET_CAR_PARAMS";
 const SET_DIFF_DATE = "SET_DIFF_DATE";
 const UNSET_CAR_PARAMS = "UNSET_CAR_PARAMS";
@@ -10,19 +11,43 @@ const SET_CURRENT_MODEL = "SET_CURRENT_MODEL";
 
 const SET_START_DATE = "SET_START_DATE";
 const SET_END_DATE = "SET_END_DATE";
+const SET_RESULT_PRICE = "SET_RESULT_PRICE";
 
 let initialState = {
   models: [],
   currentModel: [],
   color: "",
   rate: "",
+  rateId: "",
   startDate: "",
   endDate: "",
+  resultPrice: "",
   diffDate: [],
   additionalParameters: [
-    { id: 12, name: "Полный бак", price: 500, checked: false },
-    { id: 23, name: "Детское кресло", price: 200, checked: false },
-    { id: 33, name: "Правый руль", price: 1600, checked: false },
+    {
+      id: 12,
+      name: "Полный бак",
+      resultName: "Топливо",
+      resultValue: "100%",
+      price: 500,
+      checked: false,
+    },
+    {
+      id: 23,
+      name: "Детское кресло",
+      resultName: "Детское кресло",
+      resultValue: "Да",
+      price: 200,
+      checked: false,
+    },
+    {
+      id: 33,
+      name: "Правый руль",
+      resultName: "Правый руль",
+      resultValue: "Да",
+      price: 1600,
+      checked: false,
+    },
   ],
 };
 
@@ -44,10 +69,13 @@ const modelReducer = (state = initialState, action) => {
     case SET_CAR_RATE:
       return {
         ...state,
-        ...action,
-        rate: action.data,
+        rate: action.rate,
       };
-
+    case SET_CAR_RATE_ID:
+      return {
+        ...state,
+        rateId: action.rateId,
+      };
     case SET_CURRENT_MODEL:
       return {
         ...state,
@@ -99,7 +127,12 @@ const modelReducer = (state = initialState, action) => {
           return { ...item, checked: false };
         }),
       };
-
+    case SET_RESULT_PRICE:
+      return {
+        ...state,
+        ...action,
+        resultPrice: action.price,
+      };
     default:
       return state;
   }
@@ -117,7 +150,12 @@ export const setCarColor = (color) => ({
 
 export const setCarRate = (rate) => ({
   type: SET_CAR_RATE,
-  data: rate,
+  rate,
+});
+
+export const setCarRateId = (rateId) => ({
+  type: SET_CAR_RATE_ID,
+  rateId,
 });
 
 export const setCarParams = (id) => ({
@@ -149,11 +187,18 @@ export const setCurrentModel = (model) => ({
   model,
 });
 
+export const setResultPrice = (price) => ({
+  type: SET_RESULT_PRICE,
+  price,
+});
+
 export const getCars = () => {
   return async (dispatch) => {
     const response = await simbirsoftAPI.getCars();
     dispatch(setCars(response));
   };
 };
+
+
 
 export default modelReducer;

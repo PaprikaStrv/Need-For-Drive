@@ -8,14 +8,14 @@ const Autocomplete = ({ value, isOpen, filteredValues, itemClickHandler }) => {
         value.length >= 1 && isOpen ? s.autocomplete : s.autocompleteHide
       }
     >
-      {filteredValues.map((item, index) => {
+      {filteredValues.map((name, id) => {
         return (
           <li
-            key={index}
+            key={id}
             onClick={itemClickHandler}
             className={s.autocompleteItem}
           >
-            {item.name}
+            {name.name}
           </li>
         );
       })}

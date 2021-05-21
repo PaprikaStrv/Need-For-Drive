@@ -1,0 +1,50 @@
+@import "../../scss/mixins.scss";
+
+.confirmOrderWrapper {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.9);
+  @include absoluteCenter();
+}
+
+.confirmOrderContainer {
+  @include absoluteCenter();
+}
+
+.formWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.confirmOrderText {
+  @include RobotoText();
+  font-size: 24px;
+  line-height: 28px;
+  color: #121212;
+  margin-bottom: 32px;
+}
+
+.formBtnWrapper {
+  display: flex;
+  :first-child {
+    margin-right: 16px
+  }
+}
+
+.formConfirmBtn {
+  @include btn();
+  width: 177px;
+  height: 48px;
+  &:hover {
+    @include btnHover();
+  }
+  &:active {
+    @include btnActive();
+  }
+}
+
+.redColor {
+  background: linear-gradient(90deg, #493013 0%, #7B0C3B 100%);
+}

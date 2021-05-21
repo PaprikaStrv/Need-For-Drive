@@ -8,6 +8,7 @@ import {
   setDiffDate,
   setStartDate,
   setEndDate,
+  setCarRateId,
 } from "./../../Redux/model-reducer";
 import { getRate } from "./../../Redux/orderPage-reducer.js";
 import Preloader from "./../../Components/Preloader/Preloader";
@@ -30,6 +31,7 @@ const AdditionalContainer = ({
   endDateRedux,
   setStartDate,
   setEndDate,
+  setCarRateId,
 }) => {
   useEffect(() => {
     getRate();
@@ -57,6 +59,7 @@ const AdditionalContainer = ({
         endDateRedux,
         setStartDate,
         setEndDate,
+        setCarRateId,
       }}
     />
   );
@@ -84,4 +87,5 @@ export default connect(mapStateToProps, {
   setDiffDate,
   setStartDate,
   setEndDate,
+  setCarRateId,
 })(AdditionalContainer);

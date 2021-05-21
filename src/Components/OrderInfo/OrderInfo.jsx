@@ -8,17 +8,17 @@ import { calcPrice } from "./../../commonScripts/calcPrice";
 const OrderInfo = ({
   city,
   address,
-  //modelName,
   color,
   rate,
-  //priceMin,
-  //priceMax,
   available,
   btnName,
   btnLink,
   addParams,
   diffDate,
-  currentModel
+  currentModel,
+  noLink,
+  isConfirmFormActive,
+  setConfirmFormActive
 }) => {
   return (
     <div className={s.orderInfoWrapper}>
@@ -73,11 +73,11 @@ const OrderInfo = ({
           </li>
         )}
 
-        {addParams.map((item, index) => {
-          if (item.checked)
+        {addParams.map(({ name, id, checked }) => {
+          if (checked)
             return (
-              <li key={index}>
-                <div className={s.liName}>{item.name}</div>
+              <li key={id}>
+                <div className={s.liName}>{name}</div>
                 <div></div>
                 <div className={`${s.addressOrderInfo} ${s.attrSpan}`}>
                   <span>Да</span>
@@ -96,22 +96,33 @@ const OrderInfo = ({
         </div>
       )}
       {currentModel.priceMin && currentModel.priceMax && (
-        <div className={rate && diffDate ? `${s.modelPrice} ${s.modelPriceHide}` : s.modelPrice}>
+        <div
+          className={
+            rate && diffDate
+              ? `${s.modelPrice} ${s.modelPriceHide}`
+              : s.modelPrice
+          }
+        >
           <span className={s.price}>Цена: </span>
           <span className={s.priceBorder}>
-            от {XFormatPrice(currentModel.priceMin)} до {XFormatPrice(currentModel.priceMax)} ₽
+            от {XFormatPrice(currentModel.priceMin)} до{" "}
+            {XFormatPrice(currentModel.priceMax)} ₽
           </span>
         </div>
       )}
 
-      <NavLink
-        to={"/need-for-drive/bookCar/" + btnLink}
-        className={
-          available ? `${s.orderInfoBtn} ${s.disabled}` : s.orderInfoBtn
-        }
-      >
-        {btnName}
-      </NavLink>
+      {noLink ? (
+        <button className={s.orderInfoBtn} onClick={() => setConfirmFormActive(!isConfirmFormActive)}>Заказать</button>
+      ) : (
+        <NavLink
+          to={"/need-for-drive/bookCar/" + btnLink}
+          className={
+            available ? `${s.orderInfoBtn} ${s.disabled}` : s.orderInfoBtn
+          }
+        >
+          {btnName}
+        </NavLink>
+      )}
     </div>
   );
 };

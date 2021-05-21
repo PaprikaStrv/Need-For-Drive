@@ -99,9 +99,6 @@ const Slider = (props) => {
               <p>{slider.text}</p>
               <button
                 className={s[slider.buttonColor]}
-                // onClick={() => {
-                //   console.log("click");
-                // }}
               >
                 Подробнее
               </button>

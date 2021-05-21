@@ -9,6 +9,7 @@ const SET_CITY_ADRESSES = "SET_CITY_ADRESSES";
 const SET_MODELS = "SET_MODELS";
 const SET_CATEGORIES = "SET_CATEGORIES";
 const SET_RATE = "SET_RATE";
+const SET_CONFIRM_FORM_ACTIVE = "SET_CONFIRM_FORM_ACTIVE";
 
 let initialState = {
   cities: [],
@@ -20,6 +21,7 @@ let initialState = {
   models: [],
   categories: [],
   rate: [],
+  isConfirmFormActive: false,
 };
 
 const orderPageReducer = (state = initialState, action) => {
@@ -78,10 +80,21 @@ const orderPageReducer = (state = initialState, action) => {
         ...action,
         rate: action.data,
       };
+      case SET_CONFIRM_FORM_ACTIVE:
+        return {
+          ...state,
+          ...action,
+          isConfirmFormActive: action.bool
+        }
     default:
       return state;
   }
 };
+
+export const setConfirmFormActive = (bool) => ({
+  type: SET_CONFIRM_FORM_ACTIVE,
+  bool,
+})
 
 export const setInputCityValue = (value) => ({
   type: SET_INPUT_CITY_VALUE,

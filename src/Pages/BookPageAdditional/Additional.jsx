@@ -31,6 +31,7 @@ const Additional = ({
   endDateRedux,
   setStartDate,
   setEndDate,
+  setCarRateId,
 }) => {
   registerLocale("ru", ru);
   moment.locale("ru");
@@ -43,9 +44,10 @@ const Additional = ({
   };
 
   const [currentRate, setRate] = useState(modelRate);
-  const handleRateChange = (e) => {
+  const handleRateChange = (e, rateName, rateId) => {
     setRate(e.target.value);
-    setCarRate(e.target.value);
+    setCarRate(rateName);
+    setCarRateId(rateId);
   };
 
   const [isChecked, setCheck] = useState("");
@@ -201,7 +203,7 @@ const Additional = ({
           <div className={s.additionalBlock}>
             <span className={`${s.additionalInputBlock}`}>Тариф</span>
             <div className={s.rateCheckBoxesWrapper}>
-              {rate.data.map(({ rateTypeId, price }) => {
+              {rate.data.map(({ rateTypeId, id, price }) => {
                 return (
                   <RadioInput
                     key={rateTypeId.id}
@@ -209,7 +211,7 @@ const Additional = ({
                     value={currentRate || rateTypeId.name}
                     inputName={rateTypeId.name}
                     currentInputType={currentRate}
-                    handleChange={handleRateChange}
+                    handleChange={(event) => handleRateChange(event, rateTypeId.name, id)}
                     ratePrice={price}
                     rateUnit={rateTypeId.unit}
                   />
@@ -240,7 +242,7 @@ const Additional = ({
           </div>
         </div>
 
-        <OrderInfoContainer btnName={"Итого"} available={isTest} />
+        <OrderInfoContainer btnName="Итого" available={isTest} btnLink="OrderResult"/>
       </div>
     </div>
   );

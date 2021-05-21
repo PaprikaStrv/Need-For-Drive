@@ -67,9 +67,10 @@ const BookPageModel = ({
           </div>
           <div className={s.modelCarImagesWrapper}>
             {filteredCars.map((car) => {
+              const {id, name, priceMin, priceMax, thumbnail} = car;
               return (
                 <button
-                  key={car.id}
+                  key={id}
                   className={s.modelCarBlock}
                   onClick={() => modelClickHandler(car)}
                 >
@@ -78,15 +79,15 @@ const BookPageModel = ({
                       {car.name.toUpperCase()}
                     </span>
                     <span className={s.carModelPrice}>
-                      {XFormatPrice(car.priceMin)} -{" "}
-                      {XFormatPrice(car.priceMax)} ₽
+                      {XFormatPrice(priceMin)} -{" "}
+                      {XFormatPrice(priceMax)} ₽
                     </span>
                   </div>
                   <div
                     className={s.carImg}
                     style={{
                       backgroundImage: `url(${prepareImgLink(
-                        car.thumbnail.path
+                        thumbnail.path
                       )})`,
                     }}
                   ></div>
@@ -96,9 +97,9 @@ const BookPageModel = ({
           </div>
         </div>
         <OrderInfoContainer
-          btnName={"Дополнительно"}
+          btnName="Дополнительно"
           available={!currentModel.name}
-          btnLink={"Additionally"}
+          btnLink="Additionally"
         />
       </div>
     </div>

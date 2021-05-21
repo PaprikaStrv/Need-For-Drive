@@ -25,7 +25,7 @@ const StartScreen = (props) => {
           <Main />
           <Slider />
         </Route>
-        <Route path={"/need-for-drive/bookCar"}>
+        <Route path="/need-for-drive/bookCar">
           <BookPageContainer/>
         </Route>
       </Switch>

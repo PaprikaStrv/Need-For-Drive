@@ -35,7 +35,7 @@ const BookingStages = ({
         </div>
 
         <div className={s.orderStep}>
-          <NavLink to="/" className={!diffDate || diffDate === ""  && !color || color === "" &&  !rate || rate === "" ? s.disabled : ""}>
+          <NavLink to="/need-for-drive/bookCar/OrderResult" className={!diffDate || diffDate === ""  && !color || color === "" &&  !rate || rate === "" ? s.disabled : ""}>
             Итого
           </NavLink>
         </div>

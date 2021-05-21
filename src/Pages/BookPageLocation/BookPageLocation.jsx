@@ -240,9 +240,9 @@ const BookPageLocation = ({
         </div>
 
         <OrderInfoContainer
-          btnName={"Выбрать модель"}
+          btnName="Выбрать модель"
           available={isModelAvail}
-          btnLink={"Model"}
+          btnLink="Model"
         />
       </div>
     </div>

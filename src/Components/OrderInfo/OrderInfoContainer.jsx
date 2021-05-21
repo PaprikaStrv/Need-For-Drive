@@ -1,6 +1,9 @@
-import React from "react";
+import React, { useEffect } from "react";
 import OrderInfo from "./OrderInfo";
 import { connect } from "react-redux";
+import { setConfirmFormActive } from "../../Redux/orderPage-reducer";
+import { setResultPrice } from "../../Redux/model-reducer";
+import { calcPrice } from "./../../commonScripts/calcPrice";
 
 const OrderInfoContainer = ({
   city,
@@ -10,10 +13,20 @@ const OrderInfoContainer = ({
   available,
   btnName,
   btnLink,
+  noLink,
   addParams,
   diffDate,
   currentModel,
+  isConfirmFormActive,
+  setConfirmFormActive,
+  setResultPrice,
 }) => {
+  useEffect(() => {
+    if (rate && diffDate && currentModel.priceMin && addParams)
+      setResultPrice(
+        calcPrice(rate, diffDate, currentModel.priceMin, addParams)
+      );
+  }, [rate, diffDate, addParams]);
   return (
     <OrderInfo
       {...{
@@ -24,9 +37,12 @@ const OrderInfoContainer = ({
         available,
         btnName,
         btnLink,
+        noLink,
         addParams,
         diffDate,
         currentModel,
+        isConfirmFormActive,
+        setConfirmFormActive,
       }}
     />
   );
@@ -39,7 +55,11 @@ const mapStateToProps = (state) => ({
   rate: state.model.rate,
   addParams: state.model.additionalParameters,
   diffDate: state.model.diffDate,
-  currentModel: state.model.currentModel
+  currentModel: state.model.currentModel,
+  isConfirmFormActive: state.orderPage.isConfirmFormActive,
 });
 
-export default connect(mapStateToProps)(OrderInfoContainer);
+export default connect(mapStateToProps, {
+  setConfirmFormActive,
+  setResultPrice,
+})(OrderInfoContainer);

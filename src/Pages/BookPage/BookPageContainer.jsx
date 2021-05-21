@@ -3,14 +3,15 @@ import BookPage from './BookPage';
 import { connect } from 'react-redux';
 
 
-const BookPageContainer = ({isAvail}) => {
+const BookPageContainer = ({isAvail, isConfirmFormActive}) => {
     return (
-        <BookPage {...isAvail}/>
+        <BookPage {...{isAvail, isConfirmFormActive}}/>
     );
 }
 
 const mapStateToProps = (state) => ({
-    isAvail: state.orderPage.isModelAvailable
+    isAvail: state.orderPage.isModelAvailable,
+    isConfirmFormActive: state.orderPage.isConfirmFormActive,
 })
 
 export default connect(mapStateToProps)(BookPageContainer);

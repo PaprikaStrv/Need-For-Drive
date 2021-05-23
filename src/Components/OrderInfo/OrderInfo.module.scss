@@ -84,6 +84,13 @@
   display: none;
 }
 
+.redBtn {
+  background: linear-gradient(90deg, #493013 0%, #7B0C3B 100%);
+}
+
+.hideBtn {
+  display: none;
+}
 
 @media screen and (max-width: 900px) {
   .orderInfoWrapper {

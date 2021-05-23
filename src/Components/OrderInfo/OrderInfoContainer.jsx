@@ -20,6 +20,8 @@ const OrderInfoContainer = ({
   isConfirmFormActive,
   setConfirmFormActive,
   setResultPrice,
+  confirmData,
+  orderData,
 }) => {
   useEffect(() => {
     if (rate && diffDate && currentModel.priceMin && addParams)
@@ -43,6 +45,8 @@ const OrderInfoContainer = ({
         currentModel,
         isConfirmFormActive,
         setConfirmFormActive,
+        confirmData,
+        orderData,
       }}
     />
   );
@@ -57,6 +61,8 @@ const mapStateToProps = (state) => ({
   diffDate: state.model.diffDate,
   currentModel: state.model.currentModel,
   isConfirmFormActive: state.orderPage.isConfirmFormActive,
+  confirmData: state.confirm.confirmData,
+  orderData: state.confirm.orderData,
 });
 
 export default connect(mapStateToProps, {

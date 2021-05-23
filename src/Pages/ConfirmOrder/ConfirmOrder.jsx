@@ -1,18 +1,13 @@
 import react from "react";
 import s from "./ConfirmOrder.module.scss";
-import { Form, Field } from "react-final-form";
+import { Form} from "react-final-form";
 
-const onSubmit = (values) => {
-  console.log(1);
-};
-
-const ConfirmOrder = ({ setConfirmFormActive, isConfirmFormActive, }) => {
-  // handlerSumbitForm();
+const ConfirmOrder = ({ setConfirmFormActive, isConfirmFormActive, handleFormSubmit}) => {
   return (
     <div className={s.confirmOrderWrapper}>
       <div className={s.confirmOrderContainer}>
         <Form
-          onSubmit={onSubmit}
+          onSubmit={handleFormSubmit}
           render={({ handleSubmit, form, submitting, pristine, values }) => (
             <form onSubmit={handleSubmit}>
               <div className={s.formWrapper}>

@@ -1,11 +1,13 @@
 import react, { useEffect } from "react";
 import { connect } from "react-redux";
 import { useHistory } from "react-router";
-import ResultOrder from "./ResultOrder";
+import ResultOrder from "./InitializeOrderInfo";
 import queryString from "query-string";
 import { getOrderInfo } from "../../Redux/confirmOrder-reducer";
+import InitializeOrderInfo from "./InitializeOrderInfo";
+import Preloader from "../../Components/Preloader/Preloader";
 
-const ResultOrderContainer = ({
+const IntializeOrderInfoContainer = ({
   currentModel,
   addParams,
   startDate,
@@ -14,19 +16,17 @@ const ResultOrderContainer = ({
   orderData,
 }) => {
   let history = useHistory();
-
   useEffect(() => {
-    if (confirmData.length !== 0) {
-      const location = history.location.pathname;
-      const orderId = confirmData.data.id;
-      const searchString = `?orderId=${orderId}`;
-      history.push(`${location}${searchString}`);
-      getOrderInfo(orderId);
-    }
+    const values = queryString.parse(history.location.search);
+    const orderId = values.orderId;
+    getOrderInfo(orderId);
   }, [confirmData]);
 
+  if (orderData.length === 0) {
+    return <Preloader />;
+  }
   return (
-    <ResultOrder
+    <InitializeOrderInfo
       {...{
         currentModel,
         addParams,
@@ -47,4 +47,6 @@ const mapStateToProps = (state) => ({
   orderData: state.confirm.orderData,
 });
 
-export default connect(mapStateToProps, { getOrderInfo })(ResultOrderContainer);
+export default connect(mapStateToProps, { getOrderInfo })(
+  IntializeOrderInfoContainer
+);

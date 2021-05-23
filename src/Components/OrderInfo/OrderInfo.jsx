@@ -4,6 +4,10 @@ import s from "./OrderInfo.module.scss";
 import { XFormatPrice } from "../../commonScripts/scripts.js";
 import { diffDateFormat } from "../../commonScripts/diffDateFormat.js";
 import { calcPrice } from "./../../commonScripts/calcPrice";
+import moment from "moment";
+import "moment/locale/ru";
+import "moment-duration-format";
+require("moment-duration-format");
 
 const OrderInfo = ({
   city,
@@ -18,8 +22,38 @@ const OrderInfo = ({
   currentModel,
   noLink,
   isConfirmFormActive,
-  setConfirmFormActive
+  setConfirmFormActive,
+  confirmData,
+  orderData,
 }) => {
+  if (orderData && orderData.length !== 0) {
+    city = orderData.data.cityId.name;
+    address = orderData.data.pointId.address;
+    currentModel.name = orderData.data.carId.name;
+    color = orderData.data.color;
+    diffDate = moment.duration(
+      moment(orderData.data.dateTo).diff(moment(orderData.data.dateFrom))
+    );
+    rate = orderData.data.rateId.rateTypeId.name;
+    addParams.map((param) => {
+      if (orderData.data.isFullTank) {
+        if (param.id === 12) {
+          return (param.checked = orderData.data.isFullTank);
+        }
+      }
+      if (orderData.data.isNeedChildChair) {
+        if (param.id === 23) {
+          return (param.checked = orderData.data.isNeedChildChair);
+        }
+      }
+      if (orderData.data.isRightWheel) {
+        if (param.id === 33) {
+          return (param.checked = orderData.data.isRightWheel);
+        }
+      }
+    });
+    currentModel.priceMin = orderData.data.carId.priceMin;
+  }
   return (
     <div className={s.orderInfoWrapper}>
       <span className={s.yourOrderText}>Ваш заказ:</span>
@@ -111,8 +145,20 @@ const OrderInfo = ({
         </div>
       )}
 
+      {orderData && orderData.length !== 0 ? (
+        <button className={`${s.orderInfoBtn} ${s.redBtn}`}>Отменить</button>
+      ) : null}
       {noLink ? (
-        <button className={s.orderInfoBtn} onClick={() => setConfirmFormActive(!isConfirmFormActive)}>Заказать</button>
+        <button
+          className={
+            (orderData.length !== 0)
+              ? s.hideBtn
+              : s.orderInfoBtn
+          }
+          onClick={() => setConfirmFormActive(!isConfirmFormActive)}
+        >
+          Заказать
+        </button>
       ) : (
         <NavLink
           to={"/need-for-drive/bookCar/" + btnLink}

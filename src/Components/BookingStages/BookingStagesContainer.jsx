@@ -8,9 +8,11 @@ const BookingStagesContainer = ({
   color,
   rate,
   diffDate,
+  confirmData,
+  orderData
 }) => {
   return (
-    <BookingStages {...{ isModelAvail, currentModel, color, rate, diffDate }} />
+    <BookingStages {...{ isModelAvail, currentModel, color, rate, diffDate,confirmData, orderData }} />
   );
 };
 
@@ -20,6 +22,8 @@ const mapStateToProps = (state) => ({
   color: state.model.color,
   rate: state.model.rate,
   diffDate: state.model.diffDate,
+  confirmData: state.confirm.confirmData,
+  orderData: state.confirm.orderData,
 });
 
 export default connect(mapStateToProps)(BookingStagesContainer);

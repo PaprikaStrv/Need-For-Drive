@@ -53,37 +53,16 @@ export const simbirsoftAPI = {
     });
   },
 
-  putOrder(
-    cityId,
-    pointId,
-    color,
-    dateFrom,
-    dateTo,
-    rateId,
-    price,
-    isFullTank,
-    isNeedChildChair,
-    isRigthWheel
-  ) {
-    return instance
-      .post(`order`, {
-        params: {
-          orderStatusId: "testId1",
-          cityId: cityId,
-          pointId: pointId,
-          color: color,
-          dateFrom: dateFrom,
-          dateTo: dateTo,
-          rateId: rateId,
-          price: price,
-          isFullTank: isFullTank,
-          isNeedChildChair: isNeedChildChair,
-          isRigthWheel: isRigthWheel,
-        },
-      })
-      .then((response) => {
-        return response.data;
-      });
+  postOrder(res) {
+    return instance.post(`order`, res).then((response) => {
+      return response.data;
+    });
+  },
+
+  getOrder(orderId) {
+    return instance.get(`order/${orderId}`).then((response) => {
+      return response.data;
+    })
   },
 
   addressGeocode(address, city) {

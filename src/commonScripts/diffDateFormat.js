@@ -4,6 +4,7 @@ import "moment-duration-format";
 require("moment-duration-format");
 
 export const diffDateFormat = (date) => {
+
   let days = "д";
   let hours = "ч";
   let minutes = "м";

@@ -8,11 +8,14 @@ import BookPageModelContainer from "./../BookPageModel/ModelContainer";
 import AdditionalContainer from "./../BookPageAdditional/AdditionalContainer";
 import ResultOrderContainer from "../BookPageResult/ResultOrderContainer";
 import ConfirmOrderContainer from "../ConfirmOrder/ConfirmOrderContainer";
+import IntializeOrderInfoContainer from "./../IntitializeOrderInfo/InitializeOrderInfoContainer";
+import queryString from "query-string";
+import { useHistory } from "react-router";
 
 const BookPage = ({ isAvail, isConfirmFormActive }) => {
   return (
     <section className={s.bookPageWrapper}>
-    {isConfirmFormActive && <ConfirmOrderContainer />}
+      {isConfirmFormActive && <ConfirmOrderContainer />}
       <div className={s.bookHeaderWrapper}>
         <div className={s.bookHeadContainer}>
           <Header />
@@ -40,11 +43,17 @@ const BookPage = ({ isAvail, isConfirmFormActive }) => {
             component={AdditionalContainer}
           />
         )}
-
-        {!isAvail && (
+        {!isAvail ? (
           <Route
+            exact
             path="/need-for-drive/bookCar/OrderResult"
-            render={() => <ResultOrderContainer />}
+            component={ResultOrderContainer}
+          />
+        ) : (
+          <Route
+            exact
+            path="/need-for-drive/bookCar/OrderResult"
+            component={IntializeOrderInfoContainer}
           />
         )}
       </Switch>

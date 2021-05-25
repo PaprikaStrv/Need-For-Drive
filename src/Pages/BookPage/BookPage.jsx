@@ -51,7 +51,7 @@ const BookPage = ({ isAvail, isConfirmFormActive }) => {
           />
         ) : (
           <Route
-            exact
+            
             path="/need-for-drive/bookCar/OrderResult"
             component={IntializeOrderInfoContainer}
           />

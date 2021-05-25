@@ -16,13 +16,8 @@ const ResultOrder = ({
   startDate,
   isConfirmFormActive,
   confirmData,
-  orderData
+  orderData,
 }) => {
-  // if(orderData && orderData.data.length !== 0){
-  //   currentModel.name = orderData.data.carId.name;
-  //   currentModel.number = orderData.data.number;
-  //   currentModel.thumbnail.path = orderData.data.thumbnail.path;
-  // }
   return (
     <div className={s.resultOrderWrapper}>
       <div className={s.resultOrderContainer}>
@@ -43,6 +38,13 @@ const ResultOrder = ({
                 </span>
               </li>
             )}
+            {currentModel.tank || currentModel.tank === 0 && addParams[0].checked === false &&(
+              <li>
+                <span className={`${s.liName} ${s.text}`}>Бак </span>
+                <span className={`${s.extraText}`}>{currentModel.tank}%</span>
+              </li>
+            )} 
+
             {addParams.map(({ resultName, resultValue, id, checked }) => {
               if (checked)
                 return (

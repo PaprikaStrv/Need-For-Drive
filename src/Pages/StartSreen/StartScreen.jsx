@@ -11,7 +11,7 @@ import BookPageContainer from './../BookPage/BookPageContainer';
 const StartScreen = (props) => {
   const [menuIsActive, setMenuActive] = useState(false);
   const [langBtnClicked, changeSiteLang] = useState(false);
-
+ console.log(process.env.PUBLIC_URL);
   return (
     <div className={s.startScreenWrapper}>
       {menuIsActive && <BurgerMenu />}
@@ -22,7 +22,7 @@ const StartScreen = (props) => {
         changeSiteLang={changeSiteLang}
       />
       <Switch>
-        <Route exact path="/need-for-drive/">
+        <Route exact path="/">
           <Main />
           <Slider />
         </Route>

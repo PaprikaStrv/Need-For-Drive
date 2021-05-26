@@ -72,7 +72,7 @@ const ResultOrder = ({
             }}
           ></div>
         </div>
-        <OrderInfoContainer btnName="Заказать" noLink={true} />
+        <OrderInfoContainer btnName="Заказать" noLink={true}/>
       </div>
     </div>
   );

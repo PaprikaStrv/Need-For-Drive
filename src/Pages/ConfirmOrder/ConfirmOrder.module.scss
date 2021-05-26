@@ -5,11 +5,15 @@
   height: 100%;
   overflow: hidden;
   background: rgba(255, 255, 255, 0.9);
-  @include absoluteCenter();
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin-right: -50%;
 }
 
 .confirmOrderContainer {
   @include absoluteCenter();
+  position: fixed;
 }
 
 .formWrapper {

@@ -4,6 +4,7 @@ import s from "./OrderInfo.module.scss";
 import { XFormatPrice } from "../../commonScripts/scripts.js";
 import { diffDateFormat } from "../../commonScripts/diffDateFormat.js";
 import { calcPrice } from "./../../commonScripts/calcPrice";
+import classNames from 'classnames/bind';
 import moment from "moment";
 import "moment/locale/ru";
 import "moment-duration-format";
@@ -54,6 +55,11 @@ const OrderInfo = ({
     });
     currentModel.priceMin = orderData.data.carId.priceMin;
   }
+  let cx = classNames.bind(s);
+  let className = cx({
+    orderResultInfoBtn: true,
+    hoverActive: !isConfirmFormActive,
+  });
   return (
     <div className={s.orderInfoWrapper}>
       <span className={s.yourOrderText}>Ваш заказ:</span>
@@ -150,11 +156,7 @@ const OrderInfo = ({
       ) : null}
       {noLink ? (
         <button
-          className={
-            (orderData.length !== 0)
-              ? s.hideBtn
-              : s.orderInfoBtn
-          }
+          className={ (orderData.length !== 0) ? s.hideBtn : `${className}` }
           onClick={() => setConfirmFormActive(!isConfirmFormActive)}
         >
           Заказать
